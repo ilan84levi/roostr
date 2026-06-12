@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Pecking Order — the daily ranking game</title>
+<meta name="description" content="A free daily puzzle: rank five real things by a hidden quantity in three tries. New puzzle every midnight.">
+<meta property="og:title" content="Pecking Order — the daily ranking game">
+<meta property="og:description" content="Rank five real things by a hidden quantity. Three tries. One puzzle a day.">
+<meta name="theme-color" content="#f3ead8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='42' r='30' fill='%23b5402a'/%3E%3Ccircle cx='50' cy='42' r='19' fill='%23f3ead8'/%3E%3Ccircle cx='50' cy='42' r='12' fill='%23c89a3f'/%3E%3Cpath d='M38 64l-8 26 20-12 20 12-8-26z' fill='%23206258'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500;1,9..144,900&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <button class="icon-btn" id="btn-help" aria-label="How to play">?</button>
+    <h1 class="brand">
+      <svg class="rosette" viewBox="0 0 100 100" aria-hidden="true">
+        <g class="rosette-spin">
+          <circle cx="50" cy="42" r="30" fill="var(--red)"/>
+          <g fill="var(--paper)"><circle cx="50" cy="12" r="7"/><circle cx="76" cy="21" r="7"/><circle cx="80" cy="50" r="7"/><circle cx="68" cy="66" r="7"/><circle cx="32" cy="66" r="7"/><circle cx="20" cy="50" r="7"/><circle cx="24" cy="21" r="7"/></g>
+        </g>
+        <path d="M38 60l-9 30 21-13 21 13-9-30z" fill="var(--teal)"/>
+        <circle cx="50" cy="42" r="22" fill="var(--red)"/>
+        <circle cx="50" cy="42" r="15" fill="var(--paper)"/>
+        <text x="50" y="49" text-anchor="middle" class="rosette-num">1</text>
+      </svg>
+      Pecking<span> Order</span>
+    </h1>
+    <nav class="masthead-nav">
+      <button class="icon-btn" id="btn-stats" aria-label="Statistics">
+        <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><rect x="2" y="10" width="4" height="8" fill="currentColor"/><rect x="8" y="4" width="4" height="14" fill="currentColor"/><rect x="14" y="7" width="4" height="11" fill="currentColor"/></svg>
+      </button>
+      <button class="icon-btn icon-btn--gold" id="btn-plus" aria-label="Pecking Order Plus">★</button>
+    </nav>
+  </div>
+  <p class="dateline"><span id="puzzle-no">No. —</span> · <span id="puzzle-date">—</span> · Judged daily at midnight</p>
+</header>
+
+<main class="bill">
+
+  <section class="prompt" aria-live="polite">
+    <p class="prompt-kicker">— Today's class —</p>
+    <h2 class="prompt-title" id="prompt-title">…</h2>
+    <p class="prompt-metric">hidden measure: <strong id="prompt-metric">…</strong></p>
+    <p class="prompt-rule">
+      <span class="rule-end rule-end--lo"><b id="label-lo">Low</b> at the top</span>
+      <span class="rule-arrows" aria-hidden="true">⇣</span>
+      <span class="rule-end rule-end--hi"><b id="label-hi">High</b> at the bottom</span>
+    </p>
+  </section>
+
+  <section class="pen" aria-label="Your ranking">
+    <div class="roost" id="roost"></div>
+  </section>
+
+  <section class="bench">
+    <div class="attempts" id="attempts" aria-label="Attempts"></div>
+    <button class="btn btn--judge" id="btn-submit">Judge my order</button>
+    <div class="history" id="history" aria-live="polite"></div>
+  </section>
+
+  <section class="verdict" id="verdict" hidden>
+    <div class="verdict-card">
+      <p class="verdict-stamp" id="verdict-stamp">BEST IN SHOW</p>
+      <p class="verdict-sub" id="verdict-sub"></p>
+      <ol class="reveal" id="reveal"></ol>
+      <aside class="factbox">
+        <p class="factbox-label">Did you know?</p>
+        <p id="factbox-text"></p>
+      </aside>
+      <div class="verdict-actions">
+        <button class="btn btn--share" id="btn-share">Share result</button>
+        <button class="btn btn--ghost" id="btn-stats2">My stats</button>
+      </div>
+      <p class="countdown">Next puzzle in <b id="countdown">—</b></p>
+    </div>
+  </section>
+
+  <!-- AD SLOT — paste your AdSense/ad-network snippet inside .ad-slot and remove the placeholder.
+       Recommended: responsive display unit. This slot only renders for non-Plus players. -->
+  <div class="ad-slot" id="ad-1" aria-hidden="true">
+    <span>advertisement</span>
+  </div>
+
+  <footer class="colophon">
+    <p>A new pecking order every day · facts are approximate, the order is what counts</p>
+    <p><button class="linklike" id="btn-about">About</button> · <button class="linklike" id="btn-plus2">Go ad-free with Plus</button></p>
+  </footer>
+</main>
+
+<!-- ===== Modals ===== -->
+<div class="overlay" id="overlay" hidden>
+
+  <div class="modal" id="modal-help" hidden role="dialog" aria-modal="true" aria-labelledby="help-title">
+    <button class="modal-close" data-close aria-label="Close">×</button>
+    <h3 class="modal-title" id="help-title">How to play</h3>
+    <ol class="howto">
+      <li>Five contestants enter. Drag them into order by the <b>hidden measure</b> — smallest at the top, largest at the bottom.</li>
+      <li>Press <b>Judge my order</b>. You get <b>three</b> judgings.</li>
+      <li>Each card gets a ribbon:
+        <span class="chip chip--hit">right roost</span>
+        <span class="chip chip--close">one spot off</span>
+        <span class="chip chip--miss">way off</span>
+      </li>
+      <li>Sweep all five greens to take <b>Best&nbsp;in&nbsp;Show</b>. True values revealed at the end — expect surprises.</li>
+    </ol>
+    <p class="howto-foot">One puzzle a day. Streaks are sacred.</p>
+  </div>
+
+  <div class="modal" id="modal-stats" hidden role="dialog" aria-modal="true" aria-labelledby="stats-title">
+    <button class="modal-close" data-close aria-label="Close">×</button>
+    <h3 class="modal-title" id="stats-title">Show record</h3>
+    <div class="statgrid">
+      <div class="stat"><b id="st-played">0</b><span>entered</span></div>
+      <div class="stat"><b id="st-winpct">0%</b><span>won</span></div>
+      <div class="stat"><b id="st-streak">0</b><span>streak</span></div>
+      <div class="stat"><b id="st-max">0</b><span>best streak</span></div>
+    </div>
+    <h4 class="dist-title">Wins by judging</h4>
+    <div class="dist" id="dist"></div>
+  </div>
+
+  <div class="modal modal--plus" id="modal-plus" hidden role="dialog" aria-modal="true" aria-labelledby="plus-title">
+    <button class="modal-close" data-close aria-label="Close">×</button>
+    <p class="plus-rosette">★</p>
+    <h3 class="modal-title" id="plus-title">Pecking Order <em>Plus</em></h3>
+    <ul class="plus-list">
+      <li>No advertisements, ever</li>
+      <li>The full puzzle archive — every past day, replayable</li>
+      <li>Hard mode &amp; detailed stats</li>
+      <li>Keep the coop running</li>
+    </ul>
+    <p class="plus-price"><b>$1.99</b>/month · or $14.99/year</p>
+    <button class="btn btn--judge" id="btn-buy">Join the flock</button>
+    <p class="plus-note" id="plus-note"></p>
+  </div>
+
+  <div class="modal" id="modal-about" hidden role="dialog" aria-modal="true" aria-labelledby="about-title">
+    <button class="modal-close" data-close aria-label="Close">×</button>
+    <h3 class="modal-title" id="about-title">About</h3>
+    <p class="about-text">Pecking Order is a free daily ranking game. Five real things, one hidden measure, three tries. Values shown after each round are honest approximations from public reference sources — only their <em>order</em> is used for judging.</p>
+    <p class="about-text">No account, no tracking — your streak lives in your browser.</p>
+  </div>
+
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="js/puzzles.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
