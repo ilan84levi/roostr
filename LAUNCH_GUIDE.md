@@ -1,4 +1,4 @@
-# Launch Guide — what to do with Pecking Order
+# Launch Guide — what to do with Roostr
 
 You asked for a project that can make money and instructions on whether to air
 it. Here's both, in the order you'd actually do things.
@@ -13,10 +13,14 @@ measure for 30 days, and only invest more (custom domain, Plus tier, more
 puzzles) if people actually share it. Total cash needed to find out: **$0–12**
 (a domain is the only optional cost).
 
-Before airing, two 10-minute checks:
-1. Search "pecking order game" — make sure no existing game/trademark
-   conflicts. Renaming is a one-string change in `index.html`/`game.js`.
-2. Play it yourself for 3 days. If *you* don't come back on day 3, fix that
+Before airing, three quick checks:
+1. **Name "Roostr"** (renamed from "Pecking Order," which was too generic to
+   rank in search). Confirm the domain is available — `roostr.game`,
+   `roostr.io`, or `playroostr.com` — and that no existing game holds the
+   exact name. If you'd rather a different word, it lives in a handful of
+   strings in `index.html` and `js/game.js` (search "Roostr") plus the `<h1>`.
+2. Set `SITE_URL` in `js/game.js` to whatever domain you actually buy.
+3. Play it yourself for 3 days. If *you* don't come back on day 3, fix that
    first (usually: puzzles too easy or too hard).
 
 ## Step 1 — Deploy (10 minutes, free)

@@ -1,4 +1,4 @@
-/* Pecking Order — puzzle data.
+/* Roostr — puzzle data.
    Items are stored in ASCENDING order of the hidden value (index 0 = lowest).
    Only relative order is used by the game; display values are shown after the
    round ends. Values curated 2026-06 from stable public reference knowledge. */

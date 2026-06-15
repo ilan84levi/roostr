@@ -1,4 +1,4 @@
-/* Pecking Order — game engine. No dependencies, no backend.
+/* Roostr — game engine. No dependencies, no backend.
    State lives in localStorage; daily puzzle keyed to the local calendar day. */
 (function () {
   "use strict";
@@ -7,7 +7,7 @@
   var EPOCH = new Date(2026, 5, 1);          // puzzle No. 1 = June 1, 2026
   var MAX_GUESSES = 3;
   var PAYMENT_LINK = "";                      // paste a Stripe Payment Link URL to go live
-  var SITE_URL = "peckingorder.game";         // shown in share text — update after deploy
+  var SITE_URL = "roostr.game";               // shown in share text — verify/buy domain, then update after deploy
 
   /* —— daily puzzle selection —— */
   function dayIndex() {
@@ -284,7 +284,7 @@
     var grid = state.guesses.map(function (g) {
       return judge(g).map(function (m) { return m === "h" ? "🟩" : m === "c" ? "🟨" : "⬜"; }).join("");
     }).join("\n");
-    return "Pecking Order #" + PUZZLE_NO + " — " + score + "/" + MAX_GUESSES +
+    return "Roostr #" + PUZZLE_NO + " — " + score + "/" + MAX_GUESSES +
       (state.win ? " 🏅" : " 🐔") + "\n" + grid + "\n" + SITE_URL;
   }
   function share() {

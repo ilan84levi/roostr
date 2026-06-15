@@ -1,6 +1,8 @@
-# 🏅 Pecking Order
+# 🏅 Roostr
 
-**The daily ranking game.** Five real things, one hidden measure, three tries.
+**The daily ranking game.** *(Internally themed "pecking order" — county-fair
+poultry-show flavor; the brand name is Roostr.)*
+ Five real things, one hidden measure, three tries.
 Drag the cards into order — smallest to biggest, slowest to fastest, oldest to
 newest — then face the judge. Every reveal is built around a fact that makes
 people say *"wait, what?"* (a blue whale's tongue outweighs a family car;

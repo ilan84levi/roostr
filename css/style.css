@@ -1,5 +1,5 @@
 /* ————————————————————————————————————————————————
-   PECKING ORDER · county-fair letterpress
+   ROOSTR · county-fair letterpress
    ———————————————————————————————————————————————— */
 :root {
   --paper: #f3ead8;
@@ -85,7 +85,7 @@ body::after {
   gap: 10px;
   white-space: nowrap;
 }
-.brand span { color: var(--red); }
+.brand .accent { color: var(--red); }
 .rosette { width: 38px; height: 38px; flex: none; filter: drop-shadow(1px 2px 0 rgba(var(--shadow), .25)); }
 .rosette-num { font: 700 30px var(--font-display); fill: var(--ink); }
 .rosette-spin { transform-origin: 50px 42px; animation: spin 24s linear infinite; }
