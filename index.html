@@ -166,7 +166,17 @@
     </p>
     <h3 class="modal-title" id="coffee-title">The Coffee Counter</h3>
     <p class="coffee-blurb">Roostr is free and made by one person. If a puzzle made you grin, you can drop me a coffee — every cup keeps the coop running, and your name joins the counter below.</p>
-    <button class="btn btn--coffee" id="btn-coffee-buy">☕ Buy me a coffee · $1.50+</button>
+    <div class="coffee-buy">
+      <div class="coffee-stepper" role="group" aria-label="How many coffees">
+        <button type="button" class="step-btn" id="cup-minus" aria-label="One fewer cup">−</button>
+        <span class="coffee-cup-count"><b id="cup-count">1</b> <span id="cup-emoji">☕</span></span>
+        <button type="button" class="step-btn" id="cup-plus" aria-label="One more cup">+</button>
+      </div>
+      <label class="coffee-custom">or pick your own amount:
+        <span class="coffee-amt">$<input type="number" id="cup-custom" min="1.50" step="0.50" inputmode="decimal" placeholder="—"></span>
+      </label>
+      <button class="btn btn--coffee" id="btn-coffee-buy">☕ Buy me a coffee · <span id="coffee-total">$1.50</span></button>
+    </div>
     <p class="coffee-fineprint">Opens PayPal in a new tab. After you give, I add your name here (usually within a day). Prefer to stay anonymous? Just say so in the PayPal note.</p>
     <p class="coffee-tally" id="coffee-tally"></p>
     <ul class="coffee-wall" id="coffee-wall"></ul>

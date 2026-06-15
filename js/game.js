@@ -353,13 +353,27 @@
   }
 
   /* —— coffee tip jar —— */
-  function coffeeUrl() {
+  var coffeeCups = 1;
+  function coffeeAmount() {
+    var raw = ($("cup-custom").value || "").replace(",", ".");
+    var custom = parseFloat(raw);
+    if (raw !== "" && !isNaN(custom) && custom >= 1) return Math.round(custom * 100) / 100;
+    return Math.round(coffeeCups * COFFEE_MIN * 100) / 100;
+  }
+  function updateCoffeeUI() {
+    $("cup-count").textContent = coffeeCups;
+    var n = Math.min(coffeeCups, 5);
+    $("cup-emoji").textContent = new Array(n + 1).join("☕");
+    $("coffee-total").textContent = "$" + coffeeAmount().toFixed(2);
+  }
+  function coffeeUrl(amount) {
+    var label = amount >= COFFEE_MIN * 2 ? "Coffees for Roostr" : "A coffee for Roostr";
     return "https://www.paypal.com/donate/?business=" + encodeURIComponent(PAYPAL_EMAIL) +
-      "&item_name=" + encodeURIComponent("A coffee for Roostr") +
-      "&amount=" + COFFEE_MIN.toFixed(2) +
+      "&item_name=" + encodeURIComponent(label) +
+      "&amount=" + amount.toFixed(2) +
       "&currency_code=USD";
   }
-  function buyCoffee() { window.open(coffeeUrl(), "_blank", "noopener"); }
+  function buyCoffee() { window.open(coffeeUrl(coffeeAmount()), "_blank", "noopener"); }
 
   var CUP_SVG =
     '<svg class="cup cup--sm" viewBox="0 0 64 64" aria-hidden="true">' +
@@ -433,7 +447,7 @@
       $(m).hidden = m !== id;
     });
     if (id === "modal-stats") renderStats();
-    if (id === "modal-coffee") renderCoffee();
+    if (id === "modal-coffee") { renderCoffee(); updateCoffeeUI(); }
   }
   function closeModal() { overlay.hidden = true; }
   overlay.addEventListener("click", function (e) {
@@ -452,6 +466,9 @@
   $("btn-coffee").addEventListener("click", function () { openModal("modal-coffee"); });
   $("btn-coffee2").addEventListener("click", function () { openModal("modal-coffee"); });
   $("btn-coffee-buy").addEventListener("click", buyCoffee);
+  $("cup-minus").addEventListener("click", function () { coffeeCups = Math.max(1, coffeeCups - 1); $("cup-custom").value = ""; updateCoffeeUI(); });
+  $("cup-plus").addEventListener("click", function () { coffeeCups = Math.min(20, coffeeCups + 1); $("cup-custom").value = ""; updateCoffeeUI(); });
+  $("cup-custom").addEventListener("input", updateCoffeeUI);
   $("btn-buy").addEventListener("click", function () {
     if (PAYMENT_LINK) {
       window.open(PAYMENT_LINK, "_blank", "noopener");

@@ -602,6 +602,48 @@ body.plus .ad-slot { display: none; }
 .modal--coffee { text-align: center; }
 .coffee-hero { line-height: 0; margin-bottom: 4px; }
 .coffee-blurb { font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin-bottom: 16px; }
+.coffee-buy { margin-bottom: 6px; }
+.coffee-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.step-btn {
+  width: 42px; height: 42px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(var(--shadow), .8);
+  transition: transform .08s, box-shadow .08s;
+}
+.step-btn:active { transform: translate(2px, 2px); box-shadow: 0 0 0 rgba(var(--shadow), .8); }
+.coffee-cup-count { min-width: 74px; font-size: 18px; }
+.coffee-cup-count b { font-family: var(--font-display); font-size: 26px; }
+.coffee-custom {
+  display: block;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+.coffee-amt { white-space: nowrap; }
+#cup-custom {
+  width: 76px;
+  font: inherit;
+  font-size: 15px;
+  padding: 6px 8px;
+  margin-left: 2px;
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  background: var(--paper);
+  text-align: center;
+}
 .btn--coffee {
   background: var(--gold);
   color: var(--ink);
