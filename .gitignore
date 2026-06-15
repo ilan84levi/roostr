@@ -1,5 +1,4 @@
 .playwright-mcp/
-*.png
 
 # Never commit secrets — keep passwords/keys out of git and off GitHub
 ilan private passwords/
