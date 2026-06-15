@@ -77,29 +77,19 @@ aren't worth the page weight. The code is already wired; you only paste two IDs.
 
 ## Step 3b — The coffee tip jar (already live, $0)
 
-A "☕ Buy me a coffee" button sits in the footer and on every finished-puzzle
-screen. It opens a PayPal donation to **ilan841@gmail.com**, suggested $1.50
-(donors can give more). This needs no setup — it works the moment you deploy.
+A "☕ Buy me a coffee" button sits in the footer and under the Judge button.
+It opens a PayPal donation to **ilan@playroostr.com** (your branded address),
+with a cup picker (1+ cups) or a custom amount. No setup — it works the moment
+you deploy, and there's **no supporter wall to maintain**.
 
-**The Coffee Counter (supporter wall).** Because the site has no backend, the
-wall is *curated by you*, which keeps it honest (only real payers appear):
-
-1. PayPal emails `ilan@playroostr.com` whenever someone donates, with their name.
-2. Open `js/supporters.js` and add a line at the top of the list:
-   ```js
-   { name: "Jane D.", cups: 1, note: "loved the whale one" },
-   ```
-   `cups` and `note` are optional. If they asked to be anonymous, use
-   `{ name: "A kind stranger" }`.
-3. Redeploy. Their name (with little mugs) now shows on the Coffee Counter.
-
-Want it fully automatic instead of manual? Two options, for later:
-- **Switch the button to Buy Me a Coffee or Ko-fi** — those hosted services
-  handle payment *and* a live supporter feed out of the box. Less control over
-  the look, zero maintenance.
-- **Add a real backend** — a Supabase table + a serverless function listening
-  to PayPal webhooks would auto-post verified donors. That's a small project;
-  only worth it if donations get frequent enough that manual entry annoys you.
+If you later want an automatic, verified donor wall (names appear by
+themselves), it needs a backend:
+- **Supabase + a PayPal webhook** — a serverless function writes each verified
+  donor to a table the site reads. Needs a spare Supabase project (the free
+  tier caps at 2; a Pro plan or freeing a slot gives room) plus PayPal webhook
+  setup. Native look, fully yours.
+- **Or switch the button to Ko-fi / Buy Me a Coffee** — hosted services with a
+  built-in auto supporter feed, zero maintenance, less control over styling.
 
 ## Step 4 — Turn on Plus ($1.99/mo) when there are regulars
 
