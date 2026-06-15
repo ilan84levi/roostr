@@ -7,6 +7,9 @@
 <meta name="description" content="A free daily puzzle: rank five real things by a hidden quantity in three tries. New puzzle every midnight.">
 <meta property="og:title" content="Roostr — the daily ranking game">
 <meta property="og:description" content="Rank five real things by a hidden quantity. Three tries. One puzzle a day.">
+<meta property="og:url" content="https://playroostr.com/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://playroostr.com/">
 <meta name="theme-color" content="#f3ead8">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='42' r='30' fill='%23b5402a'/%3E%3Ccircle cx='50' cy='42' r='19' fill='%23f3ead8'/%3E%3Ccircle cx='50' cy='42' r='12' fill='%23c89a3f'/%3E%3Cpath d='M38 64l-8 26 20-12 20 12-8-26z' fill='%23206258'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,12 +81,16 @@
         <button class="btn btn--share" id="btn-share">Share result</button>
         <button class="btn btn--ghost" id="btn-stats2">My stats</button>
       </div>
+      <button class="coffee-prompt" id="btn-coffee2">
+        <span class="coffee-prompt-cup" aria-hidden="true">☕</span>
+        Enjoyed today's? <b>Buy me a coffee</b>
+      </button>
       <p class="countdown">Next puzzle in <b id="countdown">—</b></p>
     </div>
   </section>
 
-  <!-- AD SLOT — paste your AdSense/ad-network snippet inside .ad-slot and remove the placeholder.
-       Recommended: responsive display unit. This slot only renders for non-Plus players. -->
+  <!-- AD SLOT — filled by initAds() in js/game.js once ADSENSE_CLIENT is set.
+       Hidden entirely until then, and never shown to Plus members. -->
   <div class="ad-slot" id="ad-1" aria-hidden="true">
     <span>advertisement</span>
   </div>
@@ -91,7 +98,12 @@
   <footer class="colophon">
     <p>A new pecking order every day · facts are approximate, the order is what counts</p>
     <!-- (keeps the "pecking order" phrase as flavor copy; brand name is Roostr) -->
-    <p><button class="linklike" id="btn-about">About</button> · <button class="linklike" id="btn-plus2">Go ad-free with Plus</button></p>
+    <p>
+      <button class="linklike" id="btn-about">About</button> ·
+      <button class="linklike" id="btn-coffee">☕ Buy me a coffee</button> ·
+      <button class="linklike" id="btn-plus2">Go ad-free with Plus</button>
+    </p>
+    <p class="colophon-legal"><a href="privacy.html">Privacy</a> · made with care, not venture capital</p>
   </footer>
 </main>
 
@@ -142,6 +154,24 @@
     <p class="plus-note" id="plus-note"></p>
   </div>
 
+  <div class="modal modal--coffee" id="modal-coffee" hidden role="dialog" aria-modal="true" aria-labelledby="coffee-title">
+    <button class="modal-close" data-close aria-label="Close">×</button>
+    <p class="coffee-hero" aria-hidden="true">
+      <svg class="cup cup--big" viewBox="0 0 64 64">
+        <path class="cup-steam" d="M25 14c-3-3 1-6-1-9" /><path class="cup-steam" d="M35 14c-3-3 1-6-1-9" />
+        <ellipse cx="28" cy="26" rx="17" ry="4" fill="var(--gold)"/>
+        <path d="M12 26h32v11a13 13 0 0 1-13 13h-6a13 13 0 0 1-13-13z" fill="var(--teal)"/>
+        <path d="M44 29h4a7 7 0 0 1 0 14h-3" fill="none" stroke="var(--teal)" stroke-width="4"/>
+      </svg>
+    </p>
+    <h3 class="modal-title" id="coffee-title">The Coffee Counter</h3>
+    <p class="coffee-blurb">Roostr is free and made by one person. If a puzzle made you grin, you can drop me a coffee — every cup keeps the coop running, and your name joins the counter below.</p>
+    <button class="btn btn--coffee" id="btn-coffee-buy">☕ Buy me a coffee · $1.50+</button>
+    <p class="coffee-fineprint">Opens PayPal in a new tab. After you give, I add your name here (usually within a day). Prefer to stay anonymous? Just say so in the PayPal note.</p>
+    <p class="coffee-tally" id="coffee-tally"></p>
+    <ul class="coffee-wall" id="coffee-wall"></ul>
+  </div>
+
   <div class="modal" id="modal-about" hidden role="dialog" aria-modal="true" aria-labelledby="about-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="about-title">About</h3>
@@ -154,6 +184,7 @@
 <div class="toast" id="toast" role="status"></div>
 
 <script src="js/puzzles.js"></script>
+<script src="js/supporters.js"></script>
 <script src="js/game.js"></script>
 </body>
 </html>

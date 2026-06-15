@@ -19,7 +19,8 @@ Before airing, three quick checks:
    `roostr.io`, or `playroostr.com` — and that no existing game holds the
    exact name. If you'd rather a different word, it lives in a handful of
    strings in `index.html` and `js/game.js` (search "Roostr") plus the `<h1>`.
-2. Set `SITE_URL` in `js/game.js` to whatever domain you actually buy.
+2. `SITE_URL` in `js/game.js` is already set to `playroostr.com` — change it
+   only if you deploy somewhere else first.
 3. Play it yourself for 3 days. If *you* don't come back on day 3, fix that
    first (usually: puzzles too easy or too hard).
 
@@ -50,19 +51,55 @@ marketing department.
   *"A blue whale's tongue outweighs a family car. Can you rank the other
   four? New puzzle daily."*
 
-## Step 3 — Turn on ads (once you see ~500+ visits/day)
+## Step 3 — Turn on Google AdSense (once you see ~500+ visits/day)
 
-Don't bother before that — ad networks reject empty sites and pennies aren't
-worth the page weight.
+Don't bother before that — AdSense rejects thin/low-traffic sites, and pennies
+aren't worth the page weight. The code is already wired; you only paste two IDs.
 
-1. Apply to **Google AdSense** (needs the site live on a real domain — buy one,
-   ~$12/yr, when you reach this step) or use **Monetag/A-ads** sooner.
-2. Paste the ad snippet inside the `.ad-slot` div in `index.html`
-   (the placeholder comment marks the spot). The slot already hides itself
-   for Plus subscribers.
-3. Expectation setting: puzzle games earn roughly **$2–8 per 1,000 daily
-   visitors per ad slot**. 1,000 visitors/day ≈ $60–240/month. Modest, but
-   the costs are zero.
+1. **Apply** at adsense.google.com with `playroostr.com`. Approval needs: the
+   site live on the domain, a privacy policy (you have one — `privacy.html`,
+   already linked in the footer), and a bit of real content/traffic.
+2. **After approval**, create a "Display" ad unit in the AdSense dashboard.
+   It gives you two values: your publisher ID (`ca-pub-…`) and the unit's
+   ad-slot number.
+3. Open `js/game.js` and fill the two constants at the top:
+   ```js
+   var ADSENSE_CLIENT = "ca-pub-XXXXXXXXXXXXXXXX";  // your publisher ID
+   var ADSENSE_SLOT   = "XXXXXXXXXX";               // the ad unit number
+   ```
+   That's it — the ad area stays hidden until both are set, then renders a
+   responsive unit. It never shows to Plus members. Redeploy.
+4. **EEA/UK note:** Google requires a certified consent banner (CMP) for
+   visitors in Europe. Easiest: turn on AdSense's own built-in consent message
+   (AdSense → Privacy & messaging → GDPR). No code needed.
+5. Expectation setting: puzzle games earn roughly **$2–8 per 1,000 daily
+   visitors**. 1,000 visitors/day ≈ $60–240/month. Modest, but costs are zero.
+
+## Step 3b — The coffee tip jar (already live, $0)
+
+A "☕ Buy me a coffee" button sits in the footer and on every finished-puzzle
+screen. It opens a PayPal donation to **ilan841@gmail.com**, suggested $1.50
+(donors can give more). This needs no setup — it works the moment you deploy.
+
+**The Coffee Counter (supporter wall).** Because the site has no backend, the
+wall is *curated by you*, which keeps it honest (only real payers appear):
+
+1. PayPal emails `ilan@playroostr.com` whenever someone donates, with their name.
+2. Open `js/supporters.js` and add a line at the top of the list:
+   ```js
+   { name: "Jane D.", cups: 1, note: "loved the whale one" },
+   ```
+   `cups` and `note` are optional. If they asked to be anonymous, use
+   `{ name: "A kind stranger" }`.
+3. Redeploy. Their name (with little mugs) now shows on the Coffee Counter.
+
+Want it fully automatic instead of manual? Two options, for later:
+- **Switch the button to Buy Me a Coffee or Ko-fi** — those hosted services
+  handle payment *and* a live supporter feed out of the box. Less control over
+  the look, zero maintenance.
+- **Add a real backend** — a Supabase table + a serverless function listening
+  to PayPal webhooks would auto-post verified donors. That's a small project;
+  only worth it if donations get frequent enough that manual entry annoys you.
 
 ## Step 4 — Turn on Plus ($1.99/mo) when there are regulars
 
@@ -76,6 +113,33 @@ worth the page weight.
    (Proper accounts can come later, only if Plus actually sells.)
 4. The archive ("every past day, replayable") is the real Plus seller —
    it's listed in the paywall pitch; implement it when the first person asks.
+
+## Other ways to earn (ranked by effort-to-payoff)
+
+Ordered best-first for a one-person daily game. None are built yet except where
+noted — they're here so you can pick when the time comes.
+
+1. **Coffee tips** *(built, live now)* — lowest friction, pure goodwill. Best
+   early earner before you have ad-worthy traffic.
+2. **Roostr Plus subscription** *(stub built)* — recurring revenue; flip it on
+   per Step 4 once you have daily regulars who'd pay to lose the ads and unlock
+   the archive. This is the real long-term money if the game sticks.
+3. **Sponsored puzzle of the day** — once traffic is real, a brand pays to
+   theme one day ("Today's class, sponsored by …"). High value, easy to add:
+   one optional `sponsor` field on a puzzle + a small credit line. Worth wiring
+   when someone's actually willing to pay for it.
+4. **Print-on-demand merch** — the rooster rosette on a mug or tee via
+   Printful/Redbubble. Zero inventory, you just add a "Shop" link. Tiny but
+   on-brand revenue; only bother if you build a real fanbase.
+5. **Themed puzzle packs** — sell a one-off pack (e.g. "100 Movie puzzles")
+   as a small unlock. Same delivery mechanism as Plus.
+6. **Affiliate facts** — when a puzzle features a product/book, an affiliate
+   link in the reveal. Low yield, slightly tacky; use sparingly if at all.
+
+My honest priority order for *you*: keep the **coffee jar** as the friendly
+default, get **AdSense** on once traffic justifies it, and treat **Plus** as
+the goal that actually pays. Everything else is a bonus, not worth your time
+until the game has proven it has regulars.
 
 ## Step 5 — Keep it alive (15 min/week)
 

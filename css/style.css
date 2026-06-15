@@ -568,6 +568,98 @@ body.plus .ad-slot { display: none; }
 
 .about-text { font-size: 14px; line-height: 1.6; margin-bottom: 10px; }
 
+/* ————— coffee tip jar ————— */
+.colophon-legal { font-size: 11px; opacity: .8; }
+.colophon-legal a { color: var(--teal); }
+
+/* the little prompt on the verdict card */
+.coffee-prompt {
+  margin: 14px auto 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold-pale);
+  border: 1.5px dashed var(--gold);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: transform .1s, background .2s;
+}
+.coffee-prompt b { color: var(--red); }
+.coffee-prompt:hover { background: #f3e4bd; transform: translateY(-1px); }
+.coffee-prompt-cup { font-size: 16px; }
+
+/* drawn mug */
+.cup { width: 30px; height: 30px; flex: none; }
+.cup--big { width: 58px; height: 58px; }
+.cup--sm { width: 19px; height: 19px; }
+.cup-steam { fill: none; stroke: var(--ink-soft); stroke-width: 2.5; stroke-linecap: round; opacity: .45; }
+.cup--big .cup-steam { animation: steam 2.4s ease-in-out infinite; }
+@keyframes steam { 0%, 100% { opacity: .2; } 50% { opacity: .6; transform: translateY(-1px); } }
+
+.modal--coffee { text-align: center; }
+.coffee-hero { line-height: 0; margin-bottom: 4px; }
+.coffee-blurb { font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin-bottom: 16px; }
+.btn--coffee {
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 17px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .25);
+}
+.coffee-fineprint { font-size: 11.5px; color: var(--ink-soft); margin: 10px 0 4px; line-height: 1.5; }
+.coffee-tally {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--teal);
+  margin: 16px 0 10px;
+  border-top: 1px dashed rgba(var(--shadow), .35);
+  padding-top: 14px;
+}
+.coffee-tally:empty { border-top: 0; padding-top: 0; margin: 8px 0; }
+.coffee-wall { list-style: none; display: grid; gap: 8px; text-align: left; }
+.coffee-empty {
+  text-align: center;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+  padding: 6px 0 2px;
+}
+.coffee-name {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 10px;
+  background: var(--paper-deep);
+  border: 1px solid rgba(var(--shadow), .25);
+  border-radius: 4px;
+  padding: 8px 12px;
+}
+.coffee-cups { display: inline-flex; }
+.coffee-name b { font-size: 15px; }
+.coffee-note {
+  grid-column: 2;
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+/* ————— standalone legal pages ————— */
+.legal {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+.legal h1 { font-family: var(--font-display); font-style: italic; font-weight: 900; font-size: 32px; margin-bottom: 6px; }
+.legal h2 { font-family: var(--font-display); font-size: 20px; margin: 24px 0 6px; }
+.legal p, .legal li { font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); }
+.legal ul { padding-left: 20px; margin: 6px 0; }
+.legal a { color: var(--teal); }
+.legal .back { display: inline-block; margin-bottom: 20px; font-weight: 700; color: var(--teal); text-decoration: none; }
+.legal .updated { font-size: 12px; opacity: .7; }
+
 /* ————— toast ————— */
 .toast {
   position: fixed;

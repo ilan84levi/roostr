@@ -3,11 +3,21 @@
 (function () {
   "use strict";
 
-  /* —— configuration —— */
+  /* —— configuration ——
+     Everything you flip to "go live" lives in this block. */
   var EPOCH = new Date(2026, 5, 1);          // puzzle No. 1 = June 1, 2026
   var MAX_GUESSES = 3;
-  var PAYMENT_LINK = "";                      // paste a Stripe Payment Link URL to go live
-  var SITE_URL = "roostr.game";               // shown in share text — verify/buy domain, then update after deploy
+  var SITE_URL = "playroostr.com";            // shown in the share text
+  var PAYMENT_LINK = "";                      // Stripe Payment Link for Plus (leave "" until ready)
+
+  /* Coffee tip jar (PayPal) */
+  var PAYPAL_EMAIL = "ilan841@gmail.com";     // donations land here
+  var COFFEE_MIN = 1.50;                       // suggested amount; donors can give more
+
+  /* Google AdSense — fill BOTH after your account + ad unit are approved.
+     While ADSENSE_CLIENT is "", the ad area stays hidden (clean pre-launch look). */
+  var ADSENSE_CLIENT = "";                     // e.g. "ca-pub-1234567890123456"
+  var ADSENSE_SLOT = "";                       // the ad unit's data-ad-slot number
 
   /* —— daily puzzle selection —— */
   function dayIndex() {
@@ -342,14 +352,88 @@
     });
   }
 
+  /* —— coffee tip jar —— */
+  function coffeeUrl() {
+    return "https://www.paypal.com/donate/?business=" + encodeURIComponent(PAYPAL_EMAIL) +
+      "&item_name=" + encodeURIComponent("A coffee for Roostr") +
+      "&amount=" + COFFEE_MIN.toFixed(2) +
+      "&currency_code=USD";
+  }
+  function buyCoffee() { window.open(coffeeUrl(), "_blank", "noopener"); }
+
+  var CUP_SVG =
+    '<svg class="cup cup--sm" viewBox="0 0 64 64" aria-hidden="true">' +
+    '<ellipse cx="28" cy="26" rx="17" ry="4" fill="var(--gold)"/>' +
+    '<path d="M12 26h32v11a13 13 0 0 1-13 13h-6a13 13 0 0 1-13-13z" fill="var(--teal)"/>' +
+    '<path d="M44 29h4a7 7 0 0 1 0 14h-3" fill="none" stroke="var(--teal)" stroke-width="4"/></svg>';
+
+  function renderCoffee() {
+    var list = (typeof SUPPORTERS !== "undefined" && SUPPORTERS) ? SUPPORTERS : [];
+    var cups = list.reduce(function (n, s) { return n + (s.cups || 1); }, 0);
+    var tally = $("coffee-tally");
+    tally.textContent = cups
+      ? cups + (cups === 1 ? " coffee" : " coffees") + " from " +
+        list.length + (list.length === 1 ? " kind soul" : " kind souls") + " — thank you."
+      : "";
+    var wall = $("coffee-wall");
+    wall.innerHTML = "";
+    if (!list.length) {
+      var empty = document.createElement("li");
+      empty.className = "coffee-empty";
+      empty.textContent = "No cups yet — be the first name on the counter.";
+      wall.appendChild(empty);
+      return;
+    }
+    list.forEach(function (s) {
+      var li = document.createElement("li");
+      li.className = "coffee-name";
+      var n = Math.max(1, Math.min(s.cups || 1, 5));
+      li.innerHTML = '<span class="coffee-cups">' + new Array(n + 1).join(CUP_SVG) + "</span>";
+      var name = document.createElement("b");
+      name.textContent = s.name || "A kind stranger";
+      li.appendChild(name);
+      if (s.note) {
+        var note = document.createElement("span");
+        note.className = "coffee-note";
+        note.textContent = "“" + s.note + "”";
+        li.appendChild(note);
+      }
+      wall.appendChild(li);
+    });
+  }
+
+  /* —— advertisements (Google AdSense) —— */
+  function initAds() {
+    var slot = $("ad-1");
+    if (!slot) return;
+    if (isPlus || !ADSENSE_CLIENT) { slot.hidden = true; return; }   // Plus = ad-free; no client = not live yet
+    slot.innerHTML = "";
+    slot.removeAttribute("aria-hidden");
+    var loader = document.createElement("script");
+    loader.async = true;
+    loader.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + ADSENSE_CLIENT;
+    loader.crossOrigin = "anonymous";
+    document.head.appendChild(loader);
+    var ins = document.createElement("ins");
+    ins.className = "adsbygoogle";
+    ins.style.display = "block";
+    ins.setAttribute("data-ad-client", ADSENSE_CLIENT);
+    if (ADSENSE_SLOT) ins.setAttribute("data-ad-slot", ADSENSE_SLOT);
+    ins.setAttribute("data-ad-format", "auto");
+    ins.setAttribute("data-full-width-responsive", "true");
+    slot.appendChild(ins);
+    try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) { /* blocked */ }
+  }
+
   /* —— modals —— */
   var overlay = $("overlay");
   function openModal(id) {
     overlay.hidden = false;
-    ["modal-help", "modal-stats", "modal-plus", "modal-about"].forEach(function (m) {
+    ["modal-help", "modal-stats", "modal-plus", "modal-about", "modal-coffee"].forEach(function (m) {
       $(m).hidden = m !== id;
     });
     if (id === "modal-stats") renderStats();
+    if (id === "modal-coffee") renderCoffee();
   }
   function closeModal() { overlay.hidden = true; }
   overlay.addEventListener("click", function (e) {
@@ -365,6 +449,9 @@
   $("btn-plus").addEventListener("click", function () { openModal("modal-plus"); });
   $("btn-plus2").addEventListener("click", function () { openModal("modal-plus"); });
   $("btn-about").addEventListener("click", function () { openModal("modal-about"); });
+  $("btn-coffee").addEventListener("click", function () { openModal("modal-coffee"); });
+  $("btn-coffee2").addEventListener("click", function () { openModal("modal-coffee"); });
+  $("btn-coffee-buy").addEventListener("click", buyCoffee);
   $("btn-buy").addEventListener("click", function () {
     if (PAYMENT_LINK) {
       window.open(PAYMENT_LINK, "_blank", "noopener");
@@ -388,6 +475,7 @@
   /* —— boot —— */
   buildCards();
   renderBench();
+  initAds();
   if (state.done) {
     finish();
   } else if (!localStorage.getItem("po-seen")) {
