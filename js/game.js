@@ -11,7 +11,7 @@
   var PAYMENT_LINK = "";                      // Stripe Payment Link for Plus (leave "" until ready)
 
   /* Coffee tip jar (PayPal) */
-  var PAYPAL_EMAIL = "ilan841@gmail.com";     // donations land here
+  var PAYPAL_EMAIL = "ilan@playroostr.com";   // donations land here (must be a confirmed address on your PayPal account)
   var COFFEE_MIN = 1.50;                       // suggested amount; donors can give more
 
   /* Google AdSense — fill BOTH after your account + ad unit are approved.
