@@ -9,24 +9,36 @@ people say *"wait, what?"* (a blue whale's tongue outweighs a family car;
 Nintendo is older than the zipper's patent holder; Antarctica is the world's
 largest desert).
 
+Two daily games share one design system and one puzzle pool:
+
+- **Ranking** (`index.html`) — drag five things into order by the hidden measure.
+- **Face-Off** (`faceoff.html`) — call *higher or lower* on the hidden measure,
+  four times in a row, for a clean sweep. Same data, different brain.
+
+A segmented switcher in the header jumps between them.
+
 ## Play it locally
 
 No build step, no dependencies. Open `index.html` in a browser, or:
 
 ```
 python -m http.server 8000
-# → http://localhost:8000
+# → http://localhost:8000           (Ranking)
+# → http://localhost:8000/faceoff.html   (Face-Off)
 ```
 
 ## Project layout
 
 ```
-index.html         the whole page
+index.html         the Ranking game
+faceoff.html       the Face-Off (higher/lower) game
 privacy.html       privacy policy (required for AdSense)
-css/style.css      county-fair letterpress design system
+css/style.css      county-fair letterpress design system (shared)
 js/puzzles.js      63 curated puzzles (items stored in ascending order)
-js/game.js         game engine — daily selection, drag/reorder, judging, stats,
+js/game.js         Ranking engine — daily selection, drag/reorder, judging, stats,
                    streaks, share, modals, ads, coffee jar (localStorage, no backend)
+js/faceoff.js      Face-Off engine — same patterns, "fo-" localStorage namespace;
+                   offset puzzle pick so the two games rarely overlap on a day
 tests/validate.js  data integrity check: node tests/validate.js
 LAUNCH_GUIDE.md    how to deploy and switch the money on
 ```
