@@ -1,0 +1,147 @@
+/* Regenerate the per-game social share cards (og-*.png, 1200×630).
+   Renders HTML templates with a headless Chromium/Chrome binary — no design
+   tool or network needed. Usage:  node tools/make-og.js
+   Override the browser with:       CHROME=/path/to/chrome node tools/make-og.js */
+"use strict";
+const fs = require("fs");
+const path = require("path");
+const os = require("os");
+const { execFileSync } = require("child_process");
+
+const ROOT = path.join(__dirname, "..");
+const FLAGS = require(path.join(ROOT, "js", "flags.js"));
+
+/* —— locate a Chromium/Chrome binary —— */
+function findChrome() {
+  if (process.env.CHROME && fs.existsSync(process.env.CHROME)) return process.env.CHROME;
+  const candidates = [];
+  const pw = "/opt/pw-browsers";
+  if (fs.existsSync(pw)) {
+    fs.readdirSync(pw).filter(d => d.startsWith("chromium-")).forEach(d => {
+      candidates.push(path.join(pw, d, "chrome-linux", "chrome"));
+    });
+  }
+  candidates.push(
+    "/usr/bin/google-chrome", "/usr/bin/chromium", "/usr/bin/chromium-browser",
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  );
+  for (const c of candidates) if (fs.existsSync(c)) return c;
+  throw new Error("No Chromium/Chrome found. Set CHROME=/path/to/chrome.");
+}
+const CHROME = findChrome();
+
+/* —— brand palette —— */
+const C = {
+  paper: "#f3ead8", paperDeep: "#e7dcc2", card: "#fbf6ea", ink: "#2a2118",
+  inkSoft: "#5b4f3f", red: "#b5402a", teal: "#20655a", gold: "#c89a3f", goldPale: "#ecd9a8"
+};
+
+const rosette = `<svg viewBox="0 0 100 100" width="86" height="86" aria-hidden="true">
+  <circle cx="50" cy="42" r="30" fill="${C.red}"/>
+  <g fill="${C.paper}"><circle cx="50" cy="12" r="7"/><circle cx="76" cy="21" r="7"/><circle cx="80" cy="50" r="7"/><circle cx="68" cy="66" r="7"/><circle cx="32" cy="66" r="7"/><circle cx="20" cy="50" r="7"/><circle cx="24" cy="21" r="7"/></g>
+  <path d="M38 60l-9 30 21-13 21 13-9-30z" fill="${C.teal}"/>
+  <circle cx="50" cy="42" r="22" fill="${C.red}"/><circle cx="50" cy="42" r="15" fill="${C.paper}"/>
+  <text x="50" y="52" text-anchor="middle" font-family="Georgia,serif" font-weight="900" font-size="22" fill="${C.ink}">1</text>
+</svg>`;
+
+function miniCard(label, stub, opts) {
+  opts = opts || {};
+  const bg = opts.bg || C.card, fg = opts.fg || C.ink, stubBg = opts.stubBg || C.goldPale, stubFg = opts.stubFg || C.ink;
+  return `<div style="display:flex;align-items:stretch;background:${bg};color:${fg};border:3px solid ${C.ink};border-radius:6px;box-shadow:4px 6px 0 rgba(42,33,24,.28);min-width:300px;height:74px;overflow:hidden">
+    <div style="flex:none;width:64px;display:flex;align-items:center;justify-content:center;background:${stubBg};color:${stubFg};border-right:3px dashed ${C.ink};font:900 30px Georgia,serif">${stub}</div>
+    <div style="flex:1;display:flex;align-items:center;padding:0 18px;font:700 24px Karla,Arial,sans-serif">${label}</div>
+  </div>`;
+}
+
+/* —— per-game motifs —— */
+function motifRanking() {
+  return `<div style="display:flex;flex-direction:column;gap:12px;transform:rotate(-1deg)">
+    ${miniCard("Mercury", "1")}${miniCard("Earth", "2")}${miniCard("Jupiter", "3")}
+  </div>`;
+}
+function motifFaceoff() {
+  return `<div style="display:flex;align-items:center;gap:22px">
+    <div style="width:210px">${miniCard("63 mg", "▲", { bg: C.teal, fg: C.card, stubBg: C.gold, stubFg: C.card })}</div>
+    <div style="font:900 italic 34px Georgia,serif;color:${C.inkSoft}">vs</div>
+    <div style="width:210px">${miniCard("? ? ?", "▼", { bg: C.card, stubBg: C.gold, stubFg: C.card })}</div>
+  </div>`;
+}
+function motifPick() {
+  return `<div style="display:flex;flex-direction:column;gap:12px">
+    ${miniCard("Walrus", "?")}
+    <div style="transform:scale(1.04)">${miniCard("Blue whale", "★", { bg: C.teal, fg: C.card, stubBg: C.gold, stubFg: C.card })}</div>
+    ${miniCard("Vending machine", "?")}
+  </div>`;
+}
+function motifFlags() {
+  const want = ["Japan", "Greece", "France", "Sweden", "Germany", "Italy"];
+  const picks = want.map(n => FLAGS.find(f => f.name === n)).filter(Boolean);
+  const list = (picks.length >= 6 ? picks : FLAGS).slice(0, 6);
+  const cells = list.map(f =>
+    `<div style="width:150px;height:100px;border:3px solid ${C.ink};border-radius:5px;overflow:hidden;box-shadow:3px 5px 0 rgba(42,33,24,.28);line-height:0">${f.svg}</div>`
+  ).join("");
+  return `<div style="display:grid;grid-template-columns:repeat(3,150px);gap:18px;transform:rotate(-1deg)">${cells}</div>`;
+}
+
+/* —— card template —— */
+function card(cfg) {
+  return `<!doctype html><html><head><meta charset="utf-8"><style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1200px;height:630px}
+  body{background:${C.paper};font-family:Karla,Arial,sans-serif;position:relative;overflow:hidden}
+  .grain{position:absolute;inset:0;opacity:.5;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.13 0 0 0 0 0.09 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .frame{position:absolute;inset:24px;border:4px double ${C.ink};border-radius:8px}
+  .wrap{position:absolute;inset:24px;display:flex;align-items:center;justify-content:space-between;padding:40px 64px 130px}
+  .left{max-width:560px}
+  .brand{display:flex;align-items:center;gap:16px;margin-bottom:26px}
+  .brand .word{font:900 italic 46px Georgia,serif;letter-spacing:-1px;color:${C.ink}}
+  .brand .word .ac{color:${C.red}}
+  .kicker{font:700 20px Karla,Arial,sans-serif;letter-spacing:.32em;text-transform:uppercase;color:${C.red};margin-bottom:10px}
+  .title{font:900 italic 80px Georgia,serif;line-height:.98;color:${C.ink};margin-bottom:16px}
+  .tag{font:400 26px Karla,Arial,sans-serif;color:${C.inkSoft};line-height:1.4;max-width:480px}
+  .foot{position:absolute;left:64px;bottom:108px;display:flex;align-items:center;gap:14px}
+  .url{font:900 26px Georgia,serif;color:${C.card};background:${C.teal};padding:8px 20px;border-radius:999px}
+  .foot .by{font:400 20px Karla,Arial,sans-serif;color:${C.inkSoft}}
+  .right{display:flex;align-items:center;justify-content:center;flex:none}
+  </style></head><body>
+  <div class="grain"></div><div class="frame"></div>
+  <div class="wrap">
+    <div class="left">
+      <div class="brand">${rosette}<span class="word">R<span class="ac">oo</span>str</span></div>
+      <div class="kicker">${cfg.kicker}</div>
+      <div class="title">${cfg.title}</div>
+      <div class="tag">${cfg.tag}</div>
+    </div>
+    <div class="right">${cfg.motif}</div>
+  </div>
+  <div class="foot"><span class="url">playroostr.com</span><span class="by">a new puzzle every day · free</span></div>
+  </body></html>`;
+}
+
+const GAMES = [
+  { out: "og-ranking.png", kicker: "The daily ranking game", title: "Ranking",
+    tag: "Drag five real things into order by a hidden measure. Three tries.", motif: motifRanking() },
+  { out: "og-faceoff.png", kicker: "The daily higher-or-lower game", title: "Face-Off",
+    tag: "Higher or lower on the hidden measure? Four calls, one run.", motif: motifFaceoff() },
+  { out: "og-pick.png", kicker: "The daily spot-the-biggest game", title: "Top Pick",
+    tag: "Tap the one with the most — or least. Three quick rounds.", motif: motifPick() },
+  { out: "og-flags.png", kicker: "The daily flag quiz", title: "Guess<br>the Flag",
+    tag: "Name the country from its flag. Five rounds, one guess each.", motif: motifFlags() }
+];
+
+const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "roostr-og-"));
+console.log("Using Chrome:", CHROME);
+for (const g of GAMES) {
+  const htmlPath = path.join(tmp, g.out.replace(".png", ".html"));
+  const outPath = path.join(ROOT, g.out);
+  fs.writeFileSync(htmlPath, card(g));
+  execFileSync(CHROME, [
+    "--headless=new", "--no-sandbox", "--disable-gpu", "--hide-scrollbars",
+    "--force-device-scale-factor=1", "--window-size=1200,630",
+    "--default-background-color=00000000", "--screenshot=" + outPath, htmlPath
+  ], { stdio: "ignore" });
+  const kb = Math.round(fs.statSync(outPath).size / 1024);
+  console.log("wrote", g.out, "(" + kb + " KB)");
+}
+console.log("done.");
