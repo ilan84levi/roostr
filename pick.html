@@ -11,20 +11,20 @@
   gtag('js', new Date());
   gtag('config', 'G-GQBZ10K1ZY');
 </script>
-<title>Roostr Face-Off — the daily higher-or-lower game</title>
-<meta name="description" content="A free daily puzzle: call higher or lower on a hidden measure four times in a row. New face-off every midnight.">
-<meta property="og:title" content="Roostr Face-Off — the daily higher-or-lower game">
-<meta property="og:description" content="Higher or lower? Four calls on a hidden measure. One face-off a day.">
-<meta property="og:url" content="https://playroostr.com/faceoff.html">
+<title>Roostr Top Pick — the daily spot-the-biggest game</title>
+<meta name="description" content="A free daily trivia game: tap the contestant with the most (or least) of a hidden measure, three quick rounds. New Top Pick every midnight.">
+<meta property="og:title" content="Roostr Top Pick — the daily spot-the-biggest game">
+<meta property="og:description" content="Tap the biggest. Three quick rounds on a hidden measure. One Top Pick a day.">
+<meta property="og:url" content="https://playroostr.com/pick.html">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://playroostr.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Roostr Face-Off — the daily higher-or-lower game">
-<meta name="twitter:description" content="Higher or lower? Four calls on a hidden measure. One face-off a day.">
+<meta name="twitter:title" content="Roostr Top Pick — the daily spot-the-biggest game">
+<meta name="twitter:description" content="Tap the biggest. Three quick rounds on a hidden measure. One Top Pick a day.">
 <meta name="twitter:image" content="https://playroostr.com/og.png">
-<link rel="canonical" href="https://playroostr.com/faceoff.html">
+<link rel="canonical" href="https://playroostr.com/pick.html">
 <meta name="theme-color" content="#f3ead8">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='42' r='30' fill='%23b5402a'/%3E%3Ccircle cx='50' cy='42' r='19' fill='%23f3ead8'/%3E%3Ccircle cx='50' cy='42' r='12' fill='%23c89a3f'/%3E%3Cpath d='M38 64l-8 26 20-12 20 12-8-26z' fill='%23206258'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,10 +35,10 @@
 {
   "@context": "https://schema.org",
   "@type": ["Game", "WebApplication"],
-  "name": "Roostr Face-Off",
-  "alternateName": "Roostr higher or lower",
-  "url": "https://playroostr.com/faceoff.html",
-  "description": "A free daily higher-or-lower game: call whether each challenger is higher or lower on a hidden measure, four times in a row. New face-off every midnight.",
+  "name": "Roostr Top Pick",
+  "alternateName": "Roostr — spot the biggest",
+  "url": "https://playroostr.com/pick.html",
+  "description": "A free daily trivia game: tap the contestant with the most or least of a hidden measure across three quick rounds. New puzzle every midnight.",
   "applicationCategory": "GameApplication",
   "genre": "Trivia, Puzzle",
   "operatingSystem": "Any (web browser)",
@@ -75,51 +75,33 @@
       <button class="icon-btn icon-btn--gold" id="btn-plus" aria-label="Roostr Plus" hidden>★</button>
     </nav>
   </div>
-  <p class="dateline"><span id="puzzle-no">No. —</span> · <span id="puzzle-date">—</span> · A new face-off at midnight</p>
+  <p class="dateline"><span id="puzzle-no">No. —</span> · <span id="puzzle-date">—</span> · A new Top Pick at midnight</p>
 </header>
 
 <nav class="game-tabs" aria-label="Choose a game">
   <a class="game-tab" href="index.html">Ranking</a>
-  <a class="game-tab" href="faceoff.html" aria-current="page">Face-Off</a>
-  <a class="game-tab" href="pick.html">Top Pick</a>
+  <a class="game-tab" href="faceoff.html">Face-Off</a>
+  <a class="game-tab" href="pick.html" aria-current="page">Top Pick</a>
 </nav>
 
 <main class="bill">
 
   <section class="prompt" aria-live="polite">
-    <p class="prompt-kicker">— Today's face-off —</p>
+    <p class="prompt-kicker">— Today's Top Pick —</p>
     <h2 class="prompt-title" id="prompt-title">…</h2>
     <p class="prompt-metric">hidden measure: <strong id="prompt-metric">…</strong></p>
     <p class="prompt-rule">
-      <span class="rule-end">Higher or lower?</span>
-      <span class="rule-arrows" aria-hidden="true">⇅</span>
-      <span class="rule-end">Four calls, one run</span>
+      <span class="rule-end">Tap the one with the <b id="want-word">most</b></span>
     </p>
   </section>
 
-  <section class="pen faceoff-pen" aria-label="Today's face-off">
-    <div class="faceoff">
-      <div class="fo-card fo-champ" id="fo-champ">
-        <div class="fo-role">Reigning</div>
-        <b class="fo-name"></b>
-        <span class="fo-value"></span>
-      </div>
-      <div class="fo-vs" aria-hidden="true">vs</div>
-      <div class="fo-card fo-challenger" id="fo-challenger">
-        <div class="fo-role">Challenger</div>
-        <b class="fo-name"></b>
-        <span class="fo-value mystery">?</span>
-      </div>
-    </div>
-    <p class="fo-ask">Is the challenger <b>higher</b> or <em>lower</em> on <span id="fo-metric-inline">the measure</span>?</p>
-    <div class="fo-buttons">
-      <button class="btn btn--higher" id="btn-higher">▲ Higher</button>
-      <button class="btn btn--lower" id="btn-lower">▼ Lower</button>
-    </div>
+  <section class="pen pick-pen" aria-label="Today's Top Pick">
+    <p class="pick-round" aria-live="polite">Round <b id="round-no">1</b> of <b id="round-total">3</b></p>
+    <div class="pick-list" id="pick-list"></div>
   </section>
 
   <section class="bench">
-    <div class="attempts" id="attempts" aria-label="Calls"></div>
+    <div class="attempts" id="attempts" aria-label="Rounds"></div>
     <div class="history" id="history" aria-live="polite"></div>
     <button class="coffee-prompt" id="btn-coffee2">
       <span class="coffee-prompt-cup" aria-hidden="true">☕</span>
@@ -129,7 +111,7 @@
 
   <section class="verdict" id="verdict" hidden>
     <div class="verdict-card">
-      <p class="verdict-stamp" id="verdict-stamp">CLEAN SWEEP</p>
+      <p class="verdict-stamp" id="verdict-stamp">BLUE RIBBON</p>
       <p class="verdict-sub" id="verdict-sub"></p>
       <ol class="reveal" id="reveal"></ol>
       <aside class="factbox">
@@ -140,17 +122,17 @@
         <button class="btn btn--share" id="btn-share">Share result</button>
         <button class="btn btn--ghost" id="btn-stats2">My stats</button>
       </div>
-      <p class="countdown">Next face-off in <b id="countdown">—</b></p>
+      <p class="countdown">Next Top Pick in <b id="countdown">—</b></p>
     </div>
   </section>
 
-  <!-- AD SLOT — filled by initAds() in js/faceoff.js once ADSENSE_CLIENT is set. -->
+  <!-- AD SLOT — filled by initAds() in js/pick.js once ADSENSE_CLIENT is set. -->
   <div class="ad-slot" id="ad-1" aria-hidden="true">
     <span>advertisement</span>
   </div>
 
   <footer class="colophon">
-    <p>A new face-off every day · facts are approximate, the order is what counts</p>
+    <p>A new Top Pick every day · facts are approximate, the order is what counts</p>
     <p>
       <button class="linklike" id="btn-about">About</button> ·
       <button class="linklike" id="btn-coffee">☕ Buy me a coffee</button>
@@ -167,15 +149,15 @@
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="help-title">How to play</h3>
     <ol class="howto">
-      <li>Five contestants line up. You'll see the <b>reigning</b> card with its value on the <b>hidden measure</b>.</li>
-      <li>For each <b>challenger</b>, call whether it's <b>higher</b> or <b>lower</b> than the reigning card. The challenger then takes the throne.</li>
-      <li>That's <b>four calls</b> in a row. Each gets a ribbon:
-        <span class="chip chip--hit">right call</span>
-        <span class="chip chip--miss">wrong call</span>
+      <li>Each round, five contestants line up. Read the <b>hidden measure</b> and the call: tap the one with the <b>most</b> — or sometimes the <b>least</b>.</li>
+      <li>The true values reveal instantly. Your tap gets a ribbon:
+        <span class="chip chip--hit">right pick</span>
+        <span class="chip chip--miss">wrong pick</span>
       </li>
-      <li>Nail all four for a <b>Clean Sweep</b>. Values shown after each call — expect surprises.</li>
+      <li>That's <b>three quick rounds</b>, three different line-ups.</li>
+      <li>Sweep all three for a <b>Blue Ribbon</b>. Expect a surprise or two.</li>
     </ol>
-    <p class="howto-foot">One face-off a day. Streaks are sacred.</p>
+    <p class="howto-foot">One Top Pick a day. Streaks are sacred.</p>
   </div>
 
   <div class="modal" id="modal-stats" hidden role="dialog" aria-modal="true" aria-labelledby="stats-title">
@@ -187,7 +169,7 @@
       <div class="stat"><b id="st-streak">0</b><span>streak</span></div>
       <div class="stat"><b id="st-max">0</b><span>best streak</span></div>
     </div>
-    <h4 class="dist-title">Calls correct</h4>
+    <h4 class="dist-title">Picks correct</h4>
     <div class="dist" id="dist"></div>
   </div>
 
@@ -217,7 +199,7 @@
       </svg>
     </p>
     <h3 class="modal-title" id="coffee-title">Buy me a coffee</h3>
-    <p class="coffee-blurb">Roostr is free and made by one person. If a face-off made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
+    <p class="coffee-blurb">Roostr is free and made by one person. If a round made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
     <div class="coffee-buy">
       <div class="coffee-stepper" role="group" aria-label="How many coffees">
         <button type="button" class="step-btn" id="cup-minus" aria-label="One fewer cup">−</button>
@@ -235,7 +217,7 @@
   <div class="modal" id="modal-about" hidden role="dialog" aria-modal="true" aria-labelledby="about-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="about-title">About</h3>
-    <p class="about-text">Roostr Face-Off is a free daily higher-or-lower game. Call the hidden measure four times in a row. Values shown after each round are honest approximations from public reference sources — only their <em>order</em> is used for judging.</p>
+    <p class="about-text">Roostr Top Pick is a free daily trivia game. Three quick rounds — tap the contestant with the most (or least) of a hidden measure. Values shown after each round are honest approximations from public reference sources — only their <em>order</em> is used for judging.</p>
     <p class="about-text">No account needed — your streak lives in your browser.</p>
     <p class="about-text">Questions, feedback, or a puzzle that looks wrong? Email <a href="mailto:ilan@playroostr.com">ilan@playroostr.com</a>.</p>
   </div>
@@ -245,6 +227,6 @@
 <div class="toast" id="toast" role="status"></div>
 
 <script src="js/puzzles.js"></script>
-<script src="js/faceoff.js"></script>
+<script src="js/pick.js"></script>
 </body>
 </html>

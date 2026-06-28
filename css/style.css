@@ -129,11 +129,13 @@ body::after {
   padding: 0 16px 10px;
 }
 .game-tab {
+  flex: 1;
+  text-align: center;
   font-family: var(--font-display);
   font-weight: 700;
   font-style: italic;
-  font-size: 14px;
-  padding: 7px 18px;
+  font-size: 13.5px;
+  padding: 7px 10px;
   border: 2px solid var(--ink);
   background: var(--card);
   color: var(--ink);
@@ -142,8 +144,10 @@ body::after {
   box-shadow: 2px 2px 0 rgba(var(--shadow), .8);
   transition: transform .08s, box-shadow .08s, background .2s;
 }
-.game-tab:first-child { border-radius: 999px 0 0 999px; border-right-width: 1px; }
-.game-tab:last-child  { border-radius: 0 999px 999px 0; border-left-width: 1px; }
+.game-tab:not(:last-child) { border-right-width: 1px; }
+.game-tab + .game-tab { border-left-width: 1px; }
+.game-tab:first-child { border-radius: 999px 0 0 999px; }
+.game-tab:last-child  { border-radius: 0 999px 999px 0; }
 .game-tab:active { transform: translate(2px, 2px); box-shadow: 0 0 0 rgba(var(--shadow), .8); }
 .game-tab[aria-current="page"] {
   background: var(--red);
@@ -842,6 +846,60 @@ body.plus .ad-slot { display: none; }
   .fo-card { min-height: 112px; padding: 12px 8px; }
   .fo-value.mystery { font-size: 22px; }
 }
+
+/* ————— Top Pick (tap the biggest / smallest) ————— */
+.pick-pen { padding: 14px 12px; }
+.pick-round {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+}
+.pick-round b { color: var(--red); font-family: var(--font-display); }
+.pick-list { display: flex; flex-direction: column; gap: 9px; }
+.pick-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: 3px;
+  box-shadow: 2px 3px 0 rgba(var(--shadow), .28);
+  padding: 13px 16px;
+  font: inherit;
+  cursor: pointer;
+  transition: transform .1s, box-shadow .1s, background .25s, color .25s;
+}
+.pick-card:active { transform: translate(2px, 2px); box-shadow: 0 0 0 rgba(var(--shadow), .28); }
+.pick-name { font-size: 16.5px; font-weight: 700; min-width: 0; }
+.pick-value {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 15px;
+  color: var(--teal);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity .25s;
+}
+.pick-list.revealed .pick-value { opacity: 1; }
+.pick-list.revealed .pick-card { cursor: default; }
+.pick-card.pick-target {            /* the correct contestant */
+  background: var(--teal);
+  color: var(--card);
+  border-color: var(--teal);
+}
+.pick-card.pick-target .pick-value { color: var(--card); }
+.pick-card.pick-chosen-wrong {      /* what the player tapped, if wrong */
+  background: #cfc4ab;
+  color: var(--ink-soft);
+}
+.pick-card.pick-chosen-wrong .pick-value { color: var(--red-deep); }
+.pick-card.pick-pop { animation: stampin-fo .3s ease; }
 
 @media (max-width: 420px) {
   :root { --card-h: 58px; }
