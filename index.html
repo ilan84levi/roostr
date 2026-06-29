@@ -17,6 +17,9 @@
 <meta property="og:description" content="Rank five real things by a hidden quantity. Three tries. One puzzle a day.">
 <meta property="og:url" content="https://playroostr.com/">
 <meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+<meta property="og:site_name" content="Roostr">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://playroostr.com/og-ranking.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -65,7 +68,33 @@
         { "@type": "ListItem", "position": 1, "name": "Ranking", "url": "https://playroostr.com/" },
         { "@type": "ListItem", "position": 2, "name": "Face-Off", "url": "https://playroostr.com/faceoff.html" },
         { "@type": "ListItem", "position": 3, "name": "Top Pick", "url": "https://playroostr.com/pick.html" },
-        { "@type": "ListItem", "position": 4, "name": "Guess the Flag", "url": "https://playroostr.com/flags.html" }
+        { "@type": "ListItem", "position": 4, "name": "Guess the Flag", "url": "https://playroostr.com/flags.html" },
+        { "@type": "ListItem", "position": 5, "name": "Coop Run", "url": "https://playroostr.com/run.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Roostr?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Roostr is a collection of free daily browser games with a county-fair theme. There are four daily brain games — Ranking, Face-Off, Top Pick and Guess the Flag — plus an arcade runner, Coop Run. No download, no account, and a fresh puzzle every midnight." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Roostr free to play?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every Roostr game is completely free to play in your web browser, with no sign-up required. Your streaks and stats are saved privately in your browser." }
+        },
+        {
+          "@type": "Question",
+          "name": "How often are new puzzles released?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The four daily games each get a brand-new puzzle every midnight, your local time. Coop Run, the arcade game, can be played as many times as you like." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need an account or app to play?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Roostr runs entirely in the browser on phone, tablet or desktop — there is nothing to install and no account to create." }
+        }
       ]
     }
   ]
@@ -105,6 +134,7 @@
   <a class="game-tab" href="faceoff.html">Face-Off</a>
   <a class="game-tab" href="pick.html">Top Pick</a>
   <a class="game-tab" href="flags.html">Flags</a>
+  <a class="game-tab" href="run.html">Run</a>
 </nav>
 
 <main class="bill">
@@ -156,6 +186,31 @@
   <div class="ad-slot" id="ad-1" aria-hidden="true">
     <span>advertisement</span>
   </div>
+
+  <section class="lede" aria-labelledby="lede-title">
+    <h2 id="lede-title">Free daily games at Roostr</h2>
+    <p><b>Roostr</b> is a small collection of free daily games you can play right in your browser — no app, no account, no cost. Each one is a quick, friendly brain-teaser built around real-world facts, with a county-fair twist.</p>
+    <p>There are five to choose from: <a href="index.html">Ranking</a> (drag five things into order by a hidden measure), <a href="faceoff.html">Face-Off</a> (call higher or lower four times in a row), <a href="pick.html">Top Pick</a> (tap the biggest or smallest across three rounds), <a href="flags.html">Guess the Flag</a> (name the country from its flag), and <a href="run.html">Coop Run</a> (a quick arcade runner). The four daily puzzles refresh every midnight; the runner you can play any time.</p>
+
+    <div class="faq">
+      <details open>
+        <summary>What is Roostr?</summary>
+        <p>Roostr is a collection of free daily browser games with a county-fair theme — four daily brain games (Ranking, Face-Off, Top Pick and Guess the Flag) plus an arcade runner, Coop Run. A fresh puzzle drops every midnight.</p>
+      </details>
+      <details>
+        <summary>Is Roostr free to play?</summary>
+        <p>Yes — every game is completely free, with no sign-up required. Your streaks and stats are saved privately in your own browser.</p>
+      </details>
+      <details>
+        <summary>How often are new puzzles released?</summary>
+        <p>The four daily games each get a brand-new puzzle every midnight, your local time. Coop Run can be played as many times as you like.</p>
+      </details>
+      <details>
+        <summary>Do I need an account or an app?</summary>
+        <p>No. Roostr runs entirely in the browser on phone, tablet or desktop — nothing to install and no account to create.</p>
+      </details>
+    </div>
+  </section>
 
   <footer class="colophon">
     <p>A new pecking order every day · facts are approximate, the order is what counts</p>
