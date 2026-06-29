@@ -82,6 +82,27 @@ function motifFlags() {
   ).join("");
   return `<div style="display:grid;grid-template-columns:repeat(3,150px);gap:18px;transform:rotate(-1deg)">${cells}</div>`;
 }
+function motifRun() {
+  var rooster = '<g transform="translate(86,74) scale(1.8)">' +
+    '<path d="M4 14 q-14 -10 -8 10 q4 -6 12 -2 z" fill="' + C.teal + '"/>' +
+    '<ellipse cx="22" cy="20" rx="18" ry="15" fill="' + C.red + '" stroke="' + C.ink + '" stroke-width="2"/>' +
+    '<ellipse cx="20" cy="21" rx="9" ry="9" fill="' + C.red + '" opacity=".55"/>' +
+    '<circle cx="35" cy="10" r="9" fill="' + C.red + '" stroke="' + C.ink + '" stroke-width="2"/>' +
+    '<circle cx="31" cy="1" r="3" fill="' + C.redDeep + '"/><circle cx="36" cy="-1" r="3.4" fill="' + C.redDeep + '"/><circle cx="41" cy="1" r="3" fill="' + C.redDeep + '"/>' +
+    '<path d="M43 9 L53 11 L43 14 z" fill="' + C.gold + '"/>' +
+    '<circle cx="43" cy="17" r="2.4" fill="' + C.redDeep + '"/>' +
+    '<circle cx="37" cy="8" r="2" fill="' + C.ink + '"/>' +
+    '<path d="M16 33 l3 8 M24 33 l3 8" stroke="' + C.gold + '" stroke-width="3" stroke-linecap="round" fill="none"/>' +
+    '</g>';
+  var bale = '<rect x="236" y="166" width="58" height="36" rx="6" fill="' + C.gold + '" stroke="' + C.redDeep + '" stroke-width="2"/>' +
+    '<line x1="236" y1="180" x2="294" y2="180" stroke="rgba(147,49,31,.5)" stroke-width="1.5"/>' +
+    '<line x1="236" y1="192" x2="294" y2="192" stroke="rgba(147,49,31,.5)" stroke-width="1.5"/>';
+  var ground = '<line x1="0" y1="202" x2="360" y2="202" stroke="' + C.ink + '" stroke-width="2.5"/>';
+  var dashes = '', x; for (x = 4; x < 360; x += 22) dashes += '<line x1="' + x + '" y1="210" x2="' + (x + 10) + '" y2="210" stroke="rgba(42,33,24,.35)" stroke-width="2"/>';
+  var bunt = '', i, bc = [C.red, C.gold, C.teal]; for (i = 0; i < 14; i++) { var bx = i * 28; bunt += '<path d="M' + bx + ' 8 L' + (bx + 18) + ' 8 L' + (bx + 9) + ' 22 z" fill="' + bc[i % 3] + '"/>'; }
+  var svg = '<svg viewBox="0 0 360 250" width="360" height="250">' + bunt + ground + dashes + bale + rooster + '</svg>';
+  return '<div style="width:382px;height:266px;border:3px solid ' + C.ink + ';border-radius:8px;background:linear-gradient(to bottom,#eaf0ef,' + C.paper + ');box-shadow:4px 6px 0 rgba(42,33,24,.28);overflow:hidden;display:flex;align-items:center;justify-content:center;transform:rotate(-1deg)">' + svg + '</div>';
+}
 
 /* —— card template —— */
 function card(cfg) {
@@ -115,7 +136,7 @@ function card(cfg) {
     </div>
     <div class="right">${cfg.motif}</div>
   </div>
-  <div class="foot"><span class="url">playroostr.com</span><span class="by">a new puzzle every day · free</span></div>
+  <div class="foot"><span class="url">playroostr.com</span><span class="by">free to play · no sign-up</span></div>
   </body></html>`;
 }
 
@@ -127,7 +148,9 @@ const GAMES = [
   { out: "og-pick.png", kicker: "The daily spot-the-biggest game", title: "Top Pick",
     tag: "Tap the one with the most — or least. Three quick rounds.", motif: motifPick() },
   { out: "og-flags.png", kicker: "The daily flag quiz", title: "Guess<br>the Flag",
-    tag: "Name the country from its flag. Five rounds, one guess each.", motif: motifFlags() }
+    tag: "Name the country from its flag. Five rounds, one guess each.", motif: motifFlags() },
+  { out: "og-run.png", kicker: "The free rooster runner", title: "Coop Run",
+    tag: "Jump the rooster over hay bales and fences. How far can you run?", motif: motifRun() }
 ];
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "roostr-og-"));

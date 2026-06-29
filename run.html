@@ -11,23 +11,23 @@
   gtag('js', new Date());
   gtag('config', 'G-GQBZ10K1ZY');
 </script>
-<title>Roostr Guess the Flag — the daily flag quiz</title>
-<meta name="description" content="A free daily flag quiz: name the country from its flag, five rounds of multiple choice. New flags every midnight.">
-<meta property="og:title" content="Roostr Guess the Flag — the daily flag quiz">
-<meta property="og:description" content="Name the country from its flag. Five rounds. One quiz a day.">
-<meta property="og:url" content="https://playroostr.com/flags.html">
-<meta property="og:type" content="website">
+<title>Roostr Coop Run — the free rooster runner game</title>
+<meta name="description" content="A free arcade runner: tap to jump your rooster over hay bales and fences, and see how far you can run before the coop catches up. Play free in your browser.">
 <meta name="robots" content="index, follow">
 <meta property="og:site_name" content="Roostr">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://playroostr.com/og-flags.png">
+<meta property="og:title" content="Roostr Coop Run — the free rooster runner game">
+<meta property="og:description" content="Tap to jump the rooster over hay bales and fences. How far can you run?">
+<meta property="og:url" content="https://playroostr.com/run.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://playroostr.com/og-run.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Roostr Guess the Flag — the daily flag quiz">
-<meta name="twitter:description" content="Name the country from its flag. Five rounds. One quiz a day.">
-<meta name="twitter:image" content="https://playroostr.com/og-flags.png">
-<link rel="canonical" href="https://playroostr.com/flags.html">
+<meta name="twitter:title" content="Roostr Coop Run — the free rooster runner game">
+<meta name="twitter:description" content="Tap to jump the rooster over hay bales and fences. How far can you run?">
+<meta name="twitter:image" content="https://playroostr.com/og-run.png">
+<link rel="canonical" href="https://playroostr.com/run.html">
 <meta name="theme-color" content="#f3ead8">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='42' r='30' fill='%23b5402a'/%3E%3Ccircle cx='50' cy='42' r='19' fill='%23f3ead8'/%3E%3Ccircle cx='50' cy='42' r='12' fill='%23c89a3f'/%3E%3Cpath d='M38 64l-8 26 20-12 20 12-8-26z' fill='%23206258'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,12 +38,12 @@
 {
   "@context": "https://schema.org",
   "@type": ["Game", "WebApplication"],
-  "name": "Roostr Guess the Flag",
-  "alternateName": "Roostr daily flag quiz",
-  "url": "https://playroostr.com/flags.html",
-  "description": "A free daily flag quiz: name the country from its flag across five rounds of multiple choice. New flags every midnight.",
+  "name": "Roostr Coop Run",
+  "alternateName": "Roostr rooster runner",
+  "url": "https://playroostr.com/run.html",
+  "description": "A free browser arcade runner: jump your rooster over hay bales and fences and see how far you can run. No download, no account.",
   "applicationCategory": "GameApplication",
-  "genre": "Trivia, Geography, Quiz",
+  "genre": "Arcade, Endless runner",
   "operatingSystem": "Any (web browser)",
   "browserRequirements": "Requires JavaScript",
   "inLanguage": "en",
@@ -78,69 +78,67 @@
       <button class="icon-btn icon-btn--gold" id="btn-plus" aria-label="Roostr Plus" hidden>★</button>
     </nav>
   </div>
-  <p class="dateline"><span id="puzzle-no">No. —</span> · <span id="puzzle-date">—</span> · New flags at midnight</p>
+  <p class="dateline"><span id="puzzle-no">The arcade</span> · Tap or press space to jump</p>
 </header>
 
 <nav class="game-tabs" aria-label="Choose a game">
   <a class="game-tab" href="index.html">Ranking</a>
   <a class="game-tab" href="faceoff.html">Face-Off</a>
   <a class="game-tab" href="pick.html">Top Pick</a>
-  <a class="game-tab" href="flags.html" aria-current="page">Flags</a>
-  <a class="game-tab" href="run.html">Run</a>
+  <a class="game-tab" href="flags.html">Flags</a>
+  <a class="game-tab" href="run.html" aria-current="page">Run</a>
 </nav>
 
 <main class="bill">
 
   <section class="prompt" aria-live="polite">
-    <p class="prompt-kicker">— Today's flags —</p>
-    <h2 class="prompt-title">Guess the Flag</h2>
-    <p class="prompt-metric">Name the country from its flag</p>
-    <p class="prompt-rule">
-      <span class="rule-end">Five flags</span>
-      <span class="rule-arrows" aria-hidden="true">⚑</span>
-      <span class="rule-end">One guess each</span>
-    </p>
+    <p class="prompt-kicker">— The arcade —</p>
+    <h2 class="prompt-title">Coop Run</h2>
+    <p class="prompt-metric">Jump the fence — how far can your rooster run?</p>
   </section>
 
-  <section class="pen flag-pen" aria-label="Today's flag quiz">
-    <p class="pick-round" aria-live="polite">Round <b id="round-no">1</b> of <b id="round-total">5</b></p>
-    <div class="flag-stage" id="flag-stage" aria-label="Mystery flag"></div>
-    <div class="flag-choices" id="flag-choices"></div>
+  <section class="pen run-pen" aria-label="Coop Run game">
+    <div class="run-stage" id="run-stage">
+      <div class="run-hud">
+        <span id="run-hi">best 0 m</span>
+        <span id="run-dist">0 m</span>
+      </div>
+      <canvas id="run-canvas" aria-label="Coop Run playfield"></canvas>
+
+      <div class="run-overlay" id="run-start">
+        <p class="run-big">Coop Run</p>
+        <p class="run-sub">Tap, click, or press <b>Space</b> to jump.<br>Clear the hay bales and fences.</p>
+        <p class="run-cta">▶ Tap to run</p>
+      </div>
+
+      <div class="run-overlay" id="run-over" hidden>
+        <p class="run-stamp">CAUGHT!</p>
+        <p class="run-result">You ran <b id="ro-score">0</b> m</p>
+        <p class="run-best">best <b id="ro-best">0</b> m</p>
+        <p class="run-newbest" id="ro-newbest" hidden>★ New best run! ★</p>
+        <div class="run-actions">
+          <button class="btn btn--judge" id="btn-retry">Run again</button>
+          <button class="btn btn--share" id="btn-share">Share</button>
+        </div>
+      </div>
+    </div>
+    <p class="run-hint">Space / ↑ / tap to jump · the coop speeds up the longer you last</p>
   </section>
 
   <section class="bench">
-    <div class="attempts" id="attempts" aria-label="Rounds"></div>
-    <div class="history" id="history" aria-live="polite"></div>
     <button class="coffee-prompt" id="btn-coffee2">
       <span class="coffee-prompt-cup" aria-hidden="true">☕</span>
       Enjoying Roostr? <b>Buy me a coffee</b>
     </button>
   </section>
 
-  <section class="verdict" id="verdict" hidden>
-    <div class="verdict-card">
-      <p class="verdict-stamp" id="verdict-stamp">GLOBETROTTER</p>
-      <p class="verdict-sub" id="verdict-sub"></p>
-      <ul class="reveal flag-reveal" id="reveal"></ul>
-      <aside class="factbox">
-        <p class="factbox-label">Did you know?</p>
-        <p id="factbox-text"></p>
-      </aside>
-      <div class="verdict-actions">
-        <button class="btn btn--share" id="btn-share">Share result</button>
-        <button class="btn btn--ghost" id="btn-stats2">My stats</button>
-      </div>
-      <p class="countdown">New flags in <b id="countdown">—</b></p>
-    </div>
-  </section>
-
-  <!-- AD SLOT — filled by initAds() in js/guessflag.js once ADSENSE_CLIENT is set. -->
+  <!-- AD SLOT — filled by initAds() in js/run.js once ADSENSE_CLIENT is set. -->
   <div class="ad-slot" id="ad-1" aria-hidden="true">
     <span>advertisement</span>
   </div>
 
   <footer class="colophon">
-    <p>New flags every day · a friendly geography warm-up</p>
+    <p>An endless runner from the Roostr coop · free, no download</p>
     <p>
       <button class="linklike" id="btn-about">About</button> ·
       <button class="linklike" id="btn-coffee">☕ Buy me a coffee</button>
@@ -157,28 +155,22 @@
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="help-title">How to play</h3>
     <ol class="howto">
-      <li>A flag appears. Pick the country it belongs to from the <b>four choices</b>.</li>
-      <li>The right answer lights up straight away:
-        <span class="chip chip--hit">correct</span>
-        <span class="chip chip--miss">missed</span>
-      </li>
-      <li>That's <b>five flags</b>, one guess each.</li>
-      <li>Name all five to become a <b>Globetrotter</b>. A fun fact waits at the finish.</li>
+      <li>Your rooster runs on its own. <b>Tap the playfield</b>, click, or press <b>Space</b> / <b>↑</b> to jump.</li>
+      <li>Clear the <b>hay bales</b> and <b>fences</b>. Touch one and the run ends.</li>
+      <li>The coop <b>speeds up</b> the longer you last — distance is your score.</li>
+      <li>Beat your <b>best run</b> and share it. No daily limit — run as much as you like.</li>
     </ol>
-    <p class="howto-foot">One flag quiz a day. Streaks are sacred.</p>
+    <p class="howto-foot">One coop. One rooster. Infinite fences.</p>
   </div>
 
   <div class="modal" id="modal-stats" hidden role="dialog" aria-modal="true" aria-labelledby="stats-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
-    <h3 class="modal-title" id="stats-title">Show record</h3>
-    <div class="statgrid">
-      <div class="stat"><b id="st-played">0</b><span>entered</span></div>
-      <div class="stat"><b id="st-winpct">0%</b><span>perfect</span></div>
-      <div class="stat"><b id="st-streak">0</b><span>streak</span></div>
-      <div class="stat"><b id="st-max">0</b><span>best streak</span></div>
+    <h3 class="modal-title" id="stats-title">Run record</h3>
+    <div class="statgrid statgrid--3">
+      <div class="stat"><b id="st-best">0</b><span>best (m)</span></div>
+      <div class="stat"><b id="st-plays">0</b><span>runs</span></div>
+      <div class="stat"><b id="st-total">0</b><span>total (m)</span></div>
     </div>
-    <h4 class="dist-title">Flags named</h4>
-    <div class="dist" id="dist"></div>
   </div>
 
   <div class="modal modal--plus" id="modal-plus" hidden role="dialog" aria-modal="true" aria-labelledby="plus-title">
@@ -207,7 +199,7 @@
       </svg>
     </p>
     <h3 class="modal-title" id="coffee-title">Buy me a coffee</h3>
-    <p class="coffee-blurb">Roostr is free and made by one person. If a flag made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
+    <p class="coffee-blurb">Roostr is free and made by one person. If your rooster made a good run, you can drop me a coffee — every cup keeps the coop running.</p>
     <div class="coffee-buy">
       <div class="coffee-stepper" role="group" aria-label="How many coffees">
         <button type="button" class="step-btn" id="cup-minus" aria-label="One fewer cup">−</button>
@@ -225,16 +217,15 @@
   <div class="modal" id="modal-about" hidden role="dialog" aria-modal="true" aria-labelledby="about-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="about-title">About</h3>
-    <p class="about-text">Roostr Guess the Flag is a free daily flag quiz. Five rounds — name the country from its flag. Flags are drawn from simple geometry and the facts come from public reference sources.</p>
-    <p class="about-text">No account needed — your streak lives in your browser.</p>
-    <p class="about-text">Questions, feedback, or a flag that looks wrong? Email <a href="mailto:ilan@playroostr.com">ilan@playroostr.com</a>.</p>
+    <p class="about-text">Coop Run is a free arcade runner — the playful cousin of Roostr's daily puzzle games. Jump your rooster over hay bales and fences and chase a new distance record. No download, no account; your best run lives in your browser.</p>
+    <p class="about-text">Looking for the daily brain games? Try <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, or <a href="flags.html">Guess the Flag</a>.</p>
+    <p class="about-text">Questions or feedback? Email <a href="mailto:ilan@playroostr.com">ilan@playroostr.com</a>.</p>
   </div>
 
 </div>
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="js/flags.js"></script>
-<script src="js/guessflag.js"></script>
+<script src="js/run.js"></script>
 </body>
 </html>
