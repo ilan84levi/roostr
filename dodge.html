@@ -11,23 +11,23 @@
   gtag('js', new Date());
   gtag('config', 'G-GQBZ10K1ZY');
 </script>
-<title>Roostr Top Pick — the daily spot-the-biggest game</title>
-<meta name="description" content="A free daily trivia game: tap the contestant with the most (or least) of a hidden measure, three quick rounds. New Top Pick every midnight.">
-<meta property="og:title" content="Roostr Top Pick — the daily spot-the-biggest game">
-<meta property="og:description" content="Tap the biggest. Three quick rounds on a hidden measure. One Top Pick a day.">
-<meta property="og:url" content="https://playroostr.com/pick.html">
-<meta property="og:type" content="website">
+<title>Roostr Astro Coop — free spaceship asteroid dodger</title>
+<meta name="description" content="A free arcade game: fly a spaceship through space and dodge the asteroids for as long as you can. Play free in your browser — no download.">
 <meta name="robots" content="index, follow">
 <meta property="og:site_name" content="Roostr">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://playroostr.com/og-pick.png">
+<meta property="og:title" content="Roostr Astro Coop — free spaceship asteroid dodger">
+<meta property="og:description" content="Fly a spaceship and dodge the space rocks. How far can you get?">
+<meta property="og:url" content="https://playroostr.com/dodge.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://playroostr.com/og-dodge.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Roostr Top Pick — the daily spot-the-biggest game">
-<meta name="twitter:description" content="Tap the biggest. Three quick rounds on a hidden measure. One Top Pick a day.">
-<meta name="twitter:image" content="https://playroostr.com/og-pick.png">
-<link rel="canonical" href="https://playroostr.com/pick.html">
+<meta name="twitter:title" content="Roostr Astro Coop — free spaceship asteroid dodger">
+<meta name="twitter:description" content="Fly a spaceship and dodge the space rocks. How far can you get?">
+<meta name="twitter:image" content="https://playroostr.com/og-dodge.png">
+<link rel="canonical" href="https://playroostr.com/dodge.html">
 <meta name="theme-color" content="#f3ead8">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='42' r='30' fill='%23b5402a'/%3E%3Ccircle cx='50' cy='42' r='19' fill='%23f3ead8'/%3E%3Ccircle cx='50' cy='42' r='12' fill='%23c89a3f'/%3E%3Cpath d='M38 64l-8 26 20-12 20 12-8-26z' fill='%23206258'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,12 +38,12 @@
 {
   "@context": "https://schema.org",
   "@type": ["Game", "WebApplication"],
-  "name": "Roostr Top Pick",
-  "alternateName": "Roostr — spot the biggest",
-  "url": "https://playroostr.com/pick.html",
-  "description": "A free daily trivia game: tap the contestant with the most or least of a hidden measure across three quick rounds. New puzzle every midnight.",
+  "name": "Roostr Astro Coop",
+  "alternateName": "Roostr spaceship dodger",
+  "url": "https://playroostr.com/dodge.html",
+  "description": "A free browser arcade game: fly a spaceship through space and dodge asteroids for as long as you can. No download, no account.",
   "applicationCategory": "GameApplication",
-  "genre": "Trivia, Puzzle",
+  "genre": "Arcade, Space",
   "operatingSystem": "Any (web browser)",
   "browserRequirements": "Requires JavaScript",
   "inLanguage": "en",
@@ -78,68 +78,69 @@
       <button class="icon-btn icon-btn--gold" id="btn-plus" aria-label="Roostr Plus" hidden>★</button>
     </nav>
   </div>
-  <p class="dateline"><span id="puzzle-no">No. —</span> · <span id="puzzle-date">—</span> · A new Top Pick at midnight</p>
+  <p class="dateline"><span id="puzzle-no">The arcade</span> · Move to dodge the asteroids</p>
 </header>
 
 <nav class="game-tabs" aria-label="Choose a game">
   <a class="game-tab" href="index.html">Ranking</a>
   <a class="game-tab" href="faceoff.html">Face-Off</a>
-  <a class="game-tab" href="pick.html" aria-current="page">Top Pick</a>
+  <a class="game-tab" href="pick.html">Top Pick</a>
   <a class="game-tab" href="flags.html">Flags</a>
   <a class="game-tab" href="run.html">Run</a>
-  <a class="game-tab" href="dodge.html">Space</a>
+  <a class="game-tab" href="dodge.html" aria-current="page">Space</a>
 </nav>
 <script>/* scroll the active game tab into view on small screens */addEventListener("load",function(){var a=document.querySelector(".game-tabs .game-tab[aria-current]");if(a&&a.scrollIntoView)a.scrollIntoView({inline:"center",block:"nearest"});});</script>
 
 <main class="bill">
 
   <section class="prompt" aria-live="polite">
-    <p class="prompt-kicker">— Today's Top Pick —</p>
-    <h2 class="prompt-title" id="prompt-title">…</h2>
-    <p class="prompt-metric">hidden measure: <strong id="prompt-metric">…</strong></p>
-    <p class="prompt-rule">
-      <span class="rule-end">Tap the one with the <b id="want-word">most</b></span>
-    </p>
+    <p class="prompt-kicker">— The arcade —</p>
+    <h2 class="prompt-title">Astro Coop</h2>
+    <p class="prompt-metric">Fly the ship — dodge the space rocks</p>
   </section>
 
-  <section class="pen pick-pen" aria-label="Today's Top Pick">
-    <p class="pick-round" aria-live="polite">Round <b id="round-no">1</b> of <b id="round-total">3</b></p>
-    <div class="pick-list" id="pick-list"></div>
+  <section class="pen run-pen" aria-label="Astro Coop game">
+    <div class="run-stage dodge-stage" id="run-stage">
+      <div class="run-hud">
+        <span id="run-hi">best 0 m</span>
+        <span id="run-dist">0 m</span>
+      </div>
+      <canvas id="run-canvas" aria-label="Astro Coop playfield"></canvas>
+
+      <div class="run-overlay" id="run-start">
+        <p class="run-big">Astro Coop</p>
+        <p class="run-sub">Move your mouse or finger to fly — or use <b>↑ / ↓</b>.<br>Dodge the asteroids.</p>
+        <p class="run-cta">▶ Tap to launch</p>
+      </div>
+
+      <div class="run-overlay" id="run-over" hidden>
+        <p class="run-stamp">BOOM!</p>
+        <p class="run-result">You flew <b id="ro-score">0</b> m</p>
+        <p class="run-best">best <b id="ro-best">0</b> m</p>
+        <p class="run-newbest" id="ro-newbest" hidden>★ New best flight! ★</p>
+        <div class="run-actions">
+          <button class="btn btn--judge" id="btn-retry">Fly again</button>
+          <button class="btn btn--share" id="btn-share">Share</button>
+        </div>
+      </div>
+    </div>
+    <p class="run-hint">Mouse / finger / ↑ ↓ to steer · the asteroids come faster the longer you fly</p>
   </section>
 
   <section class="bench">
-    <div class="attempts" id="attempts" aria-label="Rounds"></div>
-    <div class="history" id="history" aria-live="polite"></div>
     <button class="coffee-prompt" id="btn-coffee2">
       <span class="coffee-prompt-cup" aria-hidden="true">☕</span>
       Enjoying Roostr? <b>Buy me a coffee</b>
     </button>
   </section>
 
-  <section class="verdict" id="verdict" hidden>
-    <div class="verdict-card">
-      <p class="verdict-stamp" id="verdict-stamp">BLUE RIBBON</p>
-      <p class="verdict-sub" id="verdict-sub"></p>
-      <ol class="reveal" id="reveal"></ol>
-      <aside class="factbox">
-        <p class="factbox-label">Did you know?</p>
-        <p id="factbox-text"></p>
-      </aside>
-      <div class="verdict-actions">
-        <button class="btn btn--share" id="btn-share">Share result</button>
-        <button class="btn btn--ghost" id="btn-stats2">My stats</button>
-      </div>
-      <p class="countdown">Next Top Pick in <b id="countdown">—</b></p>
-    </div>
-  </section>
-
-  <!-- AD SLOT — filled by initAds() in js/pick.js once ADSENSE_CLIENT is set. -->
+  <!-- AD SLOT — filled by initAds() in js/dodge.js once ADSENSE_CLIENT is set. -->
   <div class="ad-slot" id="ad-1" aria-hidden="true">
     <span>advertisement</span>
   </div>
 
   <footer class="colophon">
-    <p>A new Top Pick every day · facts are approximate, the order is what counts</p>
+    <p>A space dodger from the Roostr coop · free, no download</p>
     <p>
       <button class="linklike" id="btn-about">About</button> ·
       <button class="linklike" id="btn-coffee">☕ Buy me a coffee</button>
@@ -156,28 +157,22 @@
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="help-title">How to play</h3>
     <ol class="howto">
-      <li>Each round, five contestants line up. Read the <b>hidden measure</b> and the call: tap the one with the <b>most</b> — or sometimes the <b>least</b>.</li>
-      <li>The true values reveal instantly. Your tap gets a ribbon:
-        <span class="chip chip--hit">right pick</span>
-        <span class="chip chip--miss">wrong pick</span>
-      </li>
-      <li>That's <b>three quick rounds</b>, three different line-ups.</li>
-      <li>Sweep all three for a <b>Blue Ribbon</b>. Expect a surprise or two.</li>
+      <li>Steer your ship with the <b>mouse</b>, your <b>finger</b>, or the <b>↑ / ↓</b> keys.</li>
+      <li>Dodge the <b>asteroids</b> flying in from the right. One hit and the flight ends.</li>
+      <li>Space gets <b>faster</b> the longer you survive — distance is your score.</li>
+      <li>Beat your <b>best flight</b> and share it. Play as many times as you like.</li>
     </ol>
-    <p class="howto-foot">One Top Pick a day. Streaks are sacred.</p>
+    <p class="howto-foot">One ship. A whole lot of rocks.</p>
   </div>
 
   <div class="modal" id="modal-stats" hidden role="dialog" aria-modal="true" aria-labelledby="stats-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
-    <h3 class="modal-title" id="stats-title">Show record</h3>
-    <div class="statgrid">
-      <div class="stat"><b id="st-played">0</b><span>entered</span></div>
-      <div class="stat"><b id="st-winpct">0%</b><span>swept</span></div>
-      <div class="stat"><b id="st-streak">0</b><span>streak</span></div>
-      <div class="stat"><b id="st-max">0</b><span>best streak</span></div>
+    <h3 class="modal-title" id="stats-title">Flight record</h3>
+    <div class="statgrid statgrid--3">
+      <div class="stat"><b id="st-best">0</b><span>best (m)</span></div>
+      <div class="stat"><b id="st-plays">0</b><span>flights</span></div>
+      <div class="stat"><b id="st-total">0</b><span>total (m)</span></div>
     </div>
-    <h4 class="dist-title">Picks correct</h4>
-    <div class="dist" id="dist"></div>
   </div>
 
   <div class="modal modal--plus" id="modal-plus" hidden role="dialog" aria-modal="true" aria-labelledby="plus-title">
@@ -206,7 +201,7 @@
       </svg>
     </p>
     <h3 class="modal-title" id="coffee-title">Buy me a coffee</h3>
-    <p class="coffee-blurb">Roostr is free and made by one person. If a round made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
+    <p class="coffee-blurb">Roostr is free and made by one person. If a flight made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
     <div class="coffee-buy">
       <div class="coffee-stepper" role="group" aria-label="How many coffees">
         <button type="button" class="step-btn" id="cup-minus" aria-label="One fewer cup">−</button>
@@ -224,16 +219,15 @@
   <div class="modal" id="modal-about" hidden role="dialog" aria-modal="true" aria-labelledby="about-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="about-title">About</h3>
-    <p class="about-text">Roostr Top Pick is a free daily trivia game. Three quick rounds — tap the contestant with the most (or least) of a hidden measure. Values shown after each round are honest approximations from public reference sources — only their <em>order</em> is used for judging.</p>
-    <p class="about-text">No account needed — your streak lives in your browser.</p>
-    <p class="about-text">Questions, feedback, or a puzzle that looks wrong? Email <a href="mailto:ilan@playroostr.com">ilan@playroostr.com</a>.</p>
+    <p class="about-text">Astro Coop is a free arcade game from the Roostr coop — fly a spaceship through an asteroid field and chase a distance record. No download, no account; your best flight lives in your browser.</p>
+    <p class="about-text">Prefer a brain game? Try <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, or the runner <a href="run.html">Coop Run</a>.</p>
+    <p class="about-text">Questions or feedback? Email <a href="mailto:ilan@playroostr.com">ilan@playroostr.com</a>.</p>
   </div>
 
 </div>
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="js/puzzles.js"></script>
-<script src="js/pick.js"></script>
+<script src="js/dodge.js"></script>
 </body>
 </html>
