@@ -33,7 +33,8 @@ const CHROME = findChrome();
 /* —— brand palette —— */
 const C = {
   paper: "#f3ead8", paperDeep: "#e7dcc2", card: "#fbf6ea", ink: "#2a2118",
-  inkSoft: "#5b4f3f", red: "#b5402a", teal: "#20655a", gold: "#c89a3f", goldPale: "#ecd9a8"
+  inkSoft: "#5b4f3f", red: "#b5402a", teal: "#20655a", gold: "#c89a3f", goldPale: "#ecd9a8",
+  rock: "#9a8f7d", rockDeep: "#6f6757", rockDark: "#564f42"
 };
 
 const rosette = `<svg viewBox="0 0 100 100" width="86" height="86" aria-hidden="true">
@@ -103,6 +104,33 @@ function motifRun() {
   var svg = '<svg viewBox="0 0 360 250" width="360" height="250">' + bunt + ground + dashes + bale + rooster + '</svg>';
   return '<div style="width:382px;height:266px;border:3px solid ' + C.ink + ';border-radius:8px;background:linear-gradient(to bottom,#eaf0ef,' + C.paper + ');box-shadow:4px 6px 0 rgba(42,33,24,.28);overflow:hidden;display:flex;align-items:center;justify-content:center;transform:rotate(-1deg)">' + svg + '</div>';
 }
+function motifDodge() {
+  function ship(cx, cy) {
+    return '<g transform="translate(' + cx + ',' + cy + ')">' +
+      '<path d="M-13 -5 L-24 0 L-13 5 z" fill="' + C.gold + '"/>' +
+      '<path d="M-6 -7 L-17 -16 L-4 -4 z" fill="' + C.teal + '"/>' +
+      '<path d="M-6 7 L-17 16 L-4 4 z" fill="' + C.teal + '"/>' +
+      '<path d="M20 0 Q2 -13 -14 -9 Q-8 0 -14 9 Q2 13 20 0 z" fill="' + C.red + '" stroke="' + C.ink + '" stroke-width="2"/>' +
+      '<circle cx="4" cy="0" r="4.6" fill="' + C.gold + '" stroke="' + C.ink + '" stroke-width="1.5"/>' +
+      '</g>';
+  }
+  function rock(cx, cy, r) {
+    var v = [0.8, 1.05, 0.85, 1.1, 0.78, 1.0, 0.9, 1.08, 0.82], pts = [];
+    for (var k = 0; k < 9; k++) { var a = k / 9 * 6.283; pts.push((cx + Math.cos(a) * r * v[k]).toFixed(1) + ',' + (cy + Math.sin(a) * r * v[k]).toFixed(1)); }
+    return '<polygon points="' + pts.join(' ') + '" fill="' + C.rock + '" stroke="' + C.rockDark + '" stroke-width="2"/>' +
+      '<circle cx="' + (cx - r * 0.25) + '" cy="' + (cy - r * 0.15) + '" r="' + (r * 0.2) + '" fill="' + C.rockDeep + '"/>';
+  }
+  var stars = '';
+  var sx = [20, 60, 110, 150, 200, 250, 300, 330, 40, 90, 170, 220, 280, 320, 130, 70, 240, 190];
+  var sy = [30, 80, 50, 120, 40, 90, 60, 140, 160, 200, 180, 30, 210, 110, 230, 150, 160, 70];
+  for (var i = 0; i < sx.length; i++) stars += '<rect x="' + sx[i] + '" y="' + sy[i] + '" width="' + (i % 4 === 0 ? 2.4 : 1.6) + '" height="' + (i % 4 === 0 ? 2.4 : 1.6) + '" fill="#f3ead8" opacity="' + (0.5 + (i % 3) * 0.2) + '"/>';
+  var svg = '<svg viewBox="0 0 360 250" width="360" height="250">' +
+    '<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16243a"/><stop offset="1" stop-color="#0b1422"/></linearGradient></defs>' +
+    '<rect width="360" height="250" fill="url(#sky)"/>' + stars +
+    rock(250, 70, 30) + rock(300, 180, 22) + rock(170, 200, 16) +
+    ship(95, 120) + '</svg>';
+  return '<div style="width:382px;height:266px;border:3px solid ' + C.ink + ';border-radius:8px;box-shadow:4px 6px 0 rgba(42,33,24,.28);overflow:hidden;display:flex;align-items:center;justify-content:center;transform:rotate(-1deg)">' + svg + '</div>';
+}
 
 /* —— card template —— */
 function card(cfg) {
@@ -150,7 +178,9 @@ const GAMES = [
   { out: "og-flags.png", kicker: "The daily flag quiz", title: "Guess<br>the Flag",
     tag: "Name the country from its flag. Five rounds, one guess each.", motif: motifFlags() },
   { out: "og-run.png", kicker: "The free rooster runner", title: "Coop Run",
-    tag: "Jump the rooster over hay bales and fences. How far can you run?", motif: motifRun() }
+    tag: "Jump the rooster over hay bales and fences. How far can you run?", motif: motifRun() },
+  { out: "og-dodge.png", kicker: "The free space dodger", title: "Astro Coop",
+    tag: "Fly a spaceship and dodge the asteroids. How far can you get?", motif: motifDodge() }
 ];
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "roostr-og-"));
