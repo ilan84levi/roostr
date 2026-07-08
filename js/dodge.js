@@ -64,6 +64,7 @@
     $("ro-best").textContent = stats.best;
     $("ro-newbest").hidden = !(meters > 0 && meters === stats.best);
     show($("run-over"));
+    if (window.RoostrShare) RoostrShare.render(document.getElementById("share-row"), shareText());
     syncHud();
   }
 

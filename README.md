@@ -64,8 +64,10 @@ js/flags.js        36 hand-built SVG flags (country, region, fun fact)
 js/guessflag.js    Guess the Flag engine — same patterns, "gf-" localStorage namespace
 js/run.js          Coop Run engine — canvas loop, physics, "cr-" localStorage namespace
 js/dodge.js        Astro Coop engine — canvas loop, "sd-" localStorage namespace
+js/share.js        shared one-tap share row (WhatsApp/X/Telegram/Copy) on results
 og-*.png           per-game social share cards (1200×630)
 tools/make-og.js   regenerates the share cards (see "Share images" below)
+docs/PROMOTION.md  launch kit + SEO/indexing checklist (how to get players)
 tests/validate.js  data integrity check: node tests/validate.js
 LAUNCH_GUIDE.md    how to deploy and switch the money on
 ```

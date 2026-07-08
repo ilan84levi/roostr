@@ -1051,6 +1051,44 @@ body.plus .ad-slot { display: none; }
 }
 .statgrid--3 { grid-template-columns: repeat(3, 1fr); }
 
+/* ————— one-tap social share row ————— */
+.share-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.share-row:empty { margin-top: 0; }
+.share-row-label {
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 700;
+  margin-right: 2px;
+}
+.share-btn {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 7px 13px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 2px 2px 0 rgba(var(--shadow), .7);
+  transition: transform .08s, box-shadow .08s;
+}
+.share-btn:active { transform: translate(2px, 2px); box-shadow: 0 0 0 rgba(var(--shadow), .7); }
+.sh-wa { background: #25D366; color: #fff; border-color: #128C4B; }
+.sh-x { background: #14171a; color: #fff; border-color: #000; }
+.sh-tg { background: #29A9EB; color: #fff; border-color: #1c86bd; }
+.sh-copy { background: var(--gold-pale); }
+
 /* Astro Coop — dark-space variant of the run stage */
 .dodge-stage { background: #0b1422; }
 .dodge-stage .run-hud { color: #aeb9c7; text-shadow: 0 1px 2px rgba(0,0,0,.5); }
