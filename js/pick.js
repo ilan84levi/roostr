@@ -219,6 +219,7 @@
     $("factbox-text").textContent = PUZZLES[ROUND_PUZZLES[0]].fact;
     $("verdict").hidden = false;
     $("verdict").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    if (window.RoostrShare) RoostrShare.render(document.getElementById("share-row"), shareText());
     startCountdown();
   }
 
