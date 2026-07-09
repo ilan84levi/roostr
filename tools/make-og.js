@@ -10,6 +10,7 @@ const { execFileSync } = require("child_process");
 
 const ROOT = path.join(__dirname, "..");
 const FLAGS = require(path.join(ROOT, "js", "flags.js"));
+const CURRENCIES = require(path.join(ROOT, "js", "currencies.js"));
 
 /* —— locate a Chromium/Chrome binary —— */
 function findChrome() {
@@ -151,6 +152,16 @@ function motifMemory() {
   return '<div style="display:grid;grid-template-columns:repeat(3,118px);gap:14px;transform:rotate(-2deg)">' + cells + '</div>';
 }
 
+function motifCurrency() {
+  var want = ["Japan", "India", "United Kingdom"];
+  var picks = want.map(function (n) { return CURRENCIES.find(function (c) { return c.name === n; }); }).filter(Boolean);
+  var cells = picks.map(function (c, i) {
+    var rot = i % 2 ? 2.5 : -2.5;
+    return '<div style="width:246px;aspect-ratio:16/9;border:3px solid ' + C.ink + ';border-radius:8px;overflow:hidden;line-height:0;box-shadow:4px 6px 0 rgba(42,33,24,.28);transform:rotate(' + rot + 'deg)">' + c.svg + '</div>';
+  }).join("");
+  return '<div style="display:flex;flex-direction:column;gap:18px">' + cells + '</div>';
+}
+
 /* —— card template —— */
 function card(cfg) {
   return `<!doctype html><html><head><meta charset="utf-8"><style>
@@ -196,6 +207,8 @@ const GAMES = [
     tag: "Tap the one with the most — or least. Three quick rounds.", motif: motifPick() },
   { out: "og-flags.png", kicker: "The daily flag quiz", title: "Guess<br>the Flag",
     tag: "Name the country from its flag. Five rounds, one guess each.", motif: motifFlags() },
+  { out: "og-currency.png", kicker: "The daily currency quiz", title: "Guess<br>the Currency",
+    tag: "Which country uses this money? Five rounds, one guess each.", motif: motifCurrency() },
   { out: "og-run.png", kicker: "The free rooster runner", title: "Coop Run",
     tag: "Jump the rooster over hay bales and fences. How far can you run?", motif: motifRun() },
   { out: "og-dodge.png", kicker: "The free space dodger", title: "Astro Coop",

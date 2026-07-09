@@ -9,7 +9,7 @@ people say *"wait, what?"* (a blue whale's tongue outweighs a family car;
 Nintendo is older than the zipper's patent holder; Antarctica is the world's
 largest desert).
 
-Seven games share one design system — four daily puzzles and three arcade games:
+Eight games share one design system — five daily puzzles and three arcade games:
 
 - **Ranking** (`index.html`) — drag five things into order by the hidden measure.
 - **Face-Off** (`faceoff.html`) — call *higher or lower* on the hidden measure,
@@ -19,6 +19,10 @@ Seven games share one design system — four daily puzzles and three arcade game
 - **Guess the Flag** (`flags.html`) — name the country from its flag, five rounds
   of four-way multiple choice. Flags are hand-built from simple SVG geometry, so
   there are no external image requests.
+- **Guess the Currency** (`currency.html`) — a banknote shows a currency's name and
+  symbol (Yen, Baht, Złoty, Naira…); name the country it belongs to, five rounds of
+  four-way multiple choice. Notes are drawn from simple SVG geometry — no external
+  image requests.
 - **Coop Run** (`run.html`) — a canvas endless runner: jump the rooster over hay
   bales and fences, chasing a distance record. Not daily — play any time.
 - **Astro Coop** (`dodge.html`) — a canvas space dodger: fly a spaceship through a
@@ -27,9 +31,9 @@ Seven games share one design system — four daily puzzles and three arcade game
   art; clear all pairs in as few moves as you can. Easy / Medium / Hard
   (4×4 / 4×6 / 6×6), per-difficulty best scores. Not daily — play any time.
 
-The first three share one puzzle pool; the flag quiz and the two arcade games
-each have their own. A segmented switcher in the header jumps between all seven
-(it scrolls horizontally on small screens).
+The first three share one puzzle pool; the flag quiz, the currency quiz and the
+two arcade games each have their own. A segmented switcher in the header jumps
+between all eight (it scrolls horizontally on small screens).
 
 ## Play it locally
 
@@ -41,6 +45,7 @@ python -m http.server 8000
 # → http://localhost:8000/faceoff.html  (Face-Off)
 # → http://localhost:8000/pick.html     (Top Pick)
 # → http://localhost:8000/flags.html    (Guess the Flag)
+# → http://localhost:8000/currency.html (Guess the Currency)
 # → http://localhost:8000/run.html      (Coop Run)
 # → http://localhost:8000/dodge.html    (Astro Coop)
 # → http://localhost:8000/memory.html   (Memory)
@@ -53,6 +58,7 @@ index.html         the Ranking game (+ About/FAQ content for SEO)
 faceoff.html       the Face-Off (higher/lower) game
 pick.html          the Top Pick (spot-the-biggest) game
 flags.html         the Guess the Flag quiz
+currency.html      the Guess the Currency quiz
 run.html           the Coop Run arcade runner
 dodge.html         the Astro Coop space dodger
 memory.html        the Memory card-matching game
@@ -67,6 +73,8 @@ js/faceoff.js      Face-Off engine — same patterns, "fo-" localStorage namespa
 js/pick.js         Top Pick engine — same patterns, "tp-" localStorage namespace
 js/flags.js        36 hand-built SVG flags (country, region, fun fact)
 js/guessflag.js    Guess the Flag engine — same patterns, "gf-" localStorage namespace
+js/currencies.js   36 world currencies as SVG banknotes (country, currency, region, fact)
+js/currency.js     Guess the Currency engine — same patterns, "gc-" localStorage namespace
 js/run.js          Coop Run engine — canvas loop, physics, "cr-" localStorage namespace
 js/dodge.js        Astro Coop engine — canvas loop, "sd-" localStorage namespace
 js/memory.js       Memory engine — flip/match, "mem-" localStorage namespace
@@ -82,13 +90,13 @@ The puzzle games pick with a different daily offset so they rarely overlap on th
 same day. Every page carries Open Graph/Twitter cards (`og:site_name`,
 `og:locale`), a canonical URL, an explicit `robots` directive, and schema.org
 JSON-LD (`Game`/`WebApplication`). The home page also emits a `WebSite`, an
-`ItemList` of all seven games, and a `FAQPage` backed by a visible About/FAQ
+`ItemList` of all eight games, and a `FAQPage` backed by a visible About/FAQ
 section — real crawlable text for organic search.
 
 ## Share images
 
 Each game has its own 1200×630 card (`og-ranking.png`, `og-faceoff.png`,
-`og-pick.png`, `og-flags.png`, `og-run.png`, `og-dodge.png`, `og-memory.png`) referenced from that
+`og-pick.png`, `og-flags.png`, `og-currency.png`, `og-run.png`, `og-dodge.png`, `og-memory.png`) referenced from that
 page's `og:image` / `twitter:image`. They're generated from HTML templates with
 headless Chromium — no design tool needed:
 
