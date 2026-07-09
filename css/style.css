@@ -1141,14 +1141,17 @@ body.plus .ad-slot { display: none; }
   perspective: 700px;
 }
 .mem-inner {
+  display: block;
   position: relative;
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   transition: transform .35s cubic-bezier(.3, 1.1, .4, 1);
+  -webkit-transition: -webkit-transform .35s cubic-bezier(.3, 1.1, .4, 1);
 }
 .mem-card.flipped .mem-inner,
-.mem-card.matched .mem-inner { transform: rotateY(180deg); }
+.mem-card.matched .mem-inner { transform: rotateY(180deg); -webkit-transform: rotateY(180deg); }
 .mem-cover, .mem-face {
   position: absolute;
   inset: 0;
@@ -1164,7 +1167,7 @@ body.plus .ad-slot { display: none; }
 }
 .mem-cover { background: linear-gradient(135deg, var(--red), var(--red-deep)); }
 .mem-cover svg { width: 66%; height: 66%; filter: drop-shadow(0 1px 0 rgba(var(--shadow), .4)); }
-.mem-face { transform: rotateY(180deg); background: var(--card); }
+.mem-face { transform: rotateY(180deg); -webkit-transform: rotateY(180deg); background: var(--card); }
 .mem-face svg { width: 88%; height: auto; border: 1.5px solid var(--ink); border-radius: 2px; display: block; }
 .mem-card.matched { cursor: default; }
 .mem-card.matched .mem-face { background: var(--gold-pale); }
