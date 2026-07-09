@@ -11,23 +11,23 @@
   gtag('js', new Date());
   gtag('config', 'G-GQBZ10K1ZY');
 </script>
-<title>Roostr Face-Off — the daily higher-or-lower game</title>
-<meta name="description" content="A free daily puzzle: call higher or lower on a hidden measure four times in a row. New face-off every midnight.">
-<meta property="og:title" content="Roostr Face-Off — the daily higher-or-lower game">
-<meta property="og:description" content="Higher or lower? Four calls on a hidden measure. One face-off a day.">
-<meta property="og:url" content="https://playroostr.com/faceoff.html">
-<meta property="og:type" content="website">
+<title>Roostr Memory — free online card matching (concentration) game</title>
+<meta name="description" content="A free memory card game: flip the cards and match the pairs in as few moves as you can. Play the classic concentration game free in your browser — no download.">
 <meta name="robots" content="index, follow">
 <meta property="og:site_name" content="Roostr">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://playroostr.com/og-faceoff.png">
+<meta property="og:title" content="Roostr Memory — free online card matching game">
+<meta property="og:description" content="Flip the cards, match the pairs in as few moves as you can. Free, no download.">
+<meta property="og:url" content="https://playroostr.com/memory.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://playroostr.com/og-memory.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Roostr Face-Off — the daily higher-or-lower game">
-<meta name="twitter:description" content="Higher or lower? Four calls on a hidden measure. One face-off a day.">
-<meta name="twitter:image" content="https://playroostr.com/og-faceoff.png">
-<link rel="canonical" href="https://playroostr.com/faceoff.html">
+<meta name="twitter:title" content="Roostr Memory — free online card matching game">
+<meta name="twitter:description" content="Flip the cards, match the pairs in as few moves as you can. Free, no download.">
+<meta name="twitter:image" content="https://playroostr.com/og-memory.png">
+<link rel="canonical" href="https://playroostr.com/memory.html">
 <meta name="theme-color" content="#f3ead8">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='42' r='30' fill='%23b5402a'/%3E%3Ccircle cx='50' cy='42' r='19' fill='%23f3ead8'/%3E%3Ccircle cx='50' cy='42' r='12' fill='%23c89a3f'/%3E%3Cpath d='M38 64l-8 26 20-12 20 12-8-26z' fill='%23206258'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,12 +38,12 @@
 {
   "@context": "https://schema.org",
   "@type": ["Game", "WebApplication"],
-  "name": "Roostr Face-Off",
-  "alternateName": "Roostr higher or lower",
-  "url": "https://playroostr.com/faceoff.html",
-  "description": "A free daily higher-or-lower game: call whether each challenger is higher or lower on a hidden measure, four times in a row. New face-off every midnight.",
+  "name": "Roostr Memory",
+  "alternateName": "Roostr card matching game",
+  "url": "https://playroostr.com/memory.html",
+  "description": "A free online memory card game (concentration): flip the cards and match all the pairs in as few moves as you can. No download, no account.",
   "applicationCategory": "GameApplication",
-  "genre": "Trivia, Puzzle",
+  "genre": "Memory, Puzzle, Card",
   "operatingSystem": "Any (web browser)",
   "browserRequirements": "Requires JavaScript",
   "inLanguage": "en",
@@ -57,22 +57,12 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How do you play Face-Off?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Each round shows one value on a hidden measure. Call whether the next contestant is higher or lower. Get all four calls right in a row to win the day."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Face-Off free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes — it is completely free to play in your browser with no sign-up. Your streak and stats are saved privately on your device."
-      }
-    }
+    { "@type": "Question", "name": "How do you play the memory card game?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Flip two cards per turn. If the two pictures match, the pair stays face-up; if not, they flip back. Remember where each picture is and match all eight pairs. Your score is the number of moves and the time it took." } },
+    { "@type": "Question", "name": "Is Roostr Memory free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — it is completely free to play in your browser, with no download and no account. Your best score is saved privately in your browser." } },
+    { "@type": "Question", "name": "Can I play the memory game more than once a day?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Unlike the daily puzzles on Roostr, Memory is an arcade game you can replay as many times as you like — the board is reshuffled every game." } }
   ]
 }
 </script>
@@ -102,107 +92,84 @@
       <button class="icon-btn icon-btn--gold" id="btn-plus" aria-label="Roostr Plus" hidden>★</button>
     </nav>
   </div>
-  <p class="dateline"><span id="puzzle-no">No. —</span> · <span id="puzzle-date">—</span> · A new face-off at midnight</p>
+  <p class="dateline"><span id="puzzle-no">The arcade</span> · Flip the cards, match the pairs</p>
 </header>
 
 <nav class="game-tabs" aria-label="Choose a game">
   <a class="game-tab" href="index.html">Ranking</a>
-  <a class="game-tab" href="faceoff.html" aria-current="page">Face-Off</a>
+  <a class="game-tab" href="faceoff.html">Face-Off</a>
   <a class="game-tab" href="pick.html">Top Pick</a>
   <a class="game-tab" href="flags.html">Flags</a>
   <a class="game-tab" href="run.html">Run</a>
   <a class="game-tab" href="dodge.html">Space</a>
-  <a class="game-tab" href="memory.html">Memory</a>
+  <a class="game-tab" href="memory.html" aria-current="page">Memory</a>
 </nav>
 <script>/* scroll the active game tab into view on small screens */addEventListener("load",function(){var a=document.querySelector(".game-tabs .game-tab[aria-current]");if(a&&a.scrollIntoView)a.scrollIntoView({inline:"center",block:"nearest"});});</script>
 
 <main class="bill">
 
   <section class="prompt" aria-live="polite">
-    <p class="prompt-kicker">— Today's face-off —</p>
-    <h2 class="prompt-title" id="prompt-title">…</h2>
-    <p class="prompt-metric">hidden measure: <strong id="prompt-metric">…</strong></p>
-    <p class="prompt-rule">
-      <span class="rule-end">Higher or lower?</span>
-      <span class="rule-arrows" aria-hidden="true">⇅</span>
-      <span class="rule-end">Four calls, one run</span>
-    </p>
+    <p class="prompt-kicker">— The arcade —</p>
+    <h2 class="prompt-title">Memory</h2>
+    <p class="prompt-metric">Flip the cards and match all eight pairs</p>
   </section>
 
-  <section class="pen faceoff-pen" aria-label="Today's face-off">
-    <div class="faceoff">
-      <div class="fo-card fo-champ" id="fo-champ">
-        <div class="fo-role">Reigning</div>
-        <b class="fo-name"></b>
-        <span class="fo-value"></span>
-      </div>
-      <div class="fo-vs" aria-hidden="true">vs</div>
-      <div class="fo-card fo-challenger" id="fo-challenger">
-        <div class="fo-role">Challenger</div>
-        <b class="fo-name"></b>
-        <span class="fo-value mystery">?</span>
-      </div>
+  <section class="pen mem-pen" aria-label="Memory game">
+    <div class="mem-hud">
+      <span class="mem-stat">Moves <b id="mem-moves">0</b></span>
+      <span class="mem-stat">Time <b id="mem-time">0:00</b></span>
+      <button class="mem-new" id="mem-new">New game</button>
     </div>
-    <p class="fo-ask">Is the challenger <b>higher</b> or <em>lower</em> on <span id="fo-metric-inline">the measure</span>?</p>
-    <div class="fo-buttons">
-      <button class="btn btn--higher" id="btn-higher">▲ Higher</button>
-      <button class="btn btn--lower" id="btn-lower">▼ Lower</button>
+    <div class="mem-grid" id="mem-grid" aria-label="Cards"></div>
+  </section>
+
+  <section class="verdict" id="verdict" hidden>
+    <div class="verdict-card">
+      <p class="verdict-stamp" id="verdict-stamp">MATCHED!</p>
+      <p class="verdict-sub">You cleared the board in <b id="mem-final-moves">0</b> moves · <b id="mem-final-time">0:00</b></p>
+      <p class="run-best" id="mem-best">best: — moves</p>
+      <p class="run-newbest" id="mem-newbest" hidden>★ New personal best! ★</p>
+      <div class="verdict-actions">
+        <button class="btn btn--judge" id="btn-again">Play again</button>
+        <button class="btn btn--share" id="btn-share">Share result</button>
+      </div>
+      <div class="share-row" id="share-row"></div>
     </div>
   </section>
 
   <section class="bench">
-    <div class="attempts" id="attempts" aria-label="Calls"></div>
-    <div class="history" id="history" aria-live="polite"></div>
     <button class="coffee-prompt" id="btn-coffee2">
       <span class="coffee-prompt-cup" aria-hidden="true">☕</span>
       Enjoying Roostr? <b>Buy me a coffee</b>
     </button>
   </section>
 
-  <section class="verdict" id="verdict" hidden>
-    <div class="verdict-card">
-      <p class="verdict-stamp" id="verdict-stamp">CLEAN SWEEP</p>
-      <p class="verdict-sub" id="verdict-sub"></p>
-      <ol class="reveal" id="reveal"></ol>
-      <aside class="factbox">
-        <p class="factbox-label">Did you know?</p>
-        <p id="factbox-text"></p>
-      </aside>
-      <div class="verdict-actions">
-        <button class="btn btn--share" id="btn-share">Share result</button>
-        <button class="btn btn--ghost" id="btn-stats2">My stats</button>
-      </div>
-      <div class="share-row" id="share-row"></div>
-      <p class="countdown">Next face-off in <b id="countdown">—</b></p>
-    </div>
-  </section>
-
-  <!-- AD SLOT — filled by initAds() in js/faceoff.js once ADSENSE_CLIENT is set. -->
+  <!-- AD SLOT — filled by initAds() in js/memory.js once ADSENSE_CLIENT is set. -->
   <div class="ad-slot" id="ad-1" aria-hidden="true">
     <span>advertisement</span>
   </div>
 
   <section class="lede" aria-labelledby="lede-title">
-    <h2 id="lede-title">Free daily higher-or-lower game</h2>
-    <p>Roostr Face-Off is a free daily higher-or-lower game. You see one contestant’s value on a hidden measure, then call whether the next challenger is higher or lower — four times in a row for a clean sweep. A new face-off every midnight, no download and no account.</p>
+    <h2 id="lede-title">Free online memory card game</h2>
+    <p><b>Roostr Memory</b> is the classic card-matching game (also called concentration or pairs) you can play free in your browser — no download, no account. Flip two cards at a time, remember where each picture is, and match all eight pairs in as few moves as you can. Your best score is saved on your device.</p>
     <div class="faq">
       <details open>
-        <summary>How do you play Face-Off?</summary>
-        <p>Each round shows one value on a hidden measure. Call whether the next contestant is higher or lower. Get all four calls right in a row to win the day.</p>
+        <summary>How do you play the memory card game?</summary>
+        <p>Flip two cards per turn. If the pictures match, the pair stays face-up; if not, they flip back over. Remember the positions and clear all eight pairs. Your score is your number of moves and your time.</p>
       </details>
       <details>
-        <summary>Is Face-Off free?</summary>
-        <p>Yes — it is completely free to play in your browser with no sign-up. Your streak and stats are saved privately on your device.</p>
+        <summary>Is it free? Do I need an app?</summary>
+        <p>It's completely free and runs in the browser — nothing to install, no sign-up. Your best moves and best time are saved privately on your device.</p>
       </details>
       <details>
         <summary>More free games</summary>
-        <p>Roostr also has <a href="index.html">Ranking</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="run.html">Coop Run</a>, <a href="dodge.html">Astro Coop</a> and <a href="memory.html">Memory</a>.</p>
+        <p>Roostr also has daily brain games — <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a> and <a href="flags.html">Guess the Flag</a> — plus arcade games <a href="run.html">Coop Run</a> and <a href="dodge.html">Astro Coop</a>.</p>
       </details>
     </div>
   </section>
 
   <footer class="colophon">
-    <p>A new face-off every day · facts are approximate, the order is what counts</p>
+    <p>A card-matching game from the Roostr coop · free, no download</p>
     <p>
       <button class="linklike" id="btn-about">About</button> ·
       <button class="linklike" id="btn-coffee">☕ Buy me a coffee</button>
@@ -219,28 +186,22 @@
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="help-title">How to play</h3>
     <ol class="howto">
-      <li>Five contestants line up. You'll see the <b>reigning</b> card with its value on the <b>hidden measure</b>.</li>
-      <li>For each <b>challenger</b>, call whether it's <b>higher</b> or <b>lower</b> than the reigning card. The challenger then takes the throne.</li>
-      <li>That's <b>four calls</b> in a row. Each gets a ribbon:
-        <span class="chip chip--hit">right call</span>
-        <span class="chip chip--miss">wrong call</span>
-      </li>
-      <li>Nail all four for a <b>Clean Sweep</b>. Values shown after each call — expect surprises.</li>
+      <li>Tap a card to flip it, then tap a second card.</li>
+      <li>If the two pictures <b>match</b>, the pair stays face-up. If not, they flip back — so remember where they were.</li>
+      <li>Clear all <b>eight pairs</b> to win.</li>
+      <li>Try to finish in the <b>fewest moves</b> and the <b>best time</b>. Beat your record and share it.</li>
     </ol>
-    <p class="howto-foot">One face-off a day. Streaks are sacred.</p>
+    <p class="howto-foot">Sharpen your memory. Play as often as you like.</p>
   </div>
 
   <div class="modal" id="modal-stats" hidden role="dialog" aria-modal="true" aria-labelledby="stats-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
-    <h3 class="modal-title" id="stats-title">Show record</h3>
-    <div class="statgrid">
-      <div class="stat"><b id="st-played">0</b><span>entered</span></div>
-      <div class="stat"><b id="st-winpct">0%</b><span>swept</span></div>
-      <div class="stat"><b id="st-streak">0</b><span>streak</span></div>
-      <div class="stat"><b id="st-max">0</b><span>best streak</span></div>
+    <h3 class="modal-title" id="stats-title">Memory record</h3>
+    <div class="statgrid statgrid--3">
+      <div class="stat"><b id="st-moves">—</b><span>best moves</span></div>
+      <div class="stat"><b id="st-time">—</b><span>best time</span></div>
+      <div class="stat"><b id="st-plays">0</b><span>games</span></div>
     </div>
-    <h4 class="dist-title">Calls correct</h4>
-    <div class="dist" id="dist"></div>
   </div>
 
   <div class="modal modal--plus" id="modal-plus" hidden role="dialog" aria-modal="true" aria-labelledby="plus-title">
@@ -269,7 +230,7 @@
       </svg>
     </p>
     <h3 class="modal-title" id="coffee-title">Buy me a coffee</h3>
-    <p class="coffee-blurb">Roostr is free and made by one person. If a face-off made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
+    <p class="coffee-blurb">Roostr is free and made by one person. If a game made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
     <div class="coffee-buy">
       <div class="coffee-stepper" role="group" aria-label="How many coffees">
         <button type="button" class="step-btn" id="cup-minus" aria-label="One fewer cup">−</button>
@@ -287,17 +248,17 @@
   <div class="modal" id="modal-about" hidden role="dialog" aria-modal="true" aria-labelledby="about-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="about-title">About</h3>
-    <p class="about-text">Roostr Face-Off is a free daily higher-or-lower game. Call the hidden measure four times in a row. Values shown after each round are honest approximations from public reference sources — only their <em>order</em> is used for judging.</p>
-    <p class="about-text">No account needed — your streak lives in your browser.</p>
-    <p class="about-text">Questions, feedback, or a puzzle that looks wrong? Email <a href="mailto:ilan@playroostr.com">ilan@playroostr.com</a>.</p>
+    <p class="about-text">Roostr Memory is a free browser card-matching game — the classic concentration game, with flag cards. Match all the pairs in as few moves as you can; your best score lives in your browser.</p>
+    <p class="about-text">Looking for more? Try <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="run.html">Coop Run</a>, or <a href="dodge.html">Astro Coop</a>.</p>
+    <p class="about-text">Questions or feedback? Email <a href="mailto:ilan@playroostr.com">ilan@playroostr.com</a>.</p>
   </div>
 
 </div>
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="js/puzzles.js"></script>
 <script src="js/share.js"></script>
-<script src="js/faceoff.js"></script>
+<script src="js/flags.js"></script>
+<script src="js/memory.js"></script>
 </body>
 </html>

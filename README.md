@@ -9,7 +9,7 @@ people say *"wait, what?"* (a blue whale's tongue outweighs a family car;
 Nintendo is older than the zipper's patent holder; Antarctica is the world's
 largest desert).
 
-Six games share one design system — four daily puzzles and two arcade games:
+Seven games share one design system — four daily puzzles and three arcade games:
 
 - **Ranking** (`index.html`) — drag five things into order by the hidden measure.
 - **Face-Off** (`faceoff.html`) — call *higher or lower* on the hidden measure,
@@ -23,9 +23,11 @@ Six games share one design system — four daily puzzles and two arcade games:
   bales and fences, chasing a distance record. Not daily — play any time.
 - **Astro Coop** (`dodge.html`) — a canvas space dodger: fly a spaceship through a
   starfield and dodge the asteroids. Not daily — play any time.
+- **Memory** (`memory.html`) — a classic flip-and-match card game using the flag
+  art; clear all pairs in as few moves as you can. Not daily — play any time.
 
 The first three share one puzzle pool; the flag quiz and the two arcade games
-each have their own. A segmented switcher in the header jumps between all six
+each have their own. A segmented switcher in the header jumps between all seven
 (it scrolls horizontally on small screens).
 
 ## Play it locally
@@ -40,6 +42,7 @@ python -m http.server 8000
 # → http://localhost:8000/flags.html    (Guess the Flag)
 # → http://localhost:8000/run.html      (Coop Run)
 # → http://localhost:8000/dodge.html    (Astro Coop)
+# → http://localhost:8000/memory.html   (Memory)
 ```
 
 ## Project layout
@@ -51,6 +54,7 @@ pick.html          the Top Pick (spot-the-biggest) game
 flags.html         the Guess the Flag quiz
 run.html           the Coop Run arcade runner
 dodge.html         the Astro Coop space dodger
+memory.html        the Memory card-matching game
 privacy.html       privacy policy (required for AdSense)
 robots.txt         allows all crawlers, points to the sitemap
 sitemap.xml        all game URLs for search engines (with lastmod)
@@ -64,6 +68,7 @@ js/flags.js        36 hand-built SVG flags (country, region, fun fact)
 js/guessflag.js    Guess the Flag engine — same patterns, "gf-" localStorage namespace
 js/run.js          Coop Run engine — canvas loop, physics, "cr-" localStorage namespace
 js/dodge.js        Astro Coop engine — canvas loop, "sd-" localStorage namespace
+js/memory.js       Memory engine — flip/match, "mem-" localStorage namespace
 js/share.js        shared one-tap share row (WhatsApp/X/Telegram/Copy) on results
 og-*.png           per-game social share cards (1200×630)
 tools/make-og.js   regenerates the share cards (see "Share images" below)
@@ -76,13 +81,13 @@ The puzzle games pick with a different daily offset so they rarely overlap on th
 same day. Every page carries Open Graph/Twitter cards (`og:site_name`,
 `og:locale`), a canonical URL, an explicit `robots` directive, and schema.org
 JSON-LD (`Game`/`WebApplication`). The home page also emits a `WebSite`, an
-`ItemList` of all six games, and a `FAQPage` backed by a visible About/FAQ
+`ItemList` of all seven games, and a `FAQPage` backed by a visible About/FAQ
 section — real crawlable text for organic search.
 
 ## Share images
 
 Each game has its own 1200×630 card (`og-ranking.png`, `og-faceoff.png`,
-`og-pick.png`, `og-flags.png`, `og-run.png`, `og-dodge.png`) referenced from that
+`og-pick.png`, `og-flags.png`, `og-run.png`, `og-dodge.png`, `og-memory.png`) referenced from that
 page's `og:image` / `twitter:image`. They're generated from HTML templates with
 headless Chromium — no design tool needed:
 

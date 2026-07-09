@@ -1051,6 +1051,88 @@ body.plus .ad-slot { display: none; }
 }
 .statgrid--3 { grid-template-columns: repeat(3, 1fr); }
 
+/* ————— Memory (card matching) ————— */
+.mem-pen { padding: 14px 12px; }
+.mem-hud {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.mem-stat {
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.mem-stat b { font-family: var(--font-display); font-size: 19px; color: var(--ink); margin-left: 3px; }
+.mem-new {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 7px 16px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--teal);
+  color: var(--card);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(var(--shadow), .8);
+  transition: transform .08s, box-shadow .08s;
+}
+.mem-new:active { transform: translate(2px, 2px); box-shadow: 0 0 0 rgba(var(--shadow), .8); }
+.mem-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.mem-card {
+  aspect-ratio: 3 / 4;
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  perspective: 700px;
+}
+.mem-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .35s cubic-bezier(.3, 1.1, .4, 1);
+}
+.mem-card.flipped .mem-inner,
+.mem-card.matched .mem-inner { transform: rotateY(180deg); }
+.mem-cover, .mem-face {
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 2px 2px 0 rgba(var(--shadow), .25);
+}
+.mem-cover { background: linear-gradient(135deg, var(--red), var(--red-deep)); }
+.mem-cover svg { width: 66%; height: 66%; filter: drop-shadow(0 1px 0 rgba(var(--shadow), .4)); }
+.mem-face { transform: rotateY(180deg); background: var(--card); }
+.mem-face svg { width: 88%; height: auto; border: 1.5px solid var(--ink); border-radius: 2px; display: block; }
+.mem-card.matched { cursor: default; }
+.mem-card.matched .mem-face { background: var(--gold-pale); }
+.mem-card.matched .mem-inner { animation: memPop .32s ease; }
+@keyframes memPop {
+  0% { transform: rotateY(180deg) scale(1); }
+  50% { transform: rotateY(180deg) scale(1.07); }
+  100% { transform: rotateY(180deg) scale(1); }
+}
+@media (max-width: 380px) { .mem-grid { gap: 6px; } }
+
 /* ————— one-tap social share row ————— */
 .share-row {
   display: flex;

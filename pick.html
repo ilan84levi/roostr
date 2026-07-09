@@ -52,6 +52,30 @@
   "isPartOf": { "@type": "WebSite", "name": "Roostr", "url": "https://playroostr.com/" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you play Top Pick?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Read the measure and the call (most or least), then tap the contestant you think is the answer. There are three rounds, each with a different line-up."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Top Pick free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — completely free in your browser, no sign-up. Your streak and stats stay on your device."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -88,6 +112,7 @@
   <a class="game-tab" href="flags.html">Flags</a>
   <a class="game-tab" href="run.html">Run</a>
   <a class="game-tab" href="dodge.html">Space</a>
+  <a class="game-tab" href="memory.html">Memory</a>
 </nav>
 <script>/* scroll the active game tab into view on small screens */addEventListener("load",function(){var a=document.querySelector(".game-tabs .game-tab[aria-current]");if(a&&a.scrollIntoView)a.scrollIntoView({inline:"center",block:"nearest"});});</script>
 
@@ -138,6 +163,25 @@
   <div class="ad-slot" id="ad-1" aria-hidden="true">
     <span>advertisement</span>
   </div>
+
+  <section class="lede" aria-labelledby="lede-title">
+    <h2 id="lede-title">Free spot-the-biggest trivia game</h2>
+    <p>Roostr Top Pick is a free daily trivia game: each round shows a line-up of five things and asks you to tap the one with the most — or the least — of a hidden measure. Three quick rounds, a fresh puzzle every midnight, no download and no account.</p>
+    <div class="faq">
+      <details open>
+        <summary>How do you play Top Pick?</summary>
+        <p>Read the measure and the call (most or least), then tap the contestant you think is the answer. There are three rounds, each with a different line-up.</p>
+      </details>
+      <details>
+        <summary>Is Top Pick free?</summary>
+        <p>Yes — completely free in your browser, no sign-up. Your streak and stats stay on your device.</p>
+      </details>
+      <details>
+        <summary>More free games</summary>
+        <p>Roostr also has <a href="index.html">Ranking</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="run.html">Coop Run</a>, <a href="dodge.html">Astro Coop</a> and <a href="memory.html">Memory</a>.</p>
+      </details>
+    </div>
+  </section>
 
   <footer class="colophon">
     <p>A new Top Pick every day · facts are approximate, the order is what counts</p>
