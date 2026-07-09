@@ -11,23 +11,23 @@
   gtag('js', new Date());
   gtag('config', 'G-GQBZ10K1ZY');
 </script>
-<title>Roostr Face-Off — the daily higher-or-lower game</title>
-<meta name="description" content="A free daily puzzle: call higher or lower on a hidden measure four times in a row. New face-off every midnight.">
-<meta property="og:title" content="Roostr Face-Off — the daily higher-or-lower game">
-<meta property="og:description" content="Higher or lower? Four calls on a hidden measure. One face-off a day.">
-<meta property="og:url" content="https://playroostr.com/faceoff.html">
+<title>Roostr Guess the Currency — the daily currency quiz</title>
+<meta name="description" content="A free daily currency quiz: name the country from its money, five rounds of multiple choice. New currencies every midnight.">
+<meta property="og:title" content="Roostr Guess the Currency — the daily currency quiz">
+<meta property="og:description" content="Which country uses this money? Five rounds. One quiz a day.">
+<meta property="og:url" content="https://playroostr.com/currency.html">
 <meta property="og:type" content="website">
 <meta name="robots" content="index, follow">
 <meta property="og:site_name" content="Roostr">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://playroostr.com/og-faceoff.png">
+<meta property="og:image" content="https://playroostr.com/og-currency.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Roostr Face-Off — the daily higher-or-lower game">
-<meta name="twitter:description" content="Higher or lower? Four calls on a hidden measure. One face-off a day.">
-<meta name="twitter:image" content="https://playroostr.com/og-faceoff.png">
-<link rel="canonical" href="https://playroostr.com/faceoff.html">
+<meta name="twitter:title" content="Roostr Guess the Currency — the daily currency quiz">
+<meta name="twitter:description" content="Which country uses this money? Five rounds. One quiz a day.">
+<meta name="twitter:image" content="https://playroostr.com/og-currency.png">
+<link rel="canonical" href="https://playroostr.com/currency.html">
 <meta name="theme-color" content="#f3ead8">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='42' r='30' fill='%23b5402a'/%3E%3Ccircle cx='50' cy='42' r='19' fill='%23f3ead8'/%3E%3Ccircle cx='50' cy='42' r='12' fill='%23c89a3f'/%3E%3Cpath d='M38 64l-8 26 20-12 20 12-8-26z' fill='%23206258'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,12 +38,12 @@
 {
   "@context": "https://schema.org",
   "@type": ["Game", "WebApplication"],
-  "name": "Roostr Face-Off",
-  "alternateName": "Roostr higher or lower",
-  "url": "https://playroostr.com/faceoff.html",
-  "description": "A free daily higher-or-lower game: call whether each challenger is higher or lower on a hidden measure, four times in a row. New face-off every midnight.",
+  "name": "Roostr Guess the Currency",
+  "alternateName": "Roostr daily currency quiz",
+  "url": "https://playroostr.com/currency.html",
+  "description": "A free daily currency quiz: name the country from its money across five rounds of multiple choice. New currencies every midnight.",
   "applicationCategory": "GameApplication",
-  "genre": "Trivia, Puzzle",
+  "genre": "Trivia, Geography, Quiz",
   "operatingSystem": "Any (web browser)",
   "browserRequirements": "Requires JavaScript",
   "inLanguage": "en",
@@ -59,18 +59,18 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How do you play Face-Off?",
+      "name": "How do you play the currency quiz?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Each round shows one value on a hidden measure. Call whether the next contestant is higher or lower. Get all four calls right in a row to win the day."
+        "text": "A banknote shows a currency's name and symbol, and you pick the country it belongs to from four choices. There are five currencies per day, one guess each."
       }
     },
     {
       "@type": "Question",
-      "name": "Is Face-Off free?",
+      "name": "Is the currency quiz free?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes — it is completely free to play in your browser with no sign-up. Your streak and stats are saved privately on your device."
+        "text": "Yes — free to play in the browser with no sign-up. Your streak is saved privately on your device."
       }
     }
   ]
@@ -102,15 +102,15 @@
       <button class="icon-btn icon-btn--gold" id="btn-plus" aria-label="Roostr Plus" hidden>★</button>
     </nav>
   </div>
-  <p class="dateline"><span id="puzzle-no">No. —</span> · <span id="puzzle-date">—</span> · A new face-off at midnight</p>
+  <p class="dateline"><span id="puzzle-no">No. —</span> · <span id="puzzle-date">—</span> · New money at midnight</p>
 </header>
 
 <nav class="game-tabs" aria-label="Choose a game">
   <a class="game-tab" href="index.html">Ranking</a>
-  <a class="game-tab" href="faceoff.html" aria-current="page">Face-Off</a>
+  <a class="game-tab" href="faceoff.html">Face-Off</a>
   <a class="game-tab" href="pick.html">Top Pick</a>
   <a class="game-tab" href="flags.html">Flags</a>
-  <a class="game-tab" href="currency.html">Money</a>
+  <a class="game-tab" href="currency.html" aria-current="page">Money</a>
   <a class="game-tab" href="run.html">Run</a>
   <a class="game-tab" href="dodge.html">Space</a>
   <a class="game-tab" href="memory.html">Memory</a>
@@ -120,39 +120,24 @@
 <main class="bill">
 
   <section class="prompt" aria-live="polite">
-    <p class="prompt-kicker">— Today's face-off —</p>
-    <h2 class="prompt-title" id="prompt-title">…</h2>
-    <p class="prompt-metric">hidden measure: <strong id="prompt-metric">…</strong></p>
+    <p class="prompt-kicker">— Today's money —</p>
+    <h2 class="prompt-title">Guess the Currency</h2>
+    <p class="prompt-metric">Which country uses this money?</p>
     <p class="prompt-rule">
-      <span class="rule-end">Higher or lower?</span>
-      <span class="rule-arrows" aria-hidden="true">⇅</span>
-      <span class="rule-end">Four calls, one run</span>
+      <span class="rule-end">Five notes</span>
+      <span class="rule-arrows" aria-hidden="true">💰</span>
+      <span class="rule-end">One guess each</span>
     </p>
   </section>
 
-  <section class="pen faceoff-pen" aria-label="Today's face-off">
-    <div class="faceoff">
-      <div class="fo-card fo-champ" id="fo-champ">
-        <div class="fo-role">Reigning</div>
-        <b class="fo-name"></b>
-        <span class="fo-value"></span>
-      </div>
-      <div class="fo-vs" aria-hidden="true">vs</div>
-      <div class="fo-card fo-challenger" id="fo-challenger">
-        <div class="fo-role">Challenger</div>
-        <b class="fo-name"></b>
-        <span class="fo-value mystery">?</span>
-      </div>
-    </div>
-    <p class="fo-ask">Is the challenger <b>higher</b> or <em>lower</em> on <span id="fo-metric-inline">the measure</span>?</p>
-    <div class="fo-buttons">
-      <button class="btn btn--higher" id="btn-higher">▲ Higher</button>
-      <button class="btn btn--lower" id="btn-lower">▼ Lower</button>
-    </div>
+  <section class="pen flag-pen" aria-label="Today's currency quiz">
+    <p class="pick-round" aria-live="polite">Round <b id="round-no">1</b> of <b id="round-total">5</b></p>
+    <div class="flag-stage cur-stage" id="cur-stage" aria-label="Mystery banknote"></div>
+    <div class="flag-choices" id="cur-choices"></div>
   </section>
 
   <section class="bench">
-    <div class="attempts" id="attempts" aria-label="Calls"></div>
+    <div class="attempts" id="attempts" aria-label="Rounds"></div>
     <div class="history" id="history" aria-live="polite"></div>
     <button class="coffee-prompt" id="btn-coffee2">
       <span class="coffee-prompt-cup" aria-hidden="true">☕</span>
@@ -162,9 +147,9 @@
 
   <section class="verdict" id="verdict" hidden>
     <div class="verdict-card">
-      <p class="verdict-stamp" id="verdict-stamp">CLEAN SWEEP</p>
+      <p class="verdict-stamp" id="verdict-stamp">MONEYWISE</p>
       <p class="verdict-sub" id="verdict-sub"></p>
-      <ol class="reveal" id="reveal"></ol>
+      <ul class="reveal flag-reveal cur-reveal" id="reveal"></ul>
       <aside class="factbox">
         <p class="factbox-label">Did you know?</p>
         <p id="factbox-text"></p>
@@ -174,36 +159,36 @@
         <button class="btn btn--ghost" id="btn-stats2">My stats</button>
       </div>
       <div class="share-row" id="share-row"></div>
-      <p class="countdown">Next face-off in <b id="countdown">—</b></p>
+      <p class="countdown">New money in <b id="countdown">—</b></p>
     </div>
   </section>
 
-  <!-- AD SLOT — filled by initAds() in js/faceoff.js once ADSENSE_CLIENT is set. -->
+  <!-- AD SLOT — filled by initAds() in js/currency.js once ADSENSE_CLIENT is set. -->
   <div class="ad-slot" id="ad-1" aria-hidden="true">
     <span>advertisement</span>
   </div>
 
   <section class="lede" aria-labelledby="lede-title">
-    <h2 id="lede-title">Free daily higher-or-lower game</h2>
-    <p>Roostr Face-Off is a free daily higher-or-lower game. You see one contestant’s value on a hidden measure, then call whether the next challenger is higher or lower — four times in a row for a clean sweep. A new face-off every midnight, no download and no account.</p>
+    <h2 id="lede-title">Free online currency quiz game</h2>
+    <p>Roostr Guess the Currency is a free daily currency quiz: name the country from its money across five rounds of four-way multiple choice. Learn the yen, the baht, the złoty and the naira — a quick geography warm-up with new currencies every midnight, no download, no account.</p>
     <div class="faq">
       <details open>
-        <summary>How do you play Face-Off?</summary>
-        <p>Each round shows one value on a hidden measure. Call whether the next contestant is higher or lower. Get all four calls right in a row to win the day.</p>
+        <summary>How do you play the currency quiz?</summary>
+        <p>A banknote shows a currency's name and symbol, and you pick the country it belongs to from four choices. There are five currencies per day, one guess each.</p>
       </details>
       <details>
-        <summary>Is Face-Off free?</summary>
-        <p>Yes — it is completely free to play in your browser with no sign-up. Your streak and stats are saved privately on your device.</p>
+        <summary>Is the currency quiz free?</summary>
+        <p>Yes — free to play in the browser with no sign-up. Your streak is saved privately on your device.</p>
       </details>
       <details>
         <summary>More free games</summary>
-        <p>Roostr also has <a href="index.html">Ranking</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="currency.html">Guess the Currency</a>, <a href="run.html">Coop Run</a>, <a href="dodge.html">Astro Coop</a> and <a href="memory.html">Memory</a>.</p>
+        <p>Roostr also has <a href="index.html">Ranking</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="run.html">Coop Run</a>, <a href="dodge.html">Astro Coop</a> and <a href="memory.html">Memory</a>.</p>
       </details>
     </div>
   </section>
 
   <footer class="colophon">
-    <p>A new face-off every day · facts are approximate, the order is what counts</p>
+    <p>New money every day · a friendly geography warm-up</p>
     <p>
       <button class="linklike" id="btn-about">About</button> ·
       <button class="linklike" id="btn-coffee">☕ Buy me a coffee</button>
@@ -220,15 +205,15 @@
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="help-title">How to play</h3>
     <ol class="howto">
-      <li>Five contestants line up. You'll see the <b>reigning</b> card with its value on the <b>hidden measure</b>.</li>
-      <li>For each <b>challenger</b>, call whether it's <b>higher</b> or <b>lower</b> than the reigning card. The challenger then takes the throne.</li>
-      <li>That's <b>four calls</b> in a row. Each gets a ribbon:
-        <span class="chip chip--hit">right call</span>
-        <span class="chip chip--miss">wrong call</span>
+      <li>A banknote appears with a currency's <b>name and symbol</b>. Pick the country it belongs to from the <b>four choices</b>.</li>
+      <li>The right answer lights up straight away:
+        <span class="chip chip--hit">correct</span>
+        <span class="chip chip--miss">missed</span>
       </li>
-      <li>Nail all four for a <b>Clean Sweep</b>. Values shown after each call — expect surprises.</li>
+      <li>That's <b>five currencies</b>, one guess each.</li>
+      <li>Name all five to become <b>Moneywise</b>. A fun fact waits at the finish.</li>
     </ol>
-    <p class="howto-foot">One face-off a day. Streaks are sacred.</p>
+    <p class="howto-foot">One currency quiz a day. Streaks are sacred.</p>
   </div>
 
   <div class="modal" id="modal-stats" hidden role="dialog" aria-modal="true" aria-labelledby="stats-title">
@@ -236,11 +221,11 @@
     <h3 class="modal-title" id="stats-title">Show record</h3>
     <div class="statgrid">
       <div class="stat"><b id="st-played">0</b><span>entered</span></div>
-      <div class="stat"><b id="st-winpct">0%</b><span>swept</span></div>
+      <div class="stat"><b id="st-winpct">0%</b><span>perfect</span></div>
       <div class="stat"><b id="st-streak">0</b><span>streak</span></div>
       <div class="stat"><b id="st-max">0</b><span>best streak</span></div>
     </div>
-    <h4 class="dist-title">Calls correct</h4>
+    <h4 class="dist-title">Currencies named</h4>
     <div class="dist" id="dist"></div>
   </div>
 
@@ -270,7 +255,7 @@
       </svg>
     </p>
     <h3 class="modal-title" id="coffee-title">Buy me a coffee</h3>
-    <p class="coffee-blurb">Roostr is free and made by one person. If a face-off made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
+    <p class="coffee-blurb">Roostr is free and made by one person. If a note made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
     <div class="coffee-buy">
       <div class="coffee-stepper" role="group" aria-label="How many coffees">
         <button type="button" class="step-btn" id="cup-minus" aria-label="One fewer cup">−</button>
@@ -288,17 +273,17 @@
   <div class="modal" id="modal-about" hidden role="dialog" aria-modal="true" aria-labelledby="about-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="about-title">About</h3>
-    <p class="about-text">Roostr Face-Off is a free daily higher-or-lower game. Call the hidden measure four times in a row. Values shown after each round are honest approximations from public reference sources — only their <em>order</em> is used for judging.</p>
+    <p class="about-text">Roostr Guess the Currency is a free daily currency quiz. Five rounds — name the country from its money. Banknotes are drawn from simple geometry and the facts come from public reference sources.</p>
     <p class="about-text">No account needed — your streak lives in your browser.</p>
-    <p class="about-text">Questions, feedback, or a puzzle that looks wrong? Email <a href="mailto:ilan@playroostr.com">ilan@playroostr.com</a>.</p>
+    <p class="about-text">Questions, feedback, or a note that looks wrong? Email <a href="mailto:ilan@playroostr.com">ilan@playroostr.com</a>.</p>
   </div>
 
 </div>
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="js/puzzles.js"></script>
+<script src="js/currencies.js"></script>
 <script src="js/share.js"></script>
-<script src="js/faceoff.js"></script>
+<script src="js/currency.js"></script>
 </body>
 </html>
