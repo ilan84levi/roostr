@@ -111,10 +111,15 @@
   <section class="prompt" aria-live="polite">
     <p class="prompt-kicker">— The arcade —</p>
     <h2 class="prompt-title">Memory</h2>
-    <p class="prompt-metric">Flip the cards and match all eight pairs</p>
+    <p class="prompt-metric">Flip the cards and match every pair</p>
   </section>
 
   <section class="pen mem-pen" aria-label="Memory game">
+    <div class="mem-levels" id="mem-levels" role="group" aria-label="Difficulty">
+      <button type="button" class="mem-level" data-level="easy">Easy</button>
+      <button type="button" class="mem-level" data-level="medium">Medium</button>
+      <button type="button" class="mem-level" data-level="hard">Hard</button>
+    </div>
     <div class="mem-hud">
       <span class="mem-stat">Moves <b id="mem-moves">0</b></span>
       <span class="mem-stat">Time <b id="mem-time">0:00</b></span>
@@ -186,10 +191,10 @@
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="help-title">How to play</h3>
     <ol class="howto">
+      <li>Pick a <b>difficulty</b> — Easy (8 pairs), Medium (12) or Hard (18).</li>
       <li>Tap a card to flip it, then tap a second card.</li>
       <li>If the two pictures <b>match</b>, the pair stays face-up. If not, they flip back — so remember where they were.</li>
-      <li>Clear all <b>eight pairs</b> to win.</li>
-      <li>Try to finish in the <b>fewest moves</b> and the <b>best time</b>. Beat your record and share it.</li>
+      <li>Clear all the pairs in the <b>fewest moves</b> and the <b>best time</b>, then share your record.</li>
     </ol>
     <p class="howto-foot">Sharpen your memory. Play as often as you like.</p>
   </div>
@@ -197,6 +202,7 @@
   <div class="modal" id="modal-stats" hidden role="dialog" aria-modal="true" aria-labelledby="stats-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="stats-title">Memory record</h3>
+    <p class="mem-stat-level"><b id="st-level">Easy</b> difficulty · your bests</p>
     <div class="statgrid statgrid--3">
       <div class="stat"><b id="st-moves">—</b><span>best moves</span></div>
       <div class="stat"><b id="st-time">—</b><span>best time</span></div>

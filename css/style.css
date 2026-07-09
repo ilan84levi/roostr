@@ -1053,6 +1053,47 @@ body.plus .ad-slot { display: none; }
 
 /* ————— Memory (card matching) ————— */
 .mem-pen { padding: 14px 12px; }
+.mem-levels {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin: 0 auto 14px;
+  max-width: 300px;
+}
+.mem-level {
+  flex: 1;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 13.5px;
+  padding: 7px 6px;
+  border: 2px solid var(--ink);
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(var(--shadow), .7);
+  transition: transform .08s, box-shadow .08s, background .2s;
+}
+.mem-level:not(:last-child) { border-right-width: 1px; }
+.mem-level + .mem-level { border-left-width: 1px; }
+.mem-level:first-child { border-radius: 999px 0 0 999px; }
+.mem-level:last-child { border-radius: 0 999px 999px 0; }
+.mem-level:active { transform: translate(2px, 2px); box-shadow: 0 0 0 rgba(var(--shadow), .7); }
+.mem-level.active {
+  background: var(--teal);
+  color: var(--card);
+  text-shadow: 0 1px 0 rgba(var(--shadow), .35);
+  cursor: default;
+}
+.mem-stat-level {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+}
+.mem-stat-level b { color: var(--teal); font-family: var(--font-display); font-style: italic; }
 .mem-hud {
   display: flex;
   align-items: center;
@@ -1089,6 +1130,8 @@ body.plus .ad-slot { display: none; }
   max-width: 400px;
   margin: 0 auto;
 }
+.mem-grid--dense { max-width: 480px; gap: 6px; }
+.mem-grid--dense .mem-cover svg { width: 60%; height: 60%; }
 .mem-card {
   aspect-ratio: 3 / 4;
   border: 0;
