@@ -52,6 +52,30 @@
   "isPartOf": { "@type": "WebSite", "name": "Roostr", "url": "https://playroostr.com/" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you play Astro Coop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Steer the ship up and down with the mouse, your finger, or the up and down arrows, and avoid the asteroids flying in. Distance is your score and it gets faster over time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Astro Coop free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — free to play in the browser with no sign-up. Your best flight is saved on your device."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -88,6 +112,7 @@
   <a class="game-tab" href="flags.html">Flags</a>
   <a class="game-tab" href="run.html">Run</a>
   <a class="game-tab" href="dodge.html" aria-current="page">Space</a>
+  <a class="game-tab" href="memory.html">Memory</a>
 </nav>
 <script>/* scroll the active game tab into view on small screens */addEventListener("load",function(){var a=document.querySelector(".game-tabs .game-tab[aria-current]");if(a&&a.scrollIntoView)a.scrollIntoView({inline:"center",block:"nearest"});});</script>
 
@@ -139,6 +164,25 @@
   <div class="ad-slot" id="ad-1" aria-hidden="true">
     <span>advertisement</span>
   </div>
+
+  <section class="lede" aria-labelledby="lede-title">
+    <h2 id="lede-title">Free spaceship asteroid-dodging game</h2>
+    <p>Astro Coop is a free browser arcade game: fly a spaceship through a starfield and dodge the asteroids for as long as you can. Steer with your mouse, finger, or the arrow keys — no download, no account.</p>
+    <div class="faq">
+      <details open>
+        <summary>How do you play Astro Coop?</summary>
+        <p>Steer the ship up and down with the mouse, your finger, or the up and down arrows, and avoid the asteroids flying in. Distance is your score and it gets faster over time.</p>
+      </details>
+      <details>
+        <summary>Is Astro Coop free?</summary>
+        <p>Yes — free to play in the browser with no sign-up. Your best flight is saved on your device.</p>
+      </details>
+      <details>
+        <summary>More free games</summary>
+        <p>Roostr also has <a href="index.html">Ranking</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="run.html">Coop Run</a>, <a href="dodge.html">Astro Coop</a> and <a href="memory.html">Memory</a>.</p>
+      </details>
+    </div>
+  </section>
 
   <footer class="colophon">
     <p>A space dodger from the Roostr coop · free, no download</p>

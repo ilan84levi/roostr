@@ -33,7 +33,7 @@ const CHROME = findChrome();
 /* —— brand palette —— */
 const C = {
   paper: "#f3ead8", paperDeep: "#e7dcc2", card: "#fbf6ea", ink: "#2a2118",
-  inkSoft: "#5b4f3f", red: "#b5402a", teal: "#20655a", gold: "#c89a3f", goldPale: "#ecd9a8",
+  inkSoft: "#5b4f3f", red: "#b5402a", redDeep: "#93311f", teal: "#20655a", gold: "#c89a3f", goldPale: "#ecd9a8",
   rock: "#9a8f7d", rockDeep: "#6f6757", rockDark: "#564f42"
 };
 
@@ -132,6 +132,25 @@ function motifDodge() {
   return '<div style="width:382px;height:266px;border:3px solid ' + C.ink + ';border-radius:8px;box-shadow:4px 6px 0 rgba(42,33,24,.28);overflow:hidden;display:flex;align-items:center;justify-content:center;transform:rotate(-1deg)">' + svg + '</div>';
 }
 
+function motifMemory() {
+  var cover = '<svg viewBox="0 0 100 100" style="width:60%;height:60%">' +
+    '<circle cx="50" cy="50" r="30" fill="' + C.gold + '"/>' +
+    '<circle cx="50" cy="50" r="21" fill="' + C.red + '"/>' +
+    '<text x="50" y="63" text-anchor="middle" font-family="Georgia,serif" font-weight="900" font-size="34" fill="' + C.paper + '">R</text></svg>';
+  function flagOf(n) { var f = FLAGS.find(function (x) { return x.name === n; }); return f ? f.svg : ""; }
+  function mcard(inner, faceBg) {
+    var bg = faceBg ? C.card : ('linear-gradient(135deg,' + C.red + ',' + C.redDeep + ')');
+    var pad = faceBg ? 'padding:8px' : '';
+    return '<div style="width:118px;aspect-ratio:3/4;border:3px solid ' + C.ink + ';border-radius:8px;background:' + bg +
+      ';box-shadow:3px 4px 0 rgba(42,33,24,.28);display:flex;align-items:center;justify-content:center;overflow:hidden;' + pad + '">' +
+      (faceBg ? '<div style="width:100%;line-height:0;border:1.5px solid ' + C.ink + ';border-radius:2px;overflow:hidden">' + inner + '</div>' : inner) + '</div>';
+  }
+  var cells =
+    mcard(cover) + mcard(flagOf("Japan"), true) + mcard(cover) +
+    mcard(flagOf("Sweden"), true) + mcard(cover) + mcard(flagOf("Germany"), true);
+  return '<div style="display:grid;grid-template-columns:repeat(3,118px);gap:14px;transform:rotate(-2deg)">' + cells + '</div>';
+}
+
 /* —— card template —— */
 function card(cfg) {
   return `<!doctype html><html><head><meta charset="utf-8"><style>
@@ -180,7 +199,9 @@ const GAMES = [
   { out: "og-run.png", kicker: "The free rooster runner", title: "Coop Run",
     tag: "Jump the rooster over hay bales and fences. How far can you run?", motif: motifRun() },
   { out: "og-dodge.png", kicker: "The free space dodger", title: "Astro Coop",
-    tag: "Fly a spaceship and dodge the asteroids. How far can you get?", motif: motifDodge() }
+    tag: "Fly a spaceship and dodge the asteroids. How far can you get?", motif: motifDodge() },
+  { out: "og-memory.png", kicker: "The free card matching game", title: "Memory",
+    tag: "Flip the cards and match the pairs in as few moves as you can.", motif: motifMemory() }
 ];
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "roostr-og-"));

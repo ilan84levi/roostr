@@ -52,6 +52,30 @@
   "isPartOf": { "@type": "WebSite", "name": "Roostr", "url": "https://playroostr.com/" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you play the flag quiz?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A flag appears and you pick the country it belongs to from four choices. There are five flags per day, one guess each."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the flag quiz free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — free to play in the browser with no sign-up. Your streak is saved privately on your device."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -88,6 +112,7 @@
   <a class="game-tab" href="flags.html" aria-current="page">Flags</a>
   <a class="game-tab" href="run.html">Run</a>
   <a class="game-tab" href="dodge.html">Space</a>
+  <a class="game-tab" href="memory.html">Memory</a>
 </nav>
 <script>/* scroll the active game tab into view on small screens */addEventListener("load",function(){var a=document.querySelector(".game-tabs .game-tab[aria-current]");if(a&&a.scrollIntoView)a.scrollIntoView({inline:"center",block:"nearest"});});</script>
 
@@ -141,6 +166,25 @@
   <div class="ad-slot" id="ad-1" aria-hidden="true">
     <span>advertisement</span>
   </div>
+
+  <section class="lede" aria-labelledby="lede-title">
+    <h2 id="lede-title">Free online flag quiz game</h2>
+    <p>Roostr Guess the Flag is a free daily flag quiz: name the country from its flag across five rounds of four-way multiple choice. A quick geography warm-up with new flags every midnight — no download, no account.</p>
+    <div class="faq">
+      <details open>
+        <summary>How do you play the flag quiz?</summary>
+        <p>A flag appears and you pick the country it belongs to from four choices. There are five flags per day, one guess each.</p>
+      </details>
+      <details>
+        <summary>Is the flag quiz free?</summary>
+        <p>Yes — free to play in the browser with no sign-up. Your streak is saved privately on your device.</p>
+      </details>
+      <details>
+        <summary>More free games</summary>
+        <p>Roostr also has <a href="index.html">Ranking</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="run.html">Coop Run</a>, <a href="dodge.html">Astro Coop</a> and <a href="memory.html">Memory</a>.</p>
+      </details>
+    </div>
+  </section>
 
   <footer class="colophon">
     <p>New flags every day · a friendly geography warm-up</p>
