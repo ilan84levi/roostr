@@ -24,7 +24,8 @@ Seven games share one design system — four daily puzzles and three arcade game
 - **Astro Coop** (`dodge.html`) — a canvas space dodger: fly a spaceship through a
   starfield and dodge the asteroids. Not daily — play any time.
 - **Memory** (`memory.html`) — a classic flip-and-match card game using the flag
-  art; clear all pairs in as few moves as you can. Not daily — play any time.
+  art; clear all pairs in as few moves as you can. Easy / Medium / Hard
+  (4×4 / 4×6 / 6×6), per-difficulty best scores. Not daily — play any time.
 
 The first three share one puzzle pool; the flag quiz and the two arcade games
 each have their own. A segmented switcher in the header jumps between all seven

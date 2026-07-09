@@ -1,11 +1,17 @@
 /* Roostr Memory — a classic flip-and-match card game. No dependencies, no backend.
-   Uses the FLAGS dataset as card faces. Play as often as you like; fewest moves
-   and best time are saved in localStorage under the "mem-" namespace. */
+   Uses the FLAGS dataset as card faces. Three difficulties; fewest moves and best
+   time per difficulty are saved in localStorage under the "mem-" namespace. */
 (function () {
   "use strict";
 
   /* —— configuration —— */
-  var PAIRS = 8;                               // 8 pairs = a 4×4 board
+  var LEVELS = {
+    easy:   { pairs: 8,  cols: 4, label: "Easy" },
+    medium: { pairs: 12, cols: 4, label: "Medium" },
+    hard:   { pairs: 18, cols: 6, label: "Hard" }
+  };
+  var ORDER = ["easy", "medium", "hard"];
+
   var SITE_URL = "playroostr.com/memory";
   var PAYMENT_LINK = "";
   var PAYPAL_EMAIL = "ilan@playroostr.com";
@@ -13,31 +19,34 @@
   var ADSENSE_CLIENT = "";
   var ADSENSE_SLOT = "";
 
-  /* a visually distinct set of flags for the card faces */
-  var FACE_NAMES = ["Japan", "Sweden", "Greece", "Germany", "United Kingdom",
-                    "United States", "Switzerland", "Ukraine", "Italy", "Bangladesh",
-                    "France", "Poland"];
+  /* preferred, visually-distinct flags first; the rest of the dataset fills in */
+  var PREFERRED = ["Japan", "Sweden", "Greece", "Germany", "United Kingdom", "United States",
+    "Switzerland", "Ukraine", "Italy", "Bangladesh", "France", "Poland",
+    "Ireland", "Netherlands", "Denmark", "Finland", "Norway", "Nigeria"];
 
   var $ = function (id) { return document.getElementById(id); };
   function load(key, fb) { try { var v = JSON.parse(localStorage.getItem(key)); return v == null ? fb : v; } catch (e) { return fb; } }
   function save(key, v) { try { localStorage.setItem(key, JSON.stringify(v)); } catch (e) { } }
 
-  var stats = load("mem-stats", { plays: 0, bestMoves: 0, bestTimeMs: 0 });
+  var stats = load("mem-stats", { plays: 0, best: {} });
+  if (!stats.best || typeof stats.best !== "object") stats.best = {};
+  var level = load("mem-level", "easy");
+  if (!LEVELS[level]) level = "easy";
   var isPlus = localStorage.getItem("po-plus") === "1";
   if (isPlus) document.body.classList.add("plus");
 
-  /* pick PAIRS distinct flag faces that exist in the dataset */
-  var FACES = FACE_NAMES.map(function (n) {
-    for (var i = 0; i < FLAGS.length; i++) if (FLAGS[i].name === n) return FLAGS[i];
-    return null;
-  }).filter(Boolean).slice(0, PAIRS);
-  while (FACES.length < PAIRS && FACES.length < FLAGS.length) FACES.push(FLAGS[FACES.length]);
+  /* build the face pool (distinct flags), preferred names first */
+  var POOL = [];
+  PREFERRED.forEach(function (n) {
+    for (var i = 0; i < FLAGS.length; i++) if (FLAGS[i].name === n && POOL.indexOf(FLAGS[i]) < 0) { POOL.push(FLAGS[i]); break; }
+  });
+  FLAGS.forEach(function (f) { if (POOL.indexOf(f) < 0) POOL.push(f); });
 
   /* —— DOM —— */
   var gridEl = $("mem-grid");
 
   /* —— game state —— */
-  var deck, flipped, matchedCount, moves, lock, startMs, timer, playing;
+  var PAIRS, deck, faces, flipped, matchedCount, moves, lock, startMs, timer, playing;
 
   function shuffle(arr) {
     for (var i = arr.length - 1; i > 0; i--) {
@@ -49,6 +58,9 @@
 
   function newGame() {
     stopTimer();
+    var L = LEVELS[level];
+    PAIRS = Math.min(L.pairs, POOL.length);
+    faces = POOL.slice(0, PAIRS);
     deck = [];
     for (var f = 0; f < PAIRS; f++) { deck.push(f); deck.push(f); }
     shuffle(deck);
@@ -59,7 +71,10 @@
     startMs = 0;
     playing = true;
     $("verdict").hidden = true;
+    gridEl.style.gridTemplateColumns = "repeat(" + L.cols + ", 1fr)";
+    gridEl.className = "mem-grid" + (L.cols >= 6 ? " mem-grid--dense" : "");
     updateHud();
+    updateLevelButtons();
     render();
   }
 
@@ -80,7 +95,7 @@
               '<text x="50" y="63" text-anchor="middle" font-family="Georgia,serif" font-weight="900" font-size="34" fill="var(--paper)">R</text>' +
             '</svg>' +
           '</span>' +
-          '<span class="mem-face">' + FACES[faceIdx].svg + '</span>' +
+          '<span class="mem-face">' + faces[faceIdx].svg + '</span>' +
         '</span>';
       btn.addEventListener("click", function () { flip(pos, btn); });
       gridEl.appendChild(btn);
@@ -117,6 +132,22 @@
     }
   }
 
+  /* —— difficulty —— */
+  function setLevel(next) {
+    if (!LEVELS[next]) return;
+    level = next;
+    save("mem-level", level);
+    newGame();
+  }
+  function updateLevelButtons() {
+    var btns = document.querySelectorAll(".mem-level");
+    btns.forEach(function (b) {
+      var on = b.dataset.level === level;
+      b.classList.toggle("active", on);
+      if (on) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current");
+    });
+  }
+
   /* —— timer —— */
   function startTimer() {
     startMs = now();
@@ -142,14 +173,16 @@
     stopTimer();
     var timeMs = elapsedMs();
     stats.plays++;
+    var b = stats.best[level] || { moves: 0, timeMs: 0 };
     var pbMoves = false, pbTime = false;
-    if (!stats.bestMoves || moves < stats.bestMoves) { stats.bestMoves = moves; pbMoves = true; }
-    if (!stats.bestTimeMs || timeMs < stats.bestTimeMs) { stats.bestTimeMs = timeMs; pbTime = true; }
+    if (!b.moves || moves < b.moves) { b.moves = moves; pbMoves = true; }
+    if (!b.timeMs || timeMs < b.timeMs) { b.timeMs = timeMs; pbTime = true; }
+    stats.best[level] = b;
     save("mem-stats", stats);
 
     $("mem-final-moves").textContent = moves;
     $("mem-final-time").textContent = fmt(timeMs);
-    $("mem-best").textContent = "best: " + stats.bestMoves + " moves · " + fmt(stats.bestTimeMs);
+    $("mem-best").textContent = "best (" + LEVELS[level].label + "): " + b.moves + " moves · " + fmt(b.timeMs);
     $("mem-newbest").hidden = !(pbMoves || pbTime);
     if (window.RoostrShare) RoostrShare.render(document.getElementById("share-row"), shareText());
     $("verdict").hidden = false;
@@ -157,8 +190,8 @@
   }
 
   function shareText() {
-    return "Roostr Memory 🃏 — matched all " + PAIRS + " pairs in " + moves +
-      " moves (" + fmt(elapsedMs()) + ")! Beat me?\n" + SITE_URL;
+    return "Roostr Memory 🃏 (" + LEVELS[level].label + ") — matched all " + PAIRS +
+      " pairs in " + moves + " moves (" + fmt(elapsedMs()) + ")! Beat me?\n" + SITE_URL;
   }
   function share() {
     var text = shareText();
@@ -171,11 +204,13 @@
     else window.prompt("Copy your result:", text);
   }
 
-  /* —— stats modal —— */
+  /* —— stats modal (current difficulty) —— */
   function renderStats() {
+    var b = stats.best[level] || {};
+    $("st-level").textContent = LEVELS[level].label;
+    $("st-moves").textContent = b.moves || "—";
+    $("st-time").textContent = b.timeMs ? fmt(b.timeMs) : "—";
     $("st-plays").textContent = stats.plays;
-    $("st-moves").textContent = stats.bestMoves || "—";
-    $("st-time").textContent = stats.bestTimeMs ? fmt(stats.bestTimeMs) : "—";
   }
 
   /* —— coffee tip jar —— */
@@ -248,6 +283,9 @@
   $("btn-share").addEventListener("click", share);
   $("mem-new").addEventListener("click", newGame);
   $("btn-again").addEventListener("click", newGame);
+  document.querySelectorAll(".mem-level").forEach(function (b) {
+    b.addEventListener("click", function () { setLevel(b.dataset.level); });
+  });
 
   /* —— toast —— */
   var toastTimer = null;
