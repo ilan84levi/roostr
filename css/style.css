@@ -1227,6 +1227,31 @@ body.plus .ad-slot { display: none; }
 .dodge-stage .run-hud { color: #aeb9c7; text-shadow: 0 1px 2px rgba(0,0,0,.5); }
 .dodge-stage .run-hud #run-dist { color: #fff; }
 
+/* Coop Racer — farm-road variant of the run stage */
+.race-stage { background: #7d9a58; }
+.race-stage canvas { touch-action: none; }
+.race-stage .run-hud { color: #f3ead8; text-shadow: 0 1px 2px rgba(0,0,0,.45); }
+.race-stage .run-hud #run-dist { color: #fff; }
+.race-boost {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: italic;
+  font-size: 15px;
+  letter-spacing: .08em;
+  color: var(--card);
+  background: var(--red);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 4px 14px;
+  pointer-events: none;
+  animation: bob .5s ease-in-out infinite;
+  z-index: 2;
+}
+
 /* ————— home-page SEO content (About / FAQ) ————— */
 .lede {
   margin-top: 30px;

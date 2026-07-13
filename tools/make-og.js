@@ -152,6 +152,42 @@ function motifMemory() {
   return '<div style="display:grid;grid-template-columns:repeat(3,118px);gap:14px;transform:rotate(-2deg)">' + cells + '</div>';
 }
 
+function motifRace() {
+  var grass = "#7d9a58", road = "#6f6a60";
+  function rooster(cx, cy, flip) {
+    return '<g transform="translate(' + cx + ',' + cy + ') scale(' + (flip ? -1.6 : 1.6) + ',1.6)">' +
+      '<ellipse cx="0" cy="13" rx="9" ry="3" fill="rgba(42,33,24,.25)"/>' +
+      '<path d="M-8 -2 Q-19 -12 -13 2 z" fill="' + C.teal + '"/>' +
+      '<ellipse cx="0" cy="0" rx="10" ry="7.5" fill="#8a5a33" stroke="' + C.ink + '" stroke-width="1.6"/>' +
+      '<ellipse cx="-1" cy="0.5" rx="5.5" ry="4" fill="#a8743f" transform="rotate(-20)"/>' +
+      '<circle cx="9" cy="-6" r="4.6" fill="#8a5a33" stroke="' + C.ink + '" stroke-width="1.6"/>' +
+      '<circle cx="7.6" cy="-10.4" r="1.8" fill="#c0392b"/><circle cx="9.8" cy="-11.2" r="1.8" fill="#c0392b"/>' +
+      '<path d="M13 -6.6 L17.6 -5.4 L13 -4.2 z" fill="' + C.gold + '"/>' +
+      '<circle cx="10" cy="-6.8" r="0.9" fill="' + C.ink + '"/>' +
+      '<path d="M-2 7 L-3 11 M3 7 L4 11" stroke="' + C.gold + '" stroke-width="2" stroke-linecap="round"/>' +
+      '</g>';
+  }
+  function car(cx, cy) {
+    return '<g transform="translate(' + cx + ',' + cy + ') scale(2)">' +
+      '<g fill="' + C.ink + '"><rect x="-14" y="-18" width="6" height="12" rx="2"/><rect x="8" y="-18" width="6" height="12" rx="2"/><rect x="-14" y="6" width="6" height="12" rx="2"/><rect x="8" y="6" width="6" height="12" rx="2"/></g>' +
+      '<path d="M-9 -20 Q0 -24 9 -20 Q12 -8 10.5 12 Q9 21 0 21 Q-9 21 -10.5 12 Q-12 -8 -9 -20 z" fill="' + C.red + '" stroke="' + C.ink + '" stroke-width="2"/>' +
+      '<rect x="-2.2" y="-22" width="4.4" height="43" fill="' + C.gold + '"/>' +
+      '<rect x="-7.5" y="-12" width="15" height="8" rx="2.5" fill="' + C.teal + '"/>' +
+      '<rect x="-7" y="9" width="14" height="6" rx="2.5" fill="' + C.teal + '"/>' +
+      '</g>';
+  }
+  var dashes = '';
+  for (var y = 8; y < 250; y += 52) dashes += '<rect x="118" y="' + y + '" width="5" height="26" fill="' + C.paper + '"/><rect x="238" y="' + y + '" width="5" height="26" fill="' + C.paper + '"/>';
+  var svg = '<svg viewBox="0 0 360 250" width="360" height="250">' +
+    '<rect width="360" height="250" fill="' + grass + '"/>' +
+    '<rect x="40" y="0" width="280" height="250" fill="' + road + '"/>' +
+    '<rect x="47" y="0" width="4" height="250" fill="' + C.goldPale + '"/><rect x="309" y="0" width="4" height="250" fill="' + C.goldPale + '"/>' +
+    dashes +
+    rooster(120, 78, false) + rooster(255, 176, true) +
+    car(180, 190) + '</svg>';
+  return '<div style="width:382px;height:266px;border:3px solid ' + C.ink + ';border-radius:8px;box-shadow:4px 6px 0 rgba(42,33,24,.28);overflow:hidden;display:flex;align-items:center;justify-content:center;transform:rotate(-1deg)">' + svg + '</div>';
+}
+
 function motifCurrency() {
   var want = ["Japan", "India", "United Kingdom"];
   var picks = want.map(function (n) { return CURRENCIES.find(function (c) { return c.name === n; }); }).filter(Boolean);
@@ -213,6 +249,8 @@ const GAMES = [
     tag: "Jump the rooster over hay bales and fences. How far can you run?", motif: motifRun() },
   { out: "og-dodge.png", kicker: "The free space dodger", title: "Astro Coop",
     tag: "Fly a spaceship and dodge the asteroids. How far can you get?", motif: motifDodge() },
+  { out: "og-race.png", kicker: "The free rooster-dodging racer", title: "Coop Racer",
+    tag: "Two thumbs to steer, tilt to boost — mind the roosters on the road.", motif: motifRace() },
   { out: "og-memory.png", kicker: "The free card matching game", title: "Memory",
     tag: "Flip the cards and match the pairs in as few moves as you can.", motif: motifMemory() }
 ];
