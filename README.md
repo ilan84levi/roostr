@@ -9,7 +9,7 @@ people say *"wait, what?"* (a blue whale's tongue outweighs a family car;
 Nintendo is older than the zipper's patent holder; Antarctica is the world's
 largest desert).
 
-Eight games share one design system — five daily puzzles and three arcade games:
+Nine games share one design system — five daily puzzles and four arcade games:
 
 - **Ranking** (`index.html`) — drag five things into order by the hidden measure.
 - **Face-Off** (`faceoff.html`) — call *higher or lower* on the hidden measure,
@@ -27,13 +27,16 @@ Eight games share one design system — five daily puzzles and three arcade game
   bales and fences, chasing a distance record. Not daily — play any time.
 - **Astro Coop** (`dodge.html`) — a canvas space dodger: fly a spaceship through a
   starfield and dodge the asteroids. Not daily — play any time.
+- **Coop Racer** (`race.html`) — a canvas top-down racer: steer with two thumbs
+  (or ← →), tilt the phone toward upright to boost, and dodge the roosters
+  hopping onto the road. Not daily — play any time.
 - **Memory** (`memory.html`) — a classic flip-and-match card game using the flag
   art; clear all pairs in as few moves as you can. Easy / Medium / Hard
   (4×4 / 4×6 / 6×6), per-difficulty best scores. Not daily — play any time.
 
 The first three share one puzzle pool; the flag quiz, the currency quiz and the
-two arcade games each have their own. A segmented switcher in the header jumps
-between all eight (it scrolls horizontally on small screens).
+arcade games each have their own. A segmented switcher in the header jumps
+between all nine (it scrolls horizontally on small screens).
 
 ## Play it locally
 
@@ -48,6 +51,7 @@ python -m http.server 8000
 # → http://localhost:8000/currency.html (Guess the Currency)
 # → http://localhost:8000/run.html      (Coop Run)
 # → http://localhost:8000/dodge.html    (Astro Coop)
+# → http://localhost:8000/race.html     (Coop Racer)
 # → http://localhost:8000/memory.html   (Memory)
 ```
 
@@ -61,6 +65,7 @@ flags.html         the Guess the Flag quiz
 currency.html      the Guess the Currency quiz
 run.html           the Coop Run arcade runner
 dodge.html         the Astro Coop space dodger
+race.html          the Coop Racer rooster-dodging racer
 memory.html        the Memory card-matching game
 privacy.html       privacy policy (required for AdSense)
 robots.txt         allows all crawlers, points to the sitemap
@@ -77,6 +82,8 @@ js/currencies.js   36 world currencies as SVG banknotes (country, currency, regi
 js/currency.js     Guess the Currency engine — same patterns, "gc-" localStorage namespace
 js/run.js          Coop Run engine — canvas loop, physics, "cr-" localStorage namespace
 js/dodge.js        Astro Coop engine — canvas loop, "sd-" localStorage namespace
+js/race.js         Coop Racer engine — canvas loop, thumb steering + tilt boost,
+                   "rc-" localStorage namespace
 js/memory.js       Memory engine — flip/match, "mem-" localStorage namespace
 js/share.js        shared one-tap share row (WhatsApp/X/Telegram/Copy) on results
 og-*.png           per-game social share cards (1200×630)
@@ -90,13 +97,14 @@ The puzzle games pick with a different daily offset so they rarely overlap on th
 same day. Every page carries Open Graph/Twitter cards (`og:site_name`,
 `og:locale`), a canonical URL, an explicit `robots` directive, and schema.org
 JSON-LD (`Game`/`WebApplication`). The home page also emits a `WebSite`, an
-`ItemList` of all eight games, and a `FAQPage` backed by a visible About/FAQ
+`ItemList` of all nine games, and a `FAQPage` backed by a visible About/FAQ
 section — real crawlable text for organic search.
 
 ## Share images
 
 Each game has its own 1200×630 card (`og-ranking.png`, `og-faceoff.png`,
-`og-pick.png`, `og-flags.png`, `og-currency.png`, `og-run.png`, `og-dodge.png`, `og-memory.png`) referenced from that
+`og-pick.png`, `og-flags.png`, `og-currency.png`, `og-run.png`, `og-dodge.png`,
+`og-race.png`, `og-memory.png`) referenced from that
 page's `og:image` / `twitter:image`. They're generated from HTML templates with
 headless Chromium — no design tool needed:
 

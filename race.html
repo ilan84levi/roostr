@@ -11,23 +11,23 @@
   gtag('js', new Date());
   gtag('config', 'G-GQBZ10K1ZY');
 </script>
-<title>Roostr Guess the Currency — the daily currency quiz</title>
-<meta name="description" content="A free daily currency quiz: name the country from its money, five rounds of multiple choice. New currencies every midnight.">
-<meta property="og:title" content="Roostr Guess the Currency — the daily currency quiz">
-<meta property="og:description" content="Which country uses this money? Five rounds. One quiz a day.">
-<meta property="og:url" content="https://playroostr.com/currency.html">
-<meta property="og:type" content="website">
+<title>Roostr Coop Racer — free car racing game, dodge the roosters</title>
+<meta name="description" content="A free arcade racing game: steer with two thumbs, tilt your phone to boost, and dodge the roosters hopping onto the road. Play free in your browser.">
 <meta name="robots" content="index, follow">
 <meta property="og:site_name" content="Roostr">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://playroostr.com/og-currency.png">
+<meta property="og:title" content="Roostr Coop Racer — free car racing game, dodge the roosters">
+<meta property="og:description" content="Two thumbs to steer, tilt to boost — dodge the roosters on the road. How far can you race?">
+<meta property="og:url" content="https://playroostr.com/race.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://playroostr.com/og-race.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Roostr Guess the Currency — the daily currency quiz">
-<meta name="twitter:description" content="Which country uses this money? Five rounds. One quiz a day.">
-<meta name="twitter:image" content="https://playroostr.com/og-currency.png">
-<link rel="canonical" href="https://playroostr.com/currency.html">
+<meta name="twitter:title" content="Roostr Coop Racer — free car racing game, dodge the roosters">
+<meta name="twitter:description" content="Two thumbs to steer, tilt to boost — dodge the roosters on the road. How far can you race?">
+<meta name="twitter:image" content="https://playroostr.com/og-race.png">
+<link rel="canonical" href="https://playroostr.com/race.html">
 <meta name="theme-color" content="#f3ead8">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='42' r='30' fill='%23b5402a'/%3E%3Ccircle cx='50' cy='42' r='19' fill='%23f3ead8'/%3E%3Ccircle cx='50' cy='42' r='12' fill='%23c89a3f'/%3E%3Cpath d='M38 64l-8 26 20-12 20 12-8-26z' fill='%23206258'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,12 +38,12 @@
 {
   "@context": "https://schema.org",
   "@type": ["Game", "WebApplication"],
-  "name": "Roostr Guess the Currency",
-  "alternateName": "Roostr daily currency quiz",
-  "url": "https://playroostr.com/currency.html",
-  "description": "A free daily currency quiz: name the country from its money across five rounds of multiple choice. New currencies every midnight.",
+  "name": "Roostr Coop Racer",
+  "alternateName": "Roostr rooster-dodging racing game",
+  "url": "https://playroostr.com/race.html",
+  "description": "A free browser racing game: steer with two thumbs, tilt your phone to boost, and dodge the roosters hopping onto the road. No download, no account.",
   "applicationCategory": "GameApplication",
-  "genre": "Trivia, Geography, Quiz",
+  "genre": "Arcade, Racing",
   "operatingSystem": "Any (web browser)",
   "browserRequirements": "Requires JavaScript",
   "inLanguage": "en",
@@ -59,18 +59,18 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How do you play the currency quiz?",
+      "name": "How do you play Coop Racer?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A banknote shows a currency's name and symbol, and you pick the country it belongs to from four choices. There are five currencies per day, one guess each."
+        "text": "Hold your left or right thumb on the screen to steer the car (or use the arrow keys), and dodge the roosters hopping onto the road. Tilt your phone toward upright — or hold the up arrow — to hit the boost."
       }
     },
     {
       "@type": "Question",
-      "name": "Is the currency quiz free?",
+      "name": "Is Coop Racer free?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes — free to play in the browser with no sign-up. Your streak is saved privately on your device."
+        "text": "Yes — free to play in the browser with no sign-up. Your best race is saved on your device."
       }
     }
   ]
@@ -102,7 +102,7 @@
       <button class="icon-btn icon-btn--gold" id="btn-plus" aria-label="Roostr Plus" hidden>★</button>
     </nav>
   </div>
-  <p class="dateline"><span id="puzzle-no">No. —</span> · <span id="puzzle-date">—</span> · New money at midnight</p>
+  <p class="dateline"><span id="puzzle-no">The arcade</span> · Dodge the roosters on the road</p>
 </header>
 
 <nav class="game-tabs" aria-label="Choose a game">
@@ -110,10 +110,10 @@
   <a class="game-tab" href="faceoff.html">Face-Off</a>
   <a class="game-tab" href="pick.html">Top Pick</a>
   <a class="game-tab" href="flags.html">Flags</a>
-  <a class="game-tab" href="currency.html" aria-current="page">Money</a>
+  <a class="game-tab" href="currency.html">Money</a>
   <a class="game-tab" href="run.html">Run</a>
   <a class="game-tab" href="dodge.html">Space</a>
-  <a class="game-tab" href="race.html">Race</a>
+  <a class="game-tab" href="race.html" aria-current="page">Race</a>
   <a class="game-tab" href="memory.html">Memory</a>
 </nav>
 <script>/* scroll the active game tab into view on small screens */addEventListener("load",function(){var a=document.querySelector(".game-tabs .game-tab[aria-current]");if(a&&a.scrollIntoView)a.scrollIntoView({inline:"center",block:"nearest"});});</script>
@@ -121,75 +121,78 @@
 <main class="bill">
 
   <section class="prompt" aria-live="polite">
-    <p class="prompt-kicker">— Today's money —</p>
-    <h2 class="prompt-title">Guess the Currency</h2>
-    <p class="prompt-metric">Which country uses this money?</p>
-    <p class="prompt-rule">
-      <span class="rule-end">Five notes</span>
-      <span class="rule-arrows" aria-hidden="true">💰</span>
-      <span class="rule-end">One guess each</span>
-    </p>
+    <p class="prompt-kicker">— The arcade —</p>
+    <h2 class="prompt-title">Coop Racer</h2>
+    <p class="prompt-metric">Two thumbs to steer · tilt to boost · dodge the roosters</p>
   </section>
 
-  <section class="pen flag-pen" aria-label="Today's currency quiz">
-    <p class="pick-round" aria-live="polite">Round <b id="round-no">1</b> of <b id="round-total">5</b></p>
-    <div class="flag-stage cur-stage" id="cur-stage" aria-label="Mystery banknote"></div>
-    <div class="flag-choices" id="cur-choices"></div>
+  <section class="pen run-pen" aria-label="Coop Racer game">
+    <div class="run-stage race-stage" id="run-stage">
+      <div class="run-hud">
+        <span id="run-hi">best 0 m</span>
+        <span id="run-dist">0 m</span>
+      </div>
+      <p class="race-boost" id="run-boost" hidden>🔥 BOOST</p>
+      <canvas id="run-canvas" aria-label="Coop Racer playfield"></canvas>
+
+      <div class="run-overlay" id="run-start">
+        <p class="run-big">Coop Racer</p>
+        <p class="run-sub">Hold a <b>thumb</b> on the left or right half to steer<br>(or <b>← →</b> on a keyboard). Dodge the roosters!<br>Tilt your phone <b>upright</b> — or hold <b>↑</b> — to BOOST.</p>
+        <p class="run-cta">▶ Tap to race</p>
+      </div>
+
+      <div class="run-overlay" id="run-over" hidden>
+        <p class="run-stamp">FEATHERS!</p>
+        <p class="run-result">You raced <b id="ro-score">0</b> m</p>
+        <p class="run-best">best <b id="ro-best">0</b> m</p>
+        <p class="run-newbest" id="ro-newbest" hidden>★ New best race! ★</p>
+        <div class="run-actions">
+          <button class="btn btn--judge" id="btn-retry">Race again</button>
+          <button class="btn btn--share" id="btn-share">Share</button>
+        </div>
+        <div class="share-row" id="share-row"></div>
+      </div>
+    </div>
+    <p class="run-hint">Thumbs / ← → to steer · tilt upright or hold ↑ to boost · the road gets faster</p>
   </section>
 
   <section class="bench">
-    <div class="attempts" id="attempts" aria-label="Rounds"></div>
-    <div class="history" id="history" aria-live="polite"></div>
     <button class="coffee-prompt" id="btn-coffee2">
       <span class="coffee-prompt-cup" aria-hidden="true">☕</span>
       Enjoying Roostr? <b>Buy me a coffee</b>
     </button>
   </section>
 
-  <section class="verdict" id="verdict" hidden>
-    <div class="verdict-card">
-      <p class="verdict-stamp" id="verdict-stamp">MONEYWISE</p>
-      <p class="verdict-sub" id="verdict-sub"></p>
-      <ul class="reveal flag-reveal cur-reveal" id="reveal"></ul>
-      <aside class="factbox">
-        <p class="factbox-label">Did you know?</p>
-        <p id="factbox-text"></p>
-      </aside>
-      <div class="verdict-actions">
-        <button class="btn btn--share" id="btn-share">Share result</button>
-        <button class="btn btn--ghost" id="btn-stats2">My stats</button>
-      </div>
-      <div class="share-row" id="share-row"></div>
-      <p class="countdown">New money in <b id="countdown">—</b></p>
-    </div>
-  </section>
-
-  <!-- AD SLOT — filled by initAds() in js/currency.js once ADSENSE_CLIENT is set. -->
+  <!-- AD SLOT — filled by initAds() in js/race.js once ADSENSE_CLIENT is set. -->
   <div class="ad-slot" id="ad-1" aria-hidden="true">
     <span>advertisement</span>
   </div>
 
   <section class="lede" aria-labelledby="lede-title">
-    <h2 id="lede-title">Free online currency quiz game</h2>
-    <p>Roostr Guess the Currency is a free daily currency quiz: name the country from its money across five rounds of four-way multiple choice. Learn the yen, the baht, the złoty and the naira — a quick geography warm-up with new currencies every midnight, no download, no account.</p>
+    <h2 id="lede-title">Free car racing game — dodge the roosters</h2>
+    <p>Coop Racer is a free browser racing game with a county-fair twist: race down the farm road while roosters hop across it. Steer with two thumbs (left half of the screen turns left, right half turns right), and tilt your phone toward upright to hit the boost. On a computer, use the arrow keys. No download, no account.</p>
     <div class="faq">
       <details open>
-        <summary>How do you play the currency quiz?</summary>
-        <p>A banknote shows a currency's name and symbol, and you pick the country it belongs to from four choices. There are five currencies per day, one guess each.</p>
+        <summary>How do you play Coop Racer?</summary>
+        <p>Hold your left or right thumb on the screen to steer the car (or use the arrow keys), and dodge the roosters hopping onto the road. Tilt your phone toward upright — or hold the up arrow — to hit the boost. The road speeds up the longer you race, and distance is your score.</p>
       </details>
       <details>
-        <summary>Is the currency quiz free?</summary>
-        <p>Yes — free to play in the browser with no sign-up. Your streak is saved privately on your device.</p>
+        <summary>How does tilt-to-boost work?</summary>
+        <p>The game reads your phone's orientation: raise it from a flat angle toward upright and the car accelerates. Your browser may ask for motion-sensor permission the first time — that's all it's used for, and nothing leaves your device.</p>
+      </details>
+      <details>
+        <summary>Is Coop Racer free?</summary>
+        <p>Yes — free to play in the browser with no sign-up. Your best race is saved on your device.</p>
       </details>
       <details>
         <summary>More free games</summary>
-        <p>Roostr also has <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="run.html">Coop Run</a>, <a href="dodge.html">Astro Coop</a>, <a href="race.html">Coop Racer</a> and <a href="memory.html">Memory</a>.</p>
+        <p>Roostr also has <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="currency.html">Guess the Currency</a>, <a href="run.html">Coop Run</a>, <a href="dodge.html">Astro Coop</a> and <a href="memory.html">Memory</a>.</p>
       </details>
     </div>
   </section>
 
   <footer class="colophon">
-    <p>New money every day · a friendly geography warm-up</p>
+    <p>A racing game from the Roostr coop · free, no download</p>
     <p>
       <button class="linklike" id="btn-about">About</button> ·
       <button class="linklike" id="btn-coffee">☕ Buy me a coffee</button>
@@ -206,28 +209,22 @@
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="help-title">How to play</h3>
     <ol class="howto">
-      <li>A banknote appears with a currency's <b>name and symbol</b>. Pick the country it belongs to from the <b>four choices</b>.</li>
-      <li>The right answer lights up straight away:
-        <span class="chip chip--hit">correct</span>
-        <span class="chip chip--miss">missed</span>
-      </li>
-      <li>That's <b>five currencies</b>, one guess each.</li>
-      <li>Name all five to become <b>Moneywise</b>. A fun fact waits at the finish.</li>
+      <li>Hold a <b>thumb</b> on the left or right half of the road to steer — or use <b>← / →</b> on a keyboard.</li>
+      <li><b>Roosters hop onto the road.</b> Swerve around them — one bump and the race is over.</li>
+      <li>Tilt your phone toward <b>upright</b> (or hold <b>↑</b>) to hit the <b>BOOST</b> — faster road, faster score.</li>
+      <li>The road speeds up the longer you last. <b>Distance is your score</b> — beat your best and share it.</li>
     </ol>
-    <p class="howto-foot">One currency quiz a day. Streaks are sacred.</p>
+    <p class="howto-foot">Mind the flock. They never look both ways.</p>
   </div>
 
   <div class="modal" id="modal-stats" hidden role="dialog" aria-modal="true" aria-labelledby="stats-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
-    <h3 class="modal-title" id="stats-title">Show record</h3>
-    <div class="statgrid">
-      <div class="stat"><b id="st-played">0</b><span>entered</span></div>
-      <div class="stat"><b id="st-winpct">0%</b><span>perfect</span></div>
-      <div class="stat"><b id="st-streak">0</b><span>streak</span></div>
-      <div class="stat"><b id="st-max">0</b><span>best streak</span></div>
+    <h3 class="modal-title" id="stats-title">Race record</h3>
+    <div class="statgrid statgrid--3">
+      <div class="stat"><b id="st-best">0</b><span>best (m)</span></div>
+      <div class="stat"><b id="st-plays">0</b><span>races</span></div>
+      <div class="stat"><b id="st-total">0</b><span>total (m)</span></div>
     </div>
-    <h4 class="dist-title">Currencies named</h4>
-    <div class="dist" id="dist"></div>
   </div>
 
   <div class="modal modal--plus" id="modal-plus" hidden role="dialog" aria-modal="true" aria-labelledby="plus-title">
@@ -256,7 +253,7 @@
       </svg>
     </p>
     <h3 class="modal-title" id="coffee-title">Buy me a coffee</h3>
-    <p class="coffee-blurb">Roostr is free and made by one person. If a note made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
+    <p class="coffee-blurb">Roostr is free and made by one person. If a race made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
     <div class="coffee-buy">
       <div class="coffee-stepper" role="group" aria-label="How many coffees">
         <button type="button" class="step-btn" id="cup-minus" aria-label="One fewer cup">−</button>
@@ -274,17 +271,16 @@
   <div class="modal" id="modal-about" hidden role="dialog" aria-modal="true" aria-labelledby="about-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="about-title">About</h3>
-    <p class="about-text">Roostr Guess the Currency is a free daily currency quiz. Five rounds — name the country from its money. Banknotes are drawn from simple geometry and the facts come from public reference sources.</p>
-    <p class="about-text">No account needed — your streak lives in your browser.</p>
-    <p class="about-text">Questions, feedback, or a note that looks wrong? Email <a href="mailto:ilan@playroostr.com">ilan@playroostr.com</a>.</p>
+    <p class="about-text">Coop Racer is a free arcade racing game from the Roostr coop — race down the farm road, dodge the roosters, and chase a distance record. Tilt-to-boost uses your phone's orientation sensor only while you play; nothing is recorded or sent anywhere.</p>
+    <p class="about-text">Prefer a brain game? Try <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, or <a href="currency.html">Guess the Currency</a>.</p>
+    <p class="about-text">Questions or feedback? Email <a href="mailto:ilan@playroostr.com">ilan@playroostr.com</a>.</p>
   </div>
 
 </div>
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="js/currencies.js"></script>
 <script src="js/share.js"></script>
-<script src="js/currency.js"></script>
+<script src="js/race.js"></script>
 </body>
 </html>
