@@ -188,6 +188,60 @@ function motifRace() {
   return '<div style="width:382px;height:266px;border:3px solid ' + C.ink + ';border-radius:8px;box-shadow:4px 6px 0 rgba(42,33,24,.28);overflow:hidden;display:flex;align-items:center;justify-content:center;transform:rotate(-1deg)">' + svg + '</div>';
 }
 
+function motifSudoku() {
+  /* a corner of a sudoku grid, mid-solve */
+  var given = [[0, 0, "5"], [0, 2, "3"], [1, 1, "7"], [2, 0, "9"], [2, 2, "1"], [1, 3, "2"], [3, 1, "4"], [3, 3, "8"]];
+  var entered = [[0, 3, "6"], [2, 3, "4"], [3, 0, "2"]];
+  var cells = "";
+  var S = 82;
+  for (var r = 0; r < 4; r++) for (var c = 0; c < 4; c++) {
+    cells += '<rect x="' + (c * S) + '" y="' + (r * S) + '" width="' + S + '" height="' + S + '" fill="' + C.card + '" stroke="rgba(42,33,24,.3)" stroke-width="1.5"/>';
+  }
+  function digits(list, color, italic) {
+    return list.map(function (d) {
+      return '<text x="' + (d[1] * S + S / 2) + '" y="' + (d[0] * S + S / 2 + 12) + '" text-anchor="middle" font-family="Karla,Arial,sans-serif" ' +
+        (italic ? 'font-style="italic" ' : '') + 'font-weight="700" font-size="38" fill="' + color + '">' + d[2] + '</text>';
+    }).join("");
+  }
+  var svg = '<svg viewBox="0 0 328 328" width="328" height="328">' +
+    cells +
+    '<rect x="0" y="0" width="328" height="328" fill="none" stroke="' + C.ink + '" stroke-width="5"/>' +
+    '<line x1="246" y1="0" x2="246" y2="328" stroke="' + C.ink + '" stroke-width="4"/>' +
+    '<line x1="0" y1="246" x2="328" y2="246" stroke="' + C.ink + '" stroke-width="4"/>' +
+    '<rect x="' + (3 * S) + '" y="0" width="' + S + '" height="' + S + '" fill="' + C.goldPale + '" stroke="' + C.ink + '" stroke-width="2"/>' +
+    digits(given, C.ink) + digits(entered, C.teal, true) +
+    '</svg>';
+  return '<div style="border:3px solid ' + C.ink + ';border-radius:8px;overflow:hidden;line-height:0;box-shadow:4px 6px 0 rgba(42,33,24,.28);transform:rotate(-1.5deg);background:' + C.card + '">' + svg + '</div>';
+}
+
+function motifDiceGame() {
+  function die(cx, cy, rot, face) {
+    var s = 34;
+    var p = s * 0.48;
+    var pips = [[], [[0, 0]], [[-p, -p], [p, p]], [[-p, -p], [0, 0], [p, p]],
+      [[-p, -p], [p, -p], [-p, p], [p, p]],
+      [[-p, -p], [p, -p], [0, 0], [-p, p], [p, p]],
+      [[-p, -p], [p, -p], [-p, 0], [p, 0], [-p, p], [p, p]]][face];
+    var dots = pips.map(function (q) {
+      return '<circle cx="' + q[0] + '" cy="' + q[1] + '" r="' + (s * 0.17) + '" fill="' + (face === 1 ? C.red : C.ink) + '"/>';
+    }).join("");
+    return '<g transform="translate(' + cx + ',' + cy + ') rotate(' + rot + ')">' +
+      '<rect x="' + (-s + 3) + '" y="' + (-s + 5) + '" width="' + (s * 2) + '" height="' + (s * 2) + '" rx="8" fill="rgba(42,33,24,.28)"/>' +
+      '<rect x="' + (-s) + '" y="' + (-s) + '" width="' + (s * 2) + '" height="' + (s * 2) + '" rx="8" fill="' + C.card + '" stroke="' + C.ink + '" stroke-width="3"/>' +
+      dots + '</g>';
+  }
+  var svg = '<svg viewBox="0 0 360 300" width="360" height="300">' +
+    '<rect width="360" height="300" fill="#8a6a45"/>' +
+    '<path d="M0 40 C120 30 240 50 360 40 M0 100 C120 92 240 108 360 100 M0 160 C120 152 240 168 360 160 M0 220 C120 212 240 228 360 220 M0 280 C120 272 240 288 360 280" stroke="rgba(42,33,24,.18)" stroke-width="2" fill="none"/>' +
+    '<ellipse cx="185" cy="158" rx="150" ry="130" fill="rgba(42,33,24,.3)"/>' +
+    '<circle cx="180" cy="150" r="138" fill="' + C.gold + '" stroke="' + C.ink + '" stroke-width="3"/>' +
+    '<circle cx="180" cy="150" r="122" fill="' + C.card + '" stroke="rgba(42,33,24,.35)" stroke-width="2"/>' +
+    '<circle cx="180" cy="150" r="76" fill="none" stroke="rgba(42,33,24,.08)" stroke-width="2"/>' +
+    die(128, 118, -14, 5) + die(232, 122, 9, 3) + die(180, 208, 3, 6) +
+    '</svg>';
+  return '<div style="width:382px;height:318px;border:3px solid ' + C.ink + ';border-radius:8px;box-shadow:4px 6px 0 rgba(42,33,24,.28);overflow:hidden;display:flex;align-items:center;justify-content:center;transform:rotate(-1deg)">' + svg + '</div>';
+}
+
 function motifCurrency() {
   var want = ["Japan", "India", "United Kingdom"];
   var picks = want.map(function (n) { return CURRENCIES.find(function (c) { return c.name === n; }); }).filter(Boolean);
@@ -245,6 +299,10 @@ const GAMES = [
     tag: "Name the country from its flag. Five rounds, one guess each.", motif: motifFlags() },
   { out: "og-currency.png", kicker: "The daily currency quiz", title: "Guess<br>the Currency",
     tag: "Which country uses this money? Five rounds, one guess each.", motif: motifCurrency() },
+  { out: "og-sudoku.png", kicker: "The daily sudoku", title: "Sudoku",
+    tag: "One grid a day, three difficulties — the same puzzle for everyone.", motif: motifSudoku() },
+  { out: "og-dicegame.png", kicker: "The tilt-your-phone balancing game", title: "Steady<br>Dice",
+    tag: "Move the phone and the dice move too. Keep them on the tray.", motif: motifDiceGame() },
   { out: "og-run.png", kicker: "The free rooster runner", title: "Coop Run",
     tag: "Jump the rooster over hay bales and fences. How far can you run?", motif: motifRun() },
   { out: "og-dodge.png", kicker: "The free space dodger", title: "Astro Coop",

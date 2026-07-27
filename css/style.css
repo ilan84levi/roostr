@@ -1184,6 +1184,110 @@ body.plus .ad-slot { display: none; }
 }
 @media (max-width: 380px) { .mem-grid { gap: 6px; } }
 
+/* ————— Sudoku ————— */
+.su-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  max-width: 420px;
+  margin: 0 auto 12px;
+  border: 3px solid var(--ink);
+  border-radius: 4px;
+  background: var(--card);
+  box-shadow: 2px 3px 0 rgba(var(--shadow), .3);
+  overflow: hidden;
+}
+.su-cell {
+  aspect-ratio: 1;
+  border: 0;
+  border-right: 1px solid rgba(var(--shadow), .28);
+  border-bottom: 1px solid rgba(var(--shadow), .28);
+  background: var(--card);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(15px, 4.2vw, 21px);
+  color: var(--teal);
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .12s;
+}
+.su-cell:nth-child(9n) { border-right: 0; }
+.su-br { border-right: 2.5px solid var(--ink) !important; }
+.su-bb { border-bottom: 2.5px solid var(--ink); }
+.su-given { color: var(--ink); font-weight: 700; }
+.su-unit { background: #f1e7cf; }
+.su-same { background: var(--gold-pale); }
+.su-sel { background: #dcd2b6; box-shadow: inset 0 0 0 2px var(--teal); }
+.su-wrong { color: var(--red); }
+.su-wrong.su-sel, .su-wrong { background-color: #f3ded7; }
+.su-notes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%; height: 100%;
+  font-size: 9px;
+  line-height: 1;
+  color: var(--ink-soft);
+  padding: 2px;
+}
+.su-notes i { font-style: normal; display: flex; align-items: center; justify-content: center; }
+.su-tools {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.su-tool {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 7px 16px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(var(--shadow), .7);
+  transition: transform .08s, box-shadow .08s, background .2s;
+}
+.su-tool:active { transform: translate(2px, 2px); box-shadow: 0 0 0 rgba(var(--shadow), .7); }
+.su-tool.active { background: var(--teal); color: var(--card); }
+.su-pad {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 5px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+.su-key {
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  background: var(--card);
+  cursor: pointer;
+  padding: 6px 0 4px;
+  box-shadow: 2px 2px 0 rgba(var(--shadow), .6);
+  transition: transform .08s, box-shadow .08s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+}
+.su-key:active { transform: translate(2px, 2px); box-shadow: 0 0 0 rgba(var(--shadow), .6); }
+.su-key b { font-family: var(--font-display); font-size: 19px; color: var(--ink); }
+.su-left { font-size: 9.5px; color: var(--ink-soft); }
+@media (max-width: 380px) {
+  .su-pad { gap: 3px; }
+  .su-key b { font-size: 16px; }
+}
+
+/* Steady Dice — wooden-table variant of the run stage */
+.dice-stage { background: #8a6a45; }
+.dice-stage canvas { touch-action: none; }
+.dice-stage .run-hud { color: #f3ead8; text-shadow: 0 1px 2px rgba(0,0,0,.45); }
+.dice-stage .run-hud #run-dist { color: #fff; }
+
 /* ————— one-tap social share row ————— */
 .share-row {
   display: flex;
