@@ -11,23 +11,23 @@
   gtag('js', new Date());
   gtag('config', 'G-GQBZ10K1ZY');
 </script>
-<title>Roostr Astro Coop — free spaceship asteroid dodger</title>
-<meta name="description" content="A free arcade game: fly a spaceship through space and dodge the asteroids for as long as you can. Play free in your browser — no download.">
+<title>Roostr Sudoku — free daily sudoku puzzle</title>
+<meta name="description" content="A free daily sudoku: the same puzzle for everyone, in Easy, Medium and Hard. Notes, mistake tracking and streaks — play free in your browser.">
 <meta name="robots" content="index, follow">
 <meta property="og:site_name" content="Roostr">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="Roostr Astro Coop — free spaceship asteroid dodger">
-<meta property="og:description" content="Fly a spaceship and dodge the space rocks. How far can you get?">
-<meta property="og:url" content="https://playroostr.com/dodge.html">
+<meta property="og:title" content="Roostr Sudoku — free daily sudoku puzzle">
+<meta property="og:description" content="One sudoku a day, three difficulties. Can you keep the streak?">
+<meta property="og:url" content="https://playroostr.com/sudoku.html">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://playroostr.com/og-dodge.png">
+<meta property="og:image" content="https://playroostr.com/og-sudoku.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Roostr Astro Coop — free spaceship asteroid dodger">
-<meta name="twitter:description" content="Fly a spaceship and dodge the space rocks. How far can you get?">
-<meta name="twitter:image" content="https://playroostr.com/og-dodge.png">
-<link rel="canonical" href="https://playroostr.com/dodge.html">
+<meta name="twitter:title" content="Roostr Sudoku — free daily sudoku puzzle">
+<meta name="twitter:description" content="One sudoku a day, three difficulties. Can you keep the streak?">
+<meta name="twitter:image" content="https://playroostr.com/og-sudoku.png">
+<link rel="canonical" href="https://playroostr.com/sudoku.html">
 <meta name="theme-color" content="#f3ead8">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='42' r='30' fill='%23b5402a'/%3E%3Ccircle cx='50' cy='42' r='19' fill='%23f3ead8'/%3E%3Ccircle cx='50' cy='42' r='12' fill='%23c89a3f'/%3E%3Cpath d='M38 64l-8 26 20-12 20 12-8-26z' fill='%23206258'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,12 +38,12 @@
 {
   "@context": "https://schema.org",
   "@type": ["Game", "WebApplication"],
-  "name": "Roostr Astro Coop",
-  "alternateName": "Roostr spaceship dodger",
-  "url": "https://playroostr.com/dodge.html",
-  "description": "A free browser arcade game: fly a spaceship through space and dodge asteroids for as long as you can. No download, no account.",
+  "name": "Roostr Sudoku",
+  "alternateName": "Roostr daily sudoku",
+  "url": "https://playroostr.com/sudoku.html",
+  "description": "A free daily sudoku puzzle — the same grid for everyone each day, in Easy, Medium and Hard, with notes, mistake tracking and streaks. No download, no account.",
   "applicationCategory": "GameApplication",
-  "genre": "Arcade, Space",
+  "genre": "Puzzle, Logic, Sudoku",
   "operatingSystem": "Any (web browser)",
   "browserRequirements": "Requires JavaScript",
   "inLanguage": "en",
@@ -59,18 +59,18 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How do you play Astro Coop?",
+      "name": "How does the daily sudoku work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Steer the ship up and down with the mouse, your finger, or the up and down arrows, and avoid the asteroids flying in. Distance is your score and it gets faster over time."
+        "text": "Every midnight there is one new puzzle per difficulty — Easy, Medium and Hard — and everyone in the world gets the same grid. Fill every row, column and 3×3 box with the digits 1 to 9. Every puzzle has exactly one solution."
       }
     },
     {
       "@type": "Question",
-      "name": "Is Astro Coop free?",
+      "name": "Is the sudoku free?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes — free to play in the browser with no sign-up. Your best flight is saved on your device."
+        "text": "Yes — free to play in the browser with no sign-up. Your progress, best times and streak are saved privately on your device."
       }
     }
   ]
@@ -102,7 +102,7 @@
       <button class="icon-btn icon-btn--gold" id="btn-plus" aria-label="Roostr Plus" hidden>★</button>
     </nav>
   </div>
-  <p class="dateline"><span id="puzzle-no">The arcade</span> · Move to dodge the asteroids</p>
+  <p class="dateline"><span id="puzzle-no">No. —</span> · <span id="puzzle-date">—</span> · New grid at midnight</p>
 </header>
 
 <nav class="game-tabs" aria-label="Choose a game">
@@ -111,9 +111,9 @@
   <a class="game-tab" href="pick.html">Top Pick</a>
   <a class="game-tab" href="flags.html">Flags</a>
   <a class="game-tab" href="currency.html">Money</a>
-  <a class="game-tab" href="sudoku.html">Sudoku</a>
+  <a class="game-tab" href="sudoku.html" aria-current="page">Sudoku</a>
   <a class="game-tab" href="run.html">Run</a>
-  <a class="game-tab" href="dodge.html" aria-current="page">Space</a>
+  <a class="game-tab" href="dodge.html">Space</a>
   <a class="game-tab" href="race.html">Race</a>
   <a class="game-tab" href="dice.html">Dice</a>
   <a class="game-tab" href="memory.html">Memory</a>
@@ -123,38 +123,46 @@
 <main class="bill">
 
   <section class="prompt" aria-live="polite">
-    <p class="prompt-kicker">— The arcade —</p>
-    <h2 class="prompt-title">Astro Coop</h2>
-    <p class="prompt-metric">Fly the ship — dodge the space rocks</p>
+    <p class="prompt-kicker">— Today's grid —</p>
+    <h2 class="prompt-title">Sudoku</h2>
+    <p class="prompt-metric">Every row, column and box: 1–9, once each</p>
   </section>
 
-  <section class="pen run-pen" aria-label="Astro Coop game">
-    <div class="run-stage dodge-stage" id="run-stage">
-      <div class="run-hud">
-        <span id="run-hi">best 0 m</span>
-        <span id="run-dist">0 m</span>
-      </div>
-      <canvas id="run-canvas" aria-label="Astro Coop playfield"></canvas>
-
-      <div class="run-overlay" id="run-start">
-        <p class="run-big">Astro Coop</p>
-        <p class="run-sub">Move your mouse or finger to fly — or use <b>↑ / ↓</b>.<br>Dodge the asteroids.</p>
-        <p class="run-cta">▶ Tap to launch</p>
-      </div>
-
-      <div class="run-overlay" id="run-over" hidden>
-        <p class="run-stamp">BOOM!</p>
-        <p class="run-result">You flew <b id="ro-score">0</b> m</p>
-        <p class="run-best">best <b id="ro-best">0</b> m</p>
-        <p class="run-newbest" id="ro-newbest" hidden>★ New best flight! ★</p>
-        <div class="run-actions">
-          <button class="btn btn--judge" id="btn-retry">Fly again</button>
-          <button class="btn btn--share" id="btn-share">Share</button>
-        </div>
-        <div class="share-row" id="share-row"></div>
-      </div>
+  <section class="pen mem-pen" aria-label="Today's sudoku">
+    <div class="mem-levels" role="group" aria-label="Difficulty">
+      <button type="button" class="mem-level" data-level="easy">Easy</button>
+      <button type="button" class="mem-level" data-level="medium">Medium</button>
+      <button type="button" class="mem-level" data-level="hard">Hard</button>
     </div>
-    <p class="run-hint">Mouse / finger / ↑ ↓ to steer · the asteroids come faster the longer you fly</p>
+    <div class="mem-hud">
+      <span class="mem-stat">time<b id="su-time">0:00</b></span>
+      <span class="mem-stat">mistakes<b id="su-mist">0</b></span>
+    </div>
+    <div class="su-grid" id="su-grid" aria-label="Sudoku grid"></div>
+    <div class="su-tools">
+      <button type="button" class="su-tool" id="btn-notes" aria-pressed="false">✏️ Notes</button>
+      <button type="button" class="su-tool" id="btn-erase">⌫ Erase</button>
+    </div>
+    <div class="su-pad" id="su-pad" aria-label="Number pad"></div>
+  </section>
+
+  <section class="verdict" id="verdict" hidden>
+    <div class="verdict-card">
+      <p class="verdict-stamp">SOLVED!</p>
+      <p class="verdict-sub">Grid complete — every row, column and box checks out.</p>
+      <div class="statgrid statgrid--3" style="margin-bottom:14px">
+        <div class="stat"><b id="su-final-time">0:00</b><span>time</span></div>
+        <div class="stat"><b id="su-final-mist">0</b><span>mistakes</span></div>
+        <div class="stat"><b id="su-best-wrap" style="font-size:15px"><span id="su-best">—</span></b><span>record</span></div>
+      </div>
+      <p class="run-newbest" id="su-newbest" hidden>★ New best time! ★</p>
+      <div class="verdict-actions">
+        <button class="btn btn--share" id="btn-share">Share result</button>
+        <button class="btn btn--ghost" id="btn-stats2">My stats</button>
+      </div>
+      <div class="share-row" id="share-row"></div>
+      <p class="countdown">New grid in <b id="countdown">—</b></p>
+    </div>
   </section>
 
   <section class="bench">
@@ -164,32 +172,32 @@
     </button>
   </section>
 
-  <!-- AD SLOT — filled by initAds() in js/dodge.js once ADSENSE_CLIENT is set. -->
+  <!-- AD SLOT — filled by initAds() in js/sudoku.js once ADSENSE_CLIENT is set. -->
   <div class="ad-slot" id="ad-1" aria-hidden="true">
     <span>advertisement</span>
   </div>
 
   <section class="lede" aria-labelledby="lede-title">
-    <h2 id="lede-title">Free spaceship asteroid-dodging game</h2>
-    <p>Astro Coop is a free browser arcade game: fly a spaceship through a starfield and dodge the asteroids for as long as you can. Steer with your mouse, finger, or the arrow keys — no download, no account.</p>
+    <h2 id="lede-title">Free daily sudoku puzzle</h2>
+    <p>Roostr Sudoku is a free daily sudoku you can play right in your browser: one fresh grid per difficulty every midnight, and everyone in the world gets the same puzzle. Pencil notes, mistake tracking, best times and a daily streak — no download, no account.</p>
     <div class="faq">
       <details open>
-        <summary>How do you play Astro Coop?</summary>
-        <p>Steer the ship up and down with the mouse, your finger, or the up and down arrows, and avoid the asteroids flying in. Distance is your score and it gets faster over time.</p>
+        <summary>How does the daily sudoku work?</summary>
+        <p>Every midnight there's one new puzzle per difficulty — Easy, Medium and Hard — and everyone gets the same grid. Fill every row, column and 3×3 box with the digits 1 to 9. Every puzzle is generated with exactly one solution.</p>
       </details>
       <details>
-        <summary>Is Astro Coop free?</summary>
-        <p>Yes — free to play in the browser with no sign-up. Your best flight is saved on your device.</p>
+        <summary>Is the sudoku free?</summary>
+        <p>Yes — free to play in the browser with no sign-up. Your progress, best times and streak are saved privately on your device.</p>
       </details>
       <details>
         <summary>More free games</summary>
-        <p>Roostr also has <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="currency.html">Guess the Currency</a>, <a href="sudoku.html">Sudoku</a>, <a href="run.html">Coop Run</a>, <a href="race.html">Coop Racer</a>, <a href="dice.html">Steady Dice</a> and <a href="memory.html">Memory</a>.</p>
+        <p>Roostr also has <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="currency.html">Guess the Currency</a>, <a href="run.html">Coop Run</a>, <a href="dodge.html">Astro Coop</a>, <a href="race.html">Coop Racer</a>, <a href="dice.html">Steady Dice</a> and <a href="memory.html">Memory</a>.</p>
       </details>
     </div>
   </section>
 
   <footer class="colophon">
-    <p>A space dodger from the Roostr coop · free, no download</p>
+    <p>One grid a day · a classic, done properly</p>
     <p>
       <button class="linklike" id="btn-about">About</button> ·
       <button class="linklike" id="btn-coffee">☕ Buy me a coffee</button>
@@ -206,21 +214,27 @@
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="help-title">How to play</h3>
     <ol class="howto">
-      <li>Steer your ship with the <b>mouse</b>, your <b>finger</b>, or the <b>↑ / ↓</b> keys.</li>
-      <li>Dodge the <b>asteroids</b> flying in from the right. One hit and the flight ends.</li>
-      <li>Space gets <b>faster</b> the longer you survive — distance is your score.</li>
-      <li>Beat your <b>best flight</b> and share it. Play as many times as you like.</li>
+      <li>Fill every <b>row</b>, <b>column</b> and <b>3×3 box</b> with the digits <b>1–9</b>, once each.</li>
+      <li>Tap a cell, then a number. Wrong entries turn <b>red</b> and count as mistakes.</li>
+      <li>Use <b>✏️ Notes</b> to pencil in candidates — they clear themselves as you solve.</li>
+      <li>Three difficulties, one new grid each at <b>midnight</b> — same puzzle for everyone. Streaks are sacred.</li>
     </ol>
-    <p class="howto-foot">One ship. A whole lot of rocks.</p>
+    <p class="howto-foot">Keyboard: 1–9 · arrows · Backspace · N for notes</p>
   </div>
 
   <div class="modal" id="modal-stats" hidden role="dialog" aria-modal="true" aria-labelledby="stats-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
-    <h3 class="modal-title" id="stats-title">Flight record</h3>
+    <h3 class="modal-title" id="stats-title">Solve record</h3>
     <div class="statgrid statgrid--3">
-      <div class="stat"><b id="st-best">0</b><span>best (m)</span></div>
-      <div class="stat"><b id="st-plays">0</b><span>flights</span></div>
-      <div class="stat"><b id="st-total">0</b><span>total (m)</span></div>
+      <div class="stat"><b id="st-streak">0</b><span>streak</span></div>
+      <div class="stat"><b id="st-max">0</b><span>best streak</span></div>
+      <div class="stat"><b id="st-plays">0</b><span>solved</span></div>
+    </div>
+    <h4 class="dist-title">Best times</h4>
+    <div class="statgrid statgrid--3">
+      <div class="stat"><b id="st-beste">—</b><span>easy</span></div>
+      <div class="stat"><b id="st-bestm">—</b><span>medium</span></div>
+      <div class="stat"><b id="st-besth">—</b><span>hard</span></div>
     </div>
   </div>
 
@@ -250,7 +264,7 @@
       </svg>
     </p>
     <h3 class="modal-title" id="coffee-title">Buy me a coffee</h3>
-    <p class="coffee-blurb">Roostr is free and made by one person. If a flight made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
+    <p class="coffee-blurb">Roostr is free and made by one person. If a grid made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
     <div class="coffee-buy">
       <div class="coffee-stepper" role="group" aria-label="How many coffees">
         <button type="button" class="step-btn" id="cup-minus" aria-label="One fewer cup">−</button>
@@ -268,8 +282,8 @@
   <div class="modal" id="modal-about" hidden role="dialog" aria-modal="true" aria-labelledby="about-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="about-title">About</h3>
-    <p class="about-text">Astro Coop is a free arcade game from the Roostr coop — fly a spaceship through an asteroid field and chase a distance record. No download, no account; your best flight lives in your browser.</p>
-    <p class="about-text">Prefer a brain game? Try <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, or the runner <a href="run.html">Coop Run</a>.</p>
+    <p class="about-text">Roostr Sudoku is a free daily sudoku. One new grid per difficulty every midnight, generated with exactly one solution — the same puzzle for everyone, so you can compare times.</p>
+    <p class="about-text">No account needed — your progress, best times and streak live in your browser.</p>
     <p class="about-text">Questions or feedback? Email <a href="mailto:ilan@playroostr.com">ilan@playroostr.com</a>.</p>
   </div>
 
@@ -277,7 +291,8 @@
 
 <div class="toast" id="toast" role="status"></div>
 
+<script src="js/sudokugen.js"></script>
 <script src="js/share.js"></script>
-<script src="js/dodge.js"></script>
+<script src="js/sudoku.js"></script>
 </body>
 </html>
