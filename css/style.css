@@ -1282,12 +1282,6 @@ body.plus .ad-slot { display: none; }
   .su-key b { font-size: 16px; }
 }
 
-/* Steady Dice — wooden-table variant of the run stage */
-.dice-stage { background: #8a6a45; }
-.dice-stage canvas { touch-action: none; }
-.dice-stage .run-hud { color: #f3ead8; text-shadow: 0 1px 2px rgba(0,0,0,.45); }
-.dice-stage .run-hud #run-dist { color: #fff; }
-
 /* ————— one-tap social share row ————— */
 .share-row {
   display: flex;
