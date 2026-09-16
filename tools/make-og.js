@@ -214,6 +214,91 @@ function motifSudoku() {
   return '<div style="border:3px solid ' + C.ink + ';border-radius:8px;overflow:hidden;line-height:0;box-shadow:4px 6px 0 rgba(42,33,24,.28);transform:rotate(-1.5deg);background:' + C.card + '">' + svg + '</div>';
 }
 
+function motifSolitaire() {
+  function card(x, y, rot, rank, suit, red) {
+    return '<g transform="translate(' + x + ',' + y + ') rotate(' + rot + ')">' +
+      '<rect x="-40" y="-56" width="80" height="112" rx="8" fill="' + C.card + '" stroke="' + C.ink + '" stroke-width="2.5"/>' +
+      '<text x="-30" y="-36" font-family="Karla,Arial,sans-serif" font-weight="700" font-size="22" fill="' + (red ? C.red : C.ink) + '">' + rank + '</text>' +
+      '<text x="-31" y="-16" font-family="Karla,Arial,sans-serif" font-size="20" fill="' + (red ? C.red : C.ink) + '">' + suit + '</text>' +
+      '<text x="0" y="30" text-anchor="middle" font-family="Karla,Arial,sans-serif" font-size="52" fill="' + (red ? C.red : C.ink) + '">' + suit + '</text>' +
+      '</g>';
+  }
+  function back(x, y, rot) {
+    return '<g transform="translate(' + x + ',' + y + ') rotate(' + rot + ')">' +
+      '<rect x="-40" y="-56" width="80" height="112" rx="8" fill="' + C.red + '" stroke="' + C.ink + '" stroke-width="2.5"/>' +
+      '<text x="0" y="14" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-weight="900" font-size="40" fill="' + C.goldPale + '">R</text>' +
+      '</g>';
+  }
+  var svg = '<svg viewBox="0 0 380 260" width="380" height="260">' +
+    '<rect width="380" height="260" rx="10" fill="' + C.teal + '"/>' +
+    back(70, 90, -8) +
+    card(160, 100, -3, "A", "♠", false) +
+    card(250, 108, 4, "K", "♥", true) +
+    card(320, 130, 10, "Q", "♦", true) +
+    card(140, 195, -6, "J", "♣", false) +
+    '</svg>';
+  return '<div style="border:3px solid ' + C.ink + ';border-radius:10px;overflow:hidden;line-height:0;box-shadow:4px 6px 0 rgba(42,33,24,.28);transform:rotate(-1deg)">' + svg + '</div>';
+}
+
+function motifCrossword() {
+  var G = [
+    ["#", "M", "I", "N", "I"],
+    ["W", "O", "R", "D", "S"],
+    ["F", "I", "V", "E", "#"],
+    ["#", "B", "Y", "#", "#"],
+  ];
+  var S = 66, cells = "";
+  for (var r = 0; r < 4; r++) for (var c = 0; c < 5; c++) {
+    var ch = G[r][c];
+    var x = c * S, y = r * S;
+    if (ch === "#") { cells += '<rect x="' + x + '" y="' + y + '" width="' + S + '" height="' + S + '" fill="' + C.ink + '"/>'; continue; }
+    cells += '<rect x="' + x + '" y="' + y + '" width="' + S + '" height="' + S + '" fill="' + (r === 1 && c < 3 ? C.goldPale : C.card) + '" stroke="rgba(42,33,24,.35)" stroke-width="1.5"/>';
+    cells += '<text x="' + (x + S / 2) + '" y="' + (y + S / 2 + 12) + '" text-anchor="middle" font-family="Karla,Arial,sans-serif" font-weight="700" font-size="34" fill="' + C.ink + '">' + ch + '</text>';
+  }
+  var svg = '<svg viewBox="0 0 330 264" width="330" height="264">' + cells +
+    '<rect x="0" y="0" width="330" height="264" fill="none" stroke="' + C.ink + '" stroke-width="5"/></svg>';
+  return '<div style="border:3px solid ' + C.ink + ';border-radius:8px;overflow:hidden;line-height:0;background:' + C.card + ';box-shadow:4px 6px 0 rgba(42,33,24,.28);transform:rotate(-1.5deg)">' + svg + '</div>';
+}
+
+function motifNonogram() {
+  var pat = [
+    "0011100000","0111110000","1111111000","0110110000","0110110000",
+    "0111110000","0011100110","0011101111","0011100110","0011100000"];
+  var S = 24, cells = "";
+  for (var r = 0; r < 10; r++) for (var c = 0; c < 10; c++) {
+    var on = pat[r][c] === "1";
+    cells += '<rect x="' + (c * S + 60) + '" y="' + (r * S + 44) + '" width="' + S + '" height="' + S + '" fill="' + (on ? C.teal : C.card) + '" stroke="rgba(42,33,24,.3)" stroke-width="1"/>';
+  }
+  var svg = '<svg viewBox="0 0 320 300" width="320" height="300">' +
+    '<rect width="320" height="300" fill="' + C.paperDeep + '"/>' +
+    '<text x="60" y="30" font-family="Karla,Arial,sans-serif" font-weight="700" font-size="15" fill="' + C.ink + '">3 5 7 2·2 2·2 5 3·2 3·4</text>' +
+    '<text x="16" y="120" font-family="Karla,Arial,sans-serif" font-weight="700" font-size="15" fill="' + C.ink + '">1·1</text>' +
+    '<text x="16" y="180" font-family="Karla,Arial,sans-serif" font-weight="700" font-size="15" fill="' + C.ink + '">5</text>' +
+    '<text x="16" y="240" font-family="Karla,Arial,sans-serif" font-weight="700" font-size="15" fill="' + C.ink + '">3</text>' +
+    cells +
+    '<rect x="60" y="44" width="240" height="240" fill="none" stroke="' + C.ink + '" stroke-width="4"/></svg>';
+  return '<div style="border:3px solid ' + C.ink + ';border-radius:8px;overflow:hidden;line-height:0;box-shadow:4px 6px 0 rgba(42,33,24,.28);transform:rotate(-1deg)">' + svg + '</div>';
+}
+
+function motifMilah() {
+  function tile(x, y, ch, color) {
+    var fill = color === "g" ? C.teal : color === "y" ? C.gold : color === "w" ? C.card : "#b7ab93";
+    var fg = color === "w" ? C.ink : C.card;
+    return '<rect x="' + x + '" y="' + y + '" width="56" height="56" rx="6" fill="' + fill + '" stroke="' + C.ink + '" stroke-width="2"/>' +
+      '<text x="' + (x + 28) + '" y="' + (y + 40) + '" text-anchor="middle" font-family="Karla,Arial,sans-serif" font-weight="700" font-size="32" fill="' + fg + '">' + ch + '</text>';
+  }
+  var rows = [
+    [["ת", "x"], ["ו", "y"], ["ד", "x"], ["ה", "g"], ["!", "w"]],
+    [["מ", "g"], ["י", "g"], ["ל", "g"], ["ה", "g"], ["!", "g"]]
+  ];
+  var cells = "";
+  rows.forEach(function (row, r) {
+    row.forEach(function (t, c) { cells += tile(14 + (4 - c) * 64, 14 + r * 64, t[0], t[1]); });
+  });
+  var svg = '<svg viewBox="0 0 348 150" width="348" height="150">' + cells + '</svg>';
+  return '<div style="background:' + C.card + ';border:3px solid ' + C.ink + ';border-radius:10px;padding:8px;line-height:0;box-shadow:4px 6px 0 rgba(42,33,24,.28);transform:rotate(-1.5deg)">' + svg + '</div>';
+}
+
 function motifCurrency() {
   var want = ["Japan", "India", "United Kingdom"];
   var picks = want.map(function (n) { return CURRENCIES.find(function (c) { return c.name === n; }); }).filter(Boolean);
@@ -273,6 +358,14 @@ const GAMES = [
     tag: "Which country uses this money? Five rounds, one guess each.", motif: motifCurrency() },
   { out: "og-sudoku.png", kicker: "The daily sudoku", title: "Sudoku",
     tag: "One grid a day, three difficulties — the same puzzle for everyone.", motif: motifSudoku() },
+  { out: "og-crossword.png", kicker: "The daily mini crossword", title: "Mini<br>Crossword",
+    tag: "A bite-size 5\u00d75, new every midnight. Beat your best time.", motif: motifCrossword() },
+  { out: "og-nonogram.png", kicker: "The daily picross", title: "Nonogram",
+    tag: "Fill the grid from the number clues — pure logic, no guessing.", motif: motifNonogram() },
+  { out: "og-milah.png", kicker: "\u05d5\u05d5\u05e8\u05d3\u05dc \u05d1\u05e2\u05d1\u05e8\u05d9\u05ea, \u05d1\u05d7\u05d9\u05e0\u05dd", title: "\u05de\u05d9\u05dc\u05d4",
+    tag: "\u05de\u05e0\u05d7\u05e9\u05d9\u05dd \u05de\u05d9\u05dc\u05d4 \u05d1\u05ea \u05d7\u05de\u05e9 \u05d0\u05d5\u05ea\u05d9\u05d5\u05ea \u05d1\u05e9\u05d9\u05e9\u05d4 \u05e0\u05d9\u05e1\u05d9\u05d5\u05e0\u05d5\u05ea. \u05de\u05d9\u05dc\u05d4 \u05d7\u05d3\u05e9\u05d4 \u05db\u05dc \u05d7\u05e6\u05d5\u05ea.", motif: motifMilah() },
+  { out: "og-solitaire.png", kicker: "Classic Klondike, free", title: "Solitaire",
+    tag: "Tap to move, undo freely — and a daily deal for everyone.", motif: motifSolitaire() },
   { out: "og-run.png", kicker: "The free rooster runner", title: "Coop Run",
     tag: "Jump the rooster over hay bales and fences. How far can you run?", motif: motifRun() },
   { out: "og-dodge.png", kicker: "The free space dodger", title: "Astro Coop",

@@ -11,23 +11,23 @@
   gtag('js', new Date());
   gtag('config', 'G-GQBZ10K1ZY');
 </script>
-<title>Roostr Memory — free online card matching (concentration) game</title>
-<meta name="description" content="A free memory card game: flip the cards and match the pairs in as few moves as you can. Play the classic concentration game free in your browser — no download.">
+<title>Roostr Solitaire — free Klondike solitaire, daily deal</title>
+<meta name="description" content="Free classic Klondike solitaire in your browser: tap to move, undo, and a daily deal that's the same for everyone. No download, no account.">
 <meta name="robots" content="index, follow">
 <meta property="og:site_name" content="Roostr">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="Roostr Memory — free online card matching game">
-<meta property="og:description" content="Flip the cards, match the pairs in as few moves as you can. Free, no download.">
-<meta property="og:url" content="https://playroostr.com/memory.html">
+<meta property="og:title" content="Roostr Solitaire — free Klondike solitaire, daily deal">
+<meta property="og:description" content="Classic Klondike, tap-to-move, with a daily deal. Clear the table!">
+<meta property="og:url" content="https://playroostr.com/solitaire.html">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://playroostr.com/og-memory.png">
+<meta property="og:image" content="https://playroostr.com/og-solitaire.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Roostr Memory — free online card matching game">
-<meta name="twitter:description" content="Flip the cards, match the pairs in as few moves as you can. Free, no download.">
-<meta name="twitter:image" content="https://playroostr.com/og-memory.png">
-<link rel="canonical" href="https://playroostr.com/memory.html">
+<meta name="twitter:title" content="Roostr Solitaire — free Klondike solitaire, daily deal">
+<meta name="twitter:description" content="Classic Klondike, tap-to-move, with a daily deal. Clear the table!">
+<meta name="twitter:image" content="https://playroostr.com/og-solitaire.png">
+<link rel="canonical" href="https://playroostr.com/solitaire.html">
 <meta name="theme-color" content="#f3ead8">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='42' r='30' fill='%23b5402a'/%3E%3Ccircle cx='50' cy='42' r='19' fill='%23f3ead8'/%3E%3Ccircle cx='50' cy='42' r='12' fill='%23c89a3f'/%3E%3Cpath d='M38 64l-8 26 20-12 20 12-8-26z' fill='%23206258'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,15 +38,15 @@
 {
   "@context": "https://schema.org",
   "@type": ["Game", "WebApplication"],
-  "name": "Roostr Memory",
-  "alternateName": "Roostr card matching game",
-  "url": "https://playroostr.com/memory.html",
-  "description": "A free online memory card game (concentration): flip the cards and match all the pairs in as few moves as you can. No download, no account.",
+  "name": 'Roostr Solitaire',
+  "alternateName": 'Roostr Klondike solitaire',
+  "url": "https://playroostr.com/solitaire.html",
+  "description": 'Free classic Klondike solitaire in the browser: tap-to-move, undo, statistics, and a seeded daily deal shared by everyone. No download, no account.',
   "applicationCategory": "GameApplication",
-  "genre": "Memory, Puzzle, Card",
+  "genre": 'Card Game, Solitaire',
   "operatingSystem": "Any (web browser)",
   "browserRequirements": "Requires JavaScript",
-  "inLanguage": "en",
+  "inLanguage": 'en',
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "isPartOf": { "@type": "WebSite", "name": "Roostr", "url": "https://playroostr.com/" }
@@ -57,12 +57,21 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "How do you play the memory card game?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Flip two cards per turn. If the two pictures match, the pair stays face-up; if not, they flip back. Remember where each picture is and match all eight pairs. Your score is the number of moves and the time it took." } },
-    { "@type": "Question", "name": "Is Roostr Memory free?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes — it is completely free to play in your browser, with no download and no account. Your best score is saved privately in your browser." } },
-    { "@type": "Question", "name": "Can I play the memory game more than once a day?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Unlike the daily puzzles on Roostr, Memory is an arcade game you can replay as many times as you like — the board is reshuffled every game." } }
+    {
+      "@type": "Question",
+      "name": 'How do you play Klondike solitaire?',
+      "acceptedAnswer": { "@type": "Answer", "text": 'Build the four foundation piles up by suit from ace to king. In the columns, stack cards in descending order with alternating colors, and flip hidden cards as they free up. Tap the deck to draw; tap any card to send it somewhere legal.' }
+    },
+    {
+      "@type": "Question",
+      "name": 'What is the daily deal?',
+      "acceptedAnswer": { "@type": "Answer", "text": "Every midnight there's one shared shuffle — everyone in the world gets the same cards, so times and move counts are comparable. You can also deal a random game any time." }
+    },
+    {
+      "@type": "Question",
+      "name": 'Is it free?',
+      "acceptedAnswer": { "@type": "Answer", "text": 'Yes — free to play in the browser with no sign-up. Your wins and best times are saved privately on your device.' }
+    }
   ]
 }
 </script>
@@ -92,7 +101,7 @@
       <button class="icon-btn icon-btn--gold" id="btn-plus" aria-label="Roostr Plus" hidden>★</button>
     </nav>
   </div>
-  <p class="dateline"><span id="puzzle-no">The arcade</span> · Flip the cards, match the pairs</p>
+  <p class="dateline"><span id="puzzle-no">The card room</span> · Clear all 52 cards to the top</p>
 </header>
 
 <nav class="game-tabs" aria-label="Choose a game">
@@ -108,42 +117,65 @@
   <a class="game-tab" href="run.html">Run</a>
   <a class="game-tab" href="dodge.html">Space</a>
   <a class="game-tab" href="race.html">Race</a>
-  <a class="game-tab" href="solitaire.html">Cards</a>
-  <a class="game-tab" href="memory.html" aria-current="page">Memory</a>
+  <a class="game-tab" href="solitaire.html" aria-current="page">Cards</a>
+  <a class="game-tab" href="memory.html">Memory</a>
 </nav>
 <script>/* scroll the active game tab into view on small screens */addEventListener("load",function(){var a=document.querySelector(".game-tabs .game-tab[aria-current]");if(a&&a.scrollIntoView)a.scrollIntoView({inline:"center",block:"nearest"});});</script>
 
 <main class="bill">
 
   <section class="prompt" aria-live="polite">
-    <p class="prompt-kicker">— The arcade —</p>
-    <h2 class="prompt-title">Memory</h2>
-    <p class="prompt-metric">Flip the cards and match every pair</p>
+    <p class="prompt-kicker">— The card room —</p>
+    <h2 class="prompt-title">Solitaire</h2>
+    <p class="prompt-metric">Classic Klondike · tap a card to move it · build A → K by suit</p>
   </section>
 
-  <section class="pen mem-pen" aria-label="Memory game">
-    <div class="mem-levels" id="mem-levels" role="group" aria-label="Difficulty">
-      <button type="button" class="mem-level" data-level="easy">Easy</button>
-      <button type="button" class="mem-level" data-level="medium">Medium</button>
-      <button type="button" class="mem-level" data-level="hard">Hard</button>
-    </div>
+  <section class="pen sol-pen" aria-label="Solitaire game">
+    <p class="sol-deal-label" id="sol-deal-label">Daily deal</p>
     <div class="mem-hud">
-      <span class="mem-stat">Moves <b id="mem-moves">0</b></span>
-      <span class="mem-stat">Time <b id="mem-time">0:00</b></span>
-      <button class="mem-new" id="mem-new">New game</button>
+      <span class="mem-stat">time<b id="sol-time">0:00</b></span>
+      <span class="mem-stat">moves<b id="sol-moves">0</b></span>
     </div>
-    <div class="mem-grid" id="mem-grid" aria-label="Cards"></div>
+    <div class="sol-top">
+      <div class="sol-slot" id="sol-stock"></div>
+      <div class="sol-slot" id="sol-waste"></div>
+      <div class="sol-spacer"></div>
+      <div class="sol-slot sol-found" id="sol-f0"></div>
+      <div class="sol-slot sol-found" id="sol-f1"></div>
+      <div class="sol-slot sol-found" id="sol-f2"></div>
+      <div class="sol-slot sol-found" id="sol-f3"></div>
+    </div>
+    <div class="sol-tableau">
+      <div class="sol-col" id="sol-t0"></div>
+      <div class="sol-col" id="sol-t1"></div>
+      <div class="sol-col" id="sol-t2"></div>
+      <div class="sol-col" id="sol-t3"></div>
+      <div class="sol-col" id="sol-t4"></div>
+      <div class="sol-col" id="sol-t5"></div>
+      <div class="sol-col" id="sol-t6"></div>
+    </div>
+    <div class="sol-actions">
+      <button type="button" class="su-tool" id="btn-undo">↩ Undo</button>
+      <button type="button" class="su-tool" id="btn-finish" hidden>✨ Finish</button>
+      <button type="button" class="su-tool" id="btn-daily">📅 Daily deal</button>
+      <button type="button" class="su-tool" id="btn-newdeal">🔀 Shuffle</button>
+    </div>
   </section>
 
   <section class="verdict" id="verdict" hidden>
     <div class="verdict-card">
-      <p class="verdict-stamp" id="verdict-stamp">MATCHED!</p>
-      <p class="verdict-sub">You cleared the board in <b id="mem-final-moves">0</b> moves · <b id="mem-final-time">0:00</b></p>
-      <p class="run-best" id="mem-best">best: — moves</p>
-      <p class="run-newbest" id="mem-newbest" hidden>★ New personal best! ★</p>
+      <p class="verdict-stamp">CLEARED!</p>
+      <p class="verdict-sub">All 52 cards home. Tip of the hat.</p>
+      <div class="statgrid statgrid--3" style="margin-bottom:14px">
+        <div class="stat"><b id="sol-final-time">0:00</b><span>time</span></div>
+        <div class="stat"><b id="sol-final-moves">0</b><span>moves</span></div>
+        <div class="stat"><b style="font-size:14px"><span id="sol-best">—</span></b><span>record</span></div>
+      </div>
+      <p class="run-newbest" id="sol-newbest" hidden>★ New personal best! ★</p>
       <div class="verdict-actions">
-        <button class="btn btn--judge" id="btn-again">Play again</button>
-        <button class="btn btn--share" id="btn-share">Share result</button>
+        <button class="btn btn--judge" id="btn-again">Deal again</button>
+        <button class="btn btn--share" id="btn-share">Share</button>
+        <button class="btn btn--ghost" id="btn-stats2">My stats</button>
       </div>
       <div class="share-row" id="share-row"></div>
     </div>
@@ -156,32 +188,36 @@
     </button>
   </section>
 
-  <!-- AD SLOT — filled by initAds() in js/memory.js once ADSENSE_CLIENT is set. -->
+  <!-- AD SLOT — filled by initAds() once ADSENSE_CLIENT is set. -->
   <div class="ad-slot" id="ad-1" aria-hidden="true">
     <span>advertisement</span>
   </div>
 
   <section class="lede" aria-labelledby="lede-title">
-    <h2 id="lede-title">Free online memory card game</h2>
-    <p><b>Roostr Memory</b> is the classic card-matching game (also called concentration or pairs) you can play free in your browser — no download, no account. Flip two cards at a time, remember where each picture is, and match all eight pairs in as few moves as you can. Your best score is saved on your device.</p>
+    <h2 id="lede-title">Free online solitaire — classic Klondike</h2>
+    <p>Roostr Solitaire is free classic Klondike you can play right in your browser: tap-to-move cards, one-card draw with unlimited recycles, free undo, and a daily deal that's identical for every player so you can compare times. No download, no account, no tricks.</p>
     <div class="faq">
       <details open>
-        <summary>How do you play the memory card game?</summary>
-        <p>Flip two cards per turn. If the pictures match, the pair stays face-up; if not, they flip back over. Remember the positions and clear all eight pairs. Your score is your number of moves and your time.</p>
+        <summary>How do you play Klondike solitaire?</summary>
+        <p>Build the four foundation piles up by suit from ace to king. In the columns, stack cards in descending order with alternating colors, and flip hidden cards as they free up. Tap the deck to draw; tap any card to send it somewhere legal.</p>
       </details>
       <details>
-        <summary>Is it free? Do I need an app?</summary>
-        <p>It's completely free and runs in the browser — nothing to install, no sign-up. Your best moves and best time are saved privately on your device.</p>
+        <summary>What is the daily deal?</summary>
+        <p>Every midnight there's one shared shuffle — everyone in the world gets the same cards, so times and move counts are comparable. You can also deal a random game any time.</p>
+      </details>
+      <details>
+        <summary>Is it free?</summary>
+        <p>Yes — free to play in the browser with no sign-up. Your wins and best times are saved privately on your device.</p>
       </details>
       <details>
         <summary>More free games</summary>
-        <p>Roostr also has <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="currency.html">Guess the Currency</a>, <a href="sudoku.html">Sudoku</a>, <a href="crossword.html">Mini Crossword</a>, <a href="nonogram.html">Nonogram</a>, <a href="milah.html">מילה</a>, <a href="run.html">Coop Run</a>, <a href="dodge.html">Astro Coop</a>, <a href="race.html">Coop Racer</a> and <a href="solitaire.html">Solitaire</a>.</p>
+        <p>Roostr also has <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="currency.html">Guess the Currency</a>, <a href="sudoku.html">Sudoku</a>, <a href="crossword.html">Mini Crossword</a>, <a href="nonogram.html">Nonogram</a>, <a href="milah.html">מילה</a>, <a href="run.html">Coop Run</a>, <a href="dodge.html">Astro Coop</a>, <a href="race.html">Coop Racer</a> and <a href="memory.html">Memory</a>.</p>
       </details>
     </div>
   </section>
 
   <footer class="colophon">
-    <p>A card-matching game from the Roostr coop · free, no download</p>
+    <p>A quiet game of cards from the Roostr coop · free, no download</p>
     <p>
       <button class="linklike" id="btn-about">About</button> ·
       <button class="linklike" id="btn-coffee">☕ Buy me a coffee</button>
@@ -198,22 +234,22 @@
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="help-title">How to play</h3>
     <ol class="howto">
-      <li>Pick a <b>difficulty</b> — Easy (8 pairs), Medium (12) or Hard (18).</li>
-      <li>Tap a card to flip it, then tap a second card.</li>
-      <li>If the two pictures <b>match</b>, the pair stays face-up. If not, they flip back — so remember where they were.</li>
-      <li>Clear all the pairs in the <b>fewest moves</b> and the <b>best time</b>, then share your record.</li>
+      <li><b>Tap a card</b> and it flies to the best legal spot — foundations first, then another column.</li>
+      <li>Build columns <b>down</b> in alternating colors; build the four foundations <b>up by suit</b>, ace to king.</li>
+      <li>Tap the <b>deck</b> to draw one card at a time — recycle it as often as you like. <b>↩ Undo</b> is always free.</li>
+      <li>Play the <b>daily deal</b> (same for everyone) or hit <b>🔀 Shuffle</b> for a fresh random game.</li>
     </ol>
-    <p class="howto-foot">Sharpen your memory. Play as often as you like.</p>
+    <p class="howto-foot">Empty column? Only a king may settle there.</p>
   </div>
 
   <div class="modal" id="modal-stats" hidden role="dialog" aria-modal="true" aria-labelledby="stats-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
-    <h3 class="modal-title" id="stats-title">Memory record</h3>
-    <p class="mem-stat-level"><b id="st-level">Easy</b> difficulty · your bests</p>
-    <div class="statgrid statgrid--3">
-      <div class="stat"><b id="st-moves">—</b><span>best moves</span></div>
-      <div class="stat"><b id="st-time">—</b><span>best time</span></div>
-      <div class="stat"><b id="st-plays">0</b><span>games</span></div>
+    <h3 class="modal-title" id="stats-title">Table record</h3>
+    <div class="statgrid">
+      <div class="stat"><b id="st-plays">0</b><span>deals won +</span></div>
+      <div class="stat"><b id="st-wins">0</b><span>wins</span></div>
+      <div class="stat"><b id="st-bestt">—</b><span>best time</span></div>
+      <div class="stat"><b id="st-bestm">—</b><span>best moves</span></div>
     </div>
   </div>
 
@@ -243,7 +279,7 @@
       </svg>
     </p>
     <h3 class="modal-title" id="coffee-title">Buy me a coffee</h3>
-    <p class="coffee-blurb">Roostr is free and made by one person. If a game made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
+    <p class="coffee-blurb">Roostr is free and made by one person. If this game made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
     <div class="coffee-buy">
       <div class="coffee-stepper" role="group" aria-label="How many coffees">
         <button type="button" class="step-btn" id="cup-minus" aria-label="One fewer cup">−</button>
@@ -261,8 +297,7 @@
   <div class="modal" id="modal-about" hidden role="dialog" aria-modal="true" aria-labelledby="about-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="about-title">About</h3>
-    <p class="about-text">Roostr Memory is a free browser card-matching game — the classic concentration game, with flag cards. Match all the pairs in as few moves as you can; your best score lives in your browser.</p>
-    <p class="about-text">Looking for more? Try <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="run.html">Coop Run</a>, or <a href="dodge.html">Astro Coop</a>.</p>
+    <p class="about-text">Roostr Solitaire is free classic Klondike (draw one) — tap-to-move, free undo, and a shared daily deal. Your statistics live in your browser; there is no account and no tracking.</p>
     <p class="about-text">Questions or feedback? Email <a href="mailto:ilan@playroostr.com">ilan@playroostr.com</a>.</p>
   </div>
 
@@ -270,8 +305,8 @@
 
 <div class="toast" id="toast" role="status"></div>
 
+<script src="js/solitairecore.js"></script>
 <script src="js/share.js"></script>
-<script src="js/flags.js"></script>
-<script src="js/memory.js"></script>
+<script src="js/solitaire.js"></script>
 </body>
 </html>

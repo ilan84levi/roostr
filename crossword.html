@@ -11,23 +11,23 @@
   gtag('js', new Date());
   gtag('config', 'G-GQBZ10K1ZY');
 </script>
-<title>Roostr Memory — free online card matching (concentration) game</title>
-<meta name="description" content="A free memory card game: flip the cards and match the pairs in as few moves as you can. Play the classic concentration game free in your browser — no download.">
+<title>Roostr Mini Crossword — free daily 5x5 crossword</title>
+<meta name="description" content="A free daily mini crossword: a bite-size 5x5 grid, new every midnight, the same puzzle for everyone. Play free in your browser — no account.">
 <meta name="robots" content="index, follow">
 <meta property="og:site_name" content="Roostr">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="Roostr Memory — free online card matching game">
-<meta property="og:description" content="Flip the cards, match the pairs in as few moves as you can. Free, no download.">
-<meta property="og:url" content="https://playroostr.com/memory.html">
+<meta property="og:title" content="Roostr Mini Crossword — free daily 5x5 crossword">
+<meta property="og:description" content="A bite-size daily crossword. Can you beat your best time?">
+<meta property="og:url" content="https://playroostr.com/crossword.html">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://playroostr.com/og-memory.png">
+<meta property="og:image" content="https://playroostr.com/og-crossword.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Roostr Memory — free online card matching game">
-<meta name="twitter:description" content="Flip the cards, match the pairs in as few moves as you can. Free, no download.">
-<meta name="twitter:image" content="https://playroostr.com/og-memory.png">
-<link rel="canonical" href="https://playroostr.com/memory.html">
+<meta name="twitter:title" content="Roostr Mini Crossword — free daily 5x5 crossword">
+<meta name="twitter:description" content="A bite-size daily crossword. Can you beat your best time?">
+<meta name="twitter:image" content="https://playroostr.com/og-crossword.png">
+<link rel="canonical" href="https://playroostr.com/crossword.html">
 <meta name="theme-color" content="#f3ead8">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='42' r='30' fill='%23b5402a'/%3E%3Ccircle cx='50' cy='42' r='19' fill='%23f3ead8'/%3E%3Ccircle cx='50' cy='42' r='12' fill='%23c89a3f'/%3E%3Cpath d='M38 64l-8 26 20-12 20 12-8-26z' fill='%23206258'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,15 +38,15 @@
 {
   "@context": "https://schema.org",
   "@type": ["Game", "WebApplication"],
-  "name": "Roostr Memory",
-  "alternateName": "Roostr card matching game",
-  "url": "https://playroostr.com/memory.html",
-  "description": "A free online memory card game (concentration): flip the cards and match all the pairs in as few moves as you can. No download, no account.",
+  "name": 'Roostr Mini Crossword',
+  "alternateName": 'Roostr daily mini crossword',
+  "url": "https://playroostr.com/crossword.html",
+  "description": 'A free daily mini crossword: a bite-size 5x5 grid, new every midnight, the same puzzle for everyone. Timer, streaks and best times. No download, no account.',
   "applicationCategory": "GameApplication",
-  "genre": "Memory, Puzzle, Card",
+  "genre": 'Puzzle, Word Game, Crossword',
   "operatingSystem": "Any (web browser)",
   "browserRequirements": "Requires JavaScript",
-  "inLanguage": "en",
+  "inLanguage": 'en',
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "isPartOf": { "@type": "WebSite", "name": "Roostr", "url": "https://playroostr.com/" }
@@ -57,12 +57,16 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "How do you play the memory card game?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Flip two cards per turn. If the two pictures match, the pair stays face-up; if not, they flip back. Remember where each picture is and match all eight pairs. Your score is the number of moves and the time it took." } },
-    { "@type": "Question", "name": "Is Roostr Memory free?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes — it is completely free to play in your browser, with no download and no account. Your best score is saved privately in your browser." } },
-    { "@type": "Question", "name": "Can I play the memory game more than once a day?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Unlike the daily puzzles on Roostr, Memory is an arcade game you can replay as many times as you like — the board is reshuffled every game." } }
+    {
+      "@type": "Question",
+      "name": 'How does the daily mini crossword work?',
+      "acceptedAnswer": { "@type": "Answer", "text": "Every midnight there's one new 5x5 crossword, and everyone gets the same grid. Tap a square to see its clue, type your answer, and switch between Across and Down by tapping again. When every square is correct, you've solved it." }
+    },
+    {
+      "@type": "Question",
+      "name": 'Is the mini crossword free?',
+      "acceptedAnswer": { "@type": "Answer", "text": 'Yes — free to play in the browser with no sign-up. Your best times and streak are saved privately on your device.' }
+    }
   ]
 }
 </script>
@@ -92,7 +96,7 @@
       <button class="icon-btn icon-btn--gold" id="btn-plus" aria-label="Roostr Plus" hidden>★</button>
     </nav>
   </div>
-  <p class="dateline"><span id="puzzle-no">The arcade</span> · Flip the cards, match the pairs</p>
+  <p class="dateline"><span id="puzzle-no">No. —</span> · <span id="puzzle-date">—</span> · New mini at midnight</p>
 </header>
 
 <nav class="game-tabs" aria-label="Choose a game">
@@ -102,50 +106,53 @@
   <a class="game-tab" href="flags.html">Flags</a>
   <a class="game-tab" href="currency.html">Money</a>
   <a class="game-tab" href="sudoku.html">Sudoku</a>
-  <a class="game-tab" href="crossword.html">Mini</a>
+  <a class="game-tab" href="crossword.html" aria-current="page">Mini</a>
   <a class="game-tab" href="nonogram.html">Picross</a>
   <a class="game-tab" href="milah.html">מילה</a>
   <a class="game-tab" href="run.html">Run</a>
   <a class="game-tab" href="dodge.html">Space</a>
   <a class="game-tab" href="race.html">Race</a>
   <a class="game-tab" href="solitaire.html">Cards</a>
-  <a class="game-tab" href="memory.html" aria-current="page">Memory</a>
+  <a class="game-tab" href="memory.html">Memory</a>
 </nav>
 <script>/* scroll the active game tab into view on small screens */addEventListener("load",function(){var a=document.querySelector(".game-tabs .game-tab[aria-current]");if(a&&a.scrollIntoView)a.scrollIntoView({inline:"center",block:"nearest"});});</script>
 
 <main class="bill">
 
   <section class="prompt" aria-live="polite">
-    <p class="prompt-kicker">— The arcade —</p>
-    <h2 class="prompt-title">Memory</h2>
-    <p class="prompt-metric">Flip the cards and match every pair</p>
+    <p class="prompt-kicker">— Today's mini —</p>
+    <h2 class="prompt-title">Mini Crossword</h2>
+    <p class="prompt-metric">A bite-size 5×5 — every letter crossed, every day new</p>
   </section>
 
-  <section class="pen mem-pen" aria-label="Memory game">
-    <div class="mem-levels" id="mem-levels" role="group" aria-label="Difficulty">
-      <button type="button" class="mem-level" data-level="easy">Easy</button>
-      <button type="button" class="mem-level" data-level="medium">Medium</button>
-      <button type="button" class="mem-level" data-level="hard">Hard</button>
-    </div>
+  <section class="pen mem-pen" aria-label="Today's mini crossword">
     <div class="mem-hud">
-      <span class="mem-stat">Moves <b id="mem-moves">0</b></span>
-      <span class="mem-stat">Time <b id="mem-time">0:00</b></span>
-      <button class="mem-new" id="mem-new">New game</button>
+      <span class="mem-stat">time<b id="cw-time">0:00</b></span>
     </div>
-    <div class="mem-grid" id="mem-grid" aria-label="Cards"></div>
+    <div class="cw-grid" id="cw-grid" aria-label="Crossword grid"></div>
+    <div class="cw-cluebar" id="cw-cluebar">Tap a square to start</div>
+    <div class="kb" id="cw-kb" aria-label="Keyboard"></div>
+    <div class="cw-lists">
+      <div><h4>Across</h4><ul id="cw-across"></ul></div>
+      <div><h4>Down</h4><ul id="cw-down"></ul></div>
+    </div>
   </section>
 
   <section class="verdict" id="verdict" hidden>
     <div class="verdict-card">
-      <p class="verdict-stamp" id="verdict-stamp">MATCHED!</p>
-      <p class="verdict-sub">You cleared the board in <b id="mem-final-moves">0</b> moves · <b id="mem-final-time">0:00</b></p>
-      <p class="run-best" id="mem-best">best: — moves</p>
-      <p class="run-newbest" id="mem-newbest" hidden>★ New personal best! ★</p>
+      <p class="verdict-stamp">SOLVED!</p>
+      <p class="verdict-sub">Every square checks out. See you tomorrow.</p>
+      <div class="statgrid" style="grid-template-columns:1fr 1fr;margin-bottom:14px">
+        <div class="stat"><b id="cw-final-time">0:00</b><span>time</span></div>
+        <div class="stat"><b id="cw-best">—</b><span>best time</span></div>
+      </div>
+      <p class="run-newbest" id="cw-newbest" hidden>★ New best time! ★</p>
       <div class="verdict-actions">
-        <button class="btn btn--judge" id="btn-again">Play again</button>
         <button class="btn btn--share" id="btn-share">Share result</button>
+        <button class="btn btn--ghost" id="btn-stats2">My stats</button>
       </div>
       <div class="share-row" id="share-row"></div>
+      <p class="countdown">Next mini in <b id="countdown">—</b></p>
     </div>
   </section>
 
@@ -156,32 +163,32 @@
     </button>
   </section>
 
-  <!-- AD SLOT — filled by initAds() in js/memory.js once ADSENSE_CLIENT is set. -->
+  <!-- AD SLOT — filled by initAds() once ADSENSE_CLIENT is set. -->
   <div class="ad-slot" id="ad-1" aria-hidden="true">
     <span>advertisement</span>
   </div>
 
   <section class="lede" aria-labelledby="lede-title">
-    <h2 id="lede-title">Free online memory card game</h2>
-    <p><b>Roostr Memory</b> is the classic card-matching game (also called concentration or pairs) you can play free in your browser — no download, no account. Flip two cards at a time, remember where each picture is, and match all eight pairs in as few moves as you can. Your best score is saved on your device.</p>
+    <h2 id="lede-title">Free daily mini crossword puzzle</h2>
+    <p>The Roostr Mini is a free daily crossword in a bite-size 5×5 grid — a two-minute word workout with a fresh puzzle every midnight, the same for everyone. Solve it on your phone with the on-screen keyboard or race it on a computer. No download, no account.</p>
     <div class="faq">
       <details open>
-        <summary>How do you play the memory card game?</summary>
-        <p>Flip two cards per turn. If the pictures match, the pair stays face-up; if not, they flip back over. Remember the positions and clear all eight pairs. Your score is your number of moves and your time.</p>
+        <summary>How does the daily mini crossword work?</summary>
+        <p>Every midnight there's one new 5x5 crossword, and everyone gets the same grid. Tap a square to see its clue, type your answer, and switch between Across and Down by tapping again. When every square is correct, you've solved it.</p>
       </details>
       <details>
-        <summary>Is it free? Do I need an app?</summary>
-        <p>It's completely free and runs in the browser — nothing to install, no sign-up. Your best moves and best time are saved privately on your device.</p>
+        <summary>Is the mini crossword free?</summary>
+        <p>Yes — free to play in the browser with no sign-up. Your best times and streak are saved privately on your device.</p>
       </details>
       <details>
         <summary>More free games</summary>
-        <p>Roostr also has <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="currency.html">Guess the Currency</a>, <a href="sudoku.html">Sudoku</a>, <a href="crossword.html">Mini Crossword</a>, <a href="nonogram.html">Nonogram</a>, <a href="milah.html">מילה</a>, <a href="run.html">Coop Run</a>, <a href="dodge.html">Astro Coop</a>, <a href="race.html">Coop Racer</a> and <a href="solitaire.html">Solitaire</a>.</p>
+        <p>Roostr also has <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="currency.html">Guess the Currency</a>, <a href="sudoku.html">Sudoku</a>, <a href="nonogram.html">Nonogram</a>, <a href="milah.html">מילה</a>, <a href="run.html">Coop Run</a>, <a href="dodge.html">Astro Coop</a>, <a href="race.html">Coop Racer</a>, <a href="solitaire.html">Solitaire</a> and <a href="memory.html">Memory</a>.</p>
       </details>
     </div>
   </section>
 
   <footer class="colophon">
-    <p>A card-matching game from the Roostr coop · free, no download</p>
+    <p>One tiny crossword a day · sharpen your pencil</p>
     <p>
       <button class="linklike" id="btn-about">About</button> ·
       <button class="linklike" id="btn-coffee">☕ Buy me a coffee</button>
@@ -198,22 +205,22 @@
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="help-title">How to play</h3>
     <ol class="howto">
-      <li>Pick a <b>difficulty</b> — Easy (8 pairs), Medium (12) or Hard (18).</li>
-      <li>Tap a card to flip it, then tap a second card.</li>
-      <li>If the two pictures <b>match</b>, the pair stays face-up. If not, they flip back — so remember where they were.</li>
-      <li>Clear all the pairs in the <b>fewest moves</b> and the <b>best time</b>, then share your record.</li>
+      <li>Tap a square, read the <b>clue</b> above the keyboard, and type. Tap the square again to switch between <b>Across</b> and <b>Down</b>.</li>
+      <li>Fill every white square. When the grid is complete and correct, you're done — <b>wrong letters turn red</b> so you know where to look.</li>
+      <li>The timer starts with your first letter. <b>Beat your best time</b> and keep the daily streak.</li>
+      <li>One mini a day, the <b>same puzzle for everyone</b> — new at midnight.</li>
     </ol>
-    <p class="howto-foot">Sharpen your memory. Play as often as you like.</p>
+    <p class="howto-foot">Keyboard fans: letters type, Space flips direction, arrows move.</p>
   </div>
 
   <div class="modal" id="modal-stats" hidden role="dialog" aria-modal="true" aria-labelledby="stats-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
-    <h3 class="modal-title" id="stats-title">Memory record</h3>
-    <p class="mem-stat-level"><b id="st-level">Easy</b> difficulty · your bests</p>
-    <div class="statgrid statgrid--3">
-      <div class="stat"><b id="st-moves">—</b><span>best moves</span></div>
-      <div class="stat"><b id="st-time">—</b><span>best time</span></div>
-      <div class="stat"><b id="st-plays">0</b><span>games</span></div>
+    <h3 class="modal-title" id="stats-title">Solve record</h3>
+    <div class="statgrid">
+      <div class="stat"><b id="st-streak">0</b><span>streak</span></div>
+      <div class="stat"><b id="st-max">0</b><span>best streak</span></div>
+      <div class="stat"><b id="st-plays">0</b><span>solved</span></div>
+      <div class="stat"><b id="st-best">—</b><span>best time</span></div>
     </div>
   </div>
 
@@ -243,7 +250,7 @@
       </svg>
     </p>
     <h3 class="modal-title" id="coffee-title">Buy me a coffee</h3>
-    <p class="coffee-blurb">Roostr is free and made by one person. If a game made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
+    <p class="coffee-blurb">Roostr is free and made by one person. If this game made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
     <div class="coffee-buy">
       <div class="coffee-stepper" role="group" aria-label="How many coffees">
         <button type="button" class="step-btn" id="cup-minus" aria-label="One fewer cup">−</button>
@@ -261,8 +268,7 @@
   <div class="modal" id="modal-about" hidden role="dialog" aria-modal="true" aria-labelledby="about-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="about-title">About</h3>
-    <p class="about-text">Roostr Memory is a free browser card-matching game — the classic concentration game, with flag cards. Match all the pairs in as few moves as you can; your best score lives in your browser.</p>
-    <p class="about-text">Looking for more? Try <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="run.html">Coop Run</a>, or <a href="dodge.html">Astro Coop</a>.</p>
+    <p class="about-text">The Roostr Mini is a free daily 5×5 crossword — one new puzzle at midnight, the same grid for everyone, with a timer, streaks and best times stored in your browser.</p>
     <p class="about-text">Questions or feedback? Email <a href="mailto:ilan@playroostr.com">ilan@playroostr.com</a>.</p>
   </div>
 
@@ -270,8 +276,8 @@
 
 <div class="toast" id="toast" role="status"></div>
 
+<script src="js/crosswords.js"></script>
 <script src="js/share.js"></script>
-<script src="js/flags.js"></script>
-<script src="js/memory.js"></script>
+<script src="js/crossword.js"></script>
 </body>
 </html>

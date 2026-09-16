@@ -9,7 +9,7 @@ people say *"wait, what?"* (a blue whale's tongue outweighs a family car;
 Nintendo is older than the zipper's patent holder; Antarctica is the world's
 largest desert).
 
-Ten games share one design system — six daily puzzles and four arcade games:
+Fourteen games share one design system — nine daily puzzles plus solitaire and four arcade games:
 
 - **Ranking** (`index.html`) — drag five things into order by the hidden measure.
 - **Face-Off** (`faceoff.html`) — call *higher or lower* on the hidden measure,
@@ -26,6 +26,14 @@ Ten games share one design system — six daily puzzles and four arcade games:
 - **Sudoku** (`sudoku.html`) — a classic daily sudoku, generated fresh each
   midnight with exactly one solution, in Easy / Medium / Hard. Notes, mistake
   tracking, best times and a daily streak.
+- **Mini Crossword** (`crossword.html`) — a bite-size daily 5×5 crossword with an
+  on-screen keyboard, timer, streaks and best times. Same puzzle for everyone.
+- **Nonogram** (`nonogram.html`) — a daily 10×10 picross; every puzzle is
+  generated with a unique solution reachable by pure line logic.
+- **מילה** (`milah.html`) — a daily Hebrew word game (Wordle-style): five
+  letters, six guesses, RTL page, Hebrew keyboard, final-letter handling.
+- **Solitaire** (`solitaire.html`) — classic Klondike (draw one), tap-to-move
+  with undo, plus a seeded daily deal shared by everyone. Play any time.
 - **Coop Run** (`run.html`) — a canvas endless runner: jump the rooster over hay
   bales and fences, chasing a distance record. Not daily — play any time.
 - **Astro Coop** (`dodge.html`) — a canvas space dodger: fly a spaceship through a
@@ -39,7 +47,7 @@ Ten games share one design system — six daily puzzles and four arcade games:
 
 The first three share one puzzle pool; the flag quiz, the currency quiz and the
 arcade games each have their own. A segmented switcher in the header jumps
-between all ten (it scrolls horizontally on small screens).
+between all fourteen (it scrolls horizontally on small screens).
 
 ## Play it locally
 
@@ -53,6 +61,10 @@ python -m http.server 8000
 # → http://localhost:8000/flags.html    (Guess the Flag)
 # → http://localhost:8000/currency.html (Guess the Currency)
 # → http://localhost:8000/sudoku.html   (Sudoku)
+# → http://localhost:8000/crossword.html (Mini Crossword)
+# → http://localhost:8000/nonogram.html (Nonogram)
+# → http://localhost:8000/milah.html    (מילה — Hebrew Wordle)
+# → http://localhost:8000/solitaire.html (Solitaire)
 # → http://localhost:8000/run.html      (Coop Run)
 # → http://localhost:8000/dodge.html    (Astro Coop)
 # → http://localhost:8000/race.html     (Coop Racer)
@@ -68,6 +80,10 @@ pick.html          the Top Pick (spot-the-biggest) game
 flags.html         the Guess the Flag quiz
 currency.html      the Guess the Currency quiz
 sudoku.html        the daily Sudoku
+crossword.html     the daily 5×5 Mini Crossword
+nonogram.html      the daily 10×10 Nonogram (picross)
+milah.html         מילה — the daily Hebrew word game (RTL)
+solitaire.html     classic Klondike solitaire with a daily deal
 run.html           the Coop Run arcade runner
 dodge.html         the Astro Coop space dodger
 race.html          the Coop Racer rooster-dodging racer
@@ -87,6 +103,14 @@ js/currencies.js   36 world currencies as SVG banknotes (country, currency, regi
 js/currency.js     Guess the Currency engine — same patterns, "gc-" localStorage namespace
 js/sudokugen.js    seeded sudoku generator (unique-solution digger), shared with tests
 js/sudoku.js       Sudoku engine — notes, mistakes, streaks, "su-" localStorage namespace
+js/crosswords.js   14 hand-checked 5×5 mini crosswords (grids + clues)
+js/crossword.js    Mini Crossword engine — "cw-" localStorage namespace
+js/nonogen.js      nonogram generator (unique, line-logic solvable), shared with tests
+js/nonogram.js     Nonogram engine — "ng-" localStorage namespace
+js/hebwords.js     Hebrew five-letter word lists (normalized finals)
+js/milah.js        מילה engine — Hebrew Wordle, "mw-" localStorage namespace
+js/solitairecore.js pure Klondike rules (deal/moves/legality), shared with tests
+js/solitaire.js    Solitaire engine — tap-to-move UI, "sol-" localStorage namespace
 js/run.js          Coop Run engine — canvas loop, physics, "cr-" localStorage namespace
 js/dodge.js        Astro Coop engine — canvas loop, "sd-" localStorage namespace
 js/race.js         Coop Racer engine — canvas loop, thumb steering + tilt boost,
@@ -104,14 +128,15 @@ The puzzle games pick with a different daily offset so they rarely overlap on th
 same day. Every page carries Open Graph/Twitter cards (`og:site_name`,
 `og:locale`), a canonical URL, an explicit `robots` directive, and schema.org
 JSON-LD (`Game`/`WebApplication`). The home page also emits a `WebSite`, an
-`ItemList` of all ten games, and a `FAQPage` backed by a visible About/FAQ
+`ItemList` of all fourteen games, and a `FAQPage` backed by a visible About/FAQ
 section — real crawlable text for organic search.
 
 ## Share images
 
 Each game has its own 1200×630 card (`og-ranking.png`, `og-faceoff.png`,
 `og-pick.png`, `og-flags.png`, `og-currency.png`, `og-run.png`, `og-dodge.png`,
-`og-race.png`, `og-sudoku.png`, `og-memory.png`) referenced from that
+`og-race.png`, `og-sudoku.png`, `og-crossword.png`, `og-nonogram.png`,
+`og-milah.png`, `og-solitaire.png`, `og-memory.png`) referenced from that
 page's `og:image` / `twitter:image`. They're generated from HTML templates with
 headless Chromium — no design tool needed:
 
