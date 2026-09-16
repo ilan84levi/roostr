@@ -1282,6 +1282,229 @@ body.plus .ad-slot { display: none; }
   .su-key b { font-size: 16px; }
 }
 
+/* ————— shared on-screen keyboard (crossword + milah) ————— */
+.kb { margin: 12px auto 0; max-width: 460px; user-select: none; -webkit-user-select: none; }
+.kb-row { display: flex; justify-content: center; gap: 5px; margin-bottom: 6px; }
+.kb-key {
+  flex: 1;
+  max-width: 42px;
+  min-width: 0;
+  padding: 11px 0;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  background: var(--card);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 2px 0 rgba(var(--shadow), .55);
+  transition: transform .06s, background .15s, color .15s;
+}
+.kb-key:active { transform: translateY(2px); box-shadow: none; }
+.kb-wide { max-width: 74px; flex: 1.6; font-size: 13px; }
+
+/* ————— Mini Crossword ————— */
+.cw-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  max-width: 320px;
+  margin: 0 auto 10px;
+  border: 3px solid var(--ink);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--ink);
+  gap: 1.5px;
+  box-shadow: 2px 3px 0 rgba(var(--shadow), .3);
+}
+.cw-cell {
+  aspect-ratio: 1;
+  border: 0;
+  background: var(--card);
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cw-block { background: var(--ink); cursor: default; }
+.cw-num {
+  position: absolute;
+  top: 2px; left: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+.cw-letter { font-family: var(--font-body); font-weight: 700; font-size: clamp(18px, 6vw, 26px); color: var(--ink); }
+.cw-word { background: #f1e7cf; }
+.cw-sel { background: var(--gold-pale); box-shadow: inset 0 0 0 2.5px var(--teal); }
+.cw-wrong .cw-letter { color: var(--red); }
+.cw-cluebar {
+  max-width: 320px;
+  margin: 0 auto 4px;
+  background: var(--gold-pale);
+  border: 1.5px solid var(--gold);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  min-height: 38px;
+}
+.cw-lists { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 460px; margin: 16px auto 0; }
+.cw-lists h4 { font-family: var(--font-display); font-style: italic; font-size: 15px; margin-bottom: 6px; }
+.cw-lists ul { list-style: none; }
+.cw-clue { font-size: 13px; padding: 4px 6px; border-radius: 3px; cursor: pointer; line-height: 1.35; }
+.cw-clue b { color: var(--red); margin-inline-end: 3px; }
+.cw-clue.active { background: var(--gold-pale); }
+
+/* ————— Nonogram ————— */
+.ng-table {
+  display: grid;
+  grid-template-columns: auto repeat(10, 1fr);
+  max-width: 440px;
+  margin: 0 auto;
+  gap: 1px;
+  background: rgba(var(--shadow), .3);
+  border: 3px solid var(--ink);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 2px 3px 0 rgba(var(--shadow), .3);
+}
+.ng-corner { background: var(--paper-deep); }
+.ng-colclue {
+  background: var(--paper-deep);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.25;
+  padding: 4px 0 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--ink);
+}
+.ng-rowclue {
+  background: var(--paper-deep);
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  letter-spacing: .12em;
+  color: var(--ink);
+  min-width: 44px;
+}
+.ng-doneline { color: rgba(var(--shadow), .4); }
+.ng-cell {
+  aspect-ratio: 1;
+  border: 0;
+  padding: 0;
+  background: var(--card);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ng-fill { background: var(--teal); }
+.ng-x { background: var(--card); }
+.ng-gapr { border-right: 2px solid var(--ink); }
+.ng-gapb { border-bottom: 2px solid var(--ink); }
+.ng-wrongflash { animation: ngWrong .45s ease; }
+@keyframes ngWrong { 0%,100% { background: var(--card); } 40% { background: var(--red); } }
+.ng-modes { display: flex; justify-content: center; gap: 10px; margin: 12px 0 2px; }
+
+/* ————— מילה (Hebrew word game) ————— */
+.mw-board { display: grid; gap: 6px; max-width: 330px; margin: 0 auto 8px; }
+.mw-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.mw-shake { animation: mwShake .4s ease; }
+@keyframes mwShake { 0%,100% { transform: none; } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+.mw-tile {
+  aspect-ratio: 1;
+  border: 2px solid rgba(var(--shadow), .4);
+  border-radius: 4px;
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(20px, 7vw, 30px);
+  color: var(--ink);
+}
+.mw-filled { border-color: var(--ink); }
+.mw-green, .kb-key.mw-green { background: var(--teal); color: var(--card); border-color: var(--teal); }
+.mw-yellow, .kb-key.mw-yellow { background: var(--gold); color: var(--card); border-color: var(--gold); }
+.mw-gray, .kb-key.mw-gray { background: #b7ab93; color: var(--card); border-color: #b7ab93; }
+[dir="rtl"] .kb-key { font-size: 16px; }
+
+/* ————— Solitaire ————— */
+.sol-pen { padding: 12px 8px; }
+.sol-top { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 12px; }
+.sol-spacer { }
+.sol-tableau { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; min-height: 300px; }
+.sol-col { position: relative; min-height: 300px; border-radius: 4px; }
+.sol-tab-empty { background: rgba(var(--shadow), .08); border: 1.5px dashed rgba(var(--shadow), .35); cursor: pointer; }
+.sol-slot {
+  aspect-ratio: 5 / 7;
+  border-radius: 5px;
+  position: relative;
+  background: rgba(var(--shadow), .08);
+  border: 1.5px dashed rgba(var(--shadow), .35);
+}
+.sol-slot .sol-card { position: absolute; inset: 0; }
+.sol-hint, .sol-recycle {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: rgba(var(--shadow), .4);
+}
+.sol-card {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 7;
+  border: 1.5px solid var(--ink);
+  border-radius: 5px;
+  background: var(--card);
+  padding: 0;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  box-shadow: 0 1px 2px rgba(var(--shadow), .3);
+  font-family: var(--font-body);
+}
+.sol-top .sol-card { position: absolute; }
+.sol-corner {
+  position: absolute; top: 2px; left: 4px;
+  font-size: clamp(11px, 3.4vw, 15px);
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+}
+.sol-corner i { display: block; font-style: normal; font-size: clamp(10px, 3vw, 14px); }
+.sol-pip {
+  position: absolute; right: 4px; bottom: 2px;
+  font-size: clamp(14px, 4.5vw, 22px);
+}
+.sol-red { color: var(--red); }
+.sol-black { color: var(--ink); }
+.sol-down { background: var(--red); border-color: var(--red-deep); cursor: pointer; }
+.sol-back {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold-pale);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 900;
+  font-size: clamp(14px, 4.5vw, 22px);
+}
+.sol-actions { display: flex; justify-content: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.sol-deal-label { text-align: center; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 8px; }
+
 /* ————— one-tap social share row ————— */
 .share-row {
   display: flex;

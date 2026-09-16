@@ -11,23 +11,23 @@
   gtag('js', new Date());
   gtag('config', 'G-GQBZ10K1ZY');
 </script>
-<title>Roostr Memory — free online card matching (concentration) game</title>
-<meta name="description" content="A free memory card game: flip the cards and match the pairs in as few moves as you can. Play the classic concentration game free in your browser — no download.">
+<title>Roostr Nonogram — free daily picross puzzle</title>
+<meta name="description" content="A free daily nonogram (picross): use the number clues to fill the 10x10 grid. Unique solution, pure logic, new every midnight. Play free in your browser.">
 <meta name="robots" content="index, follow">
 <meta property="og:site_name" content="Roostr">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="Roostr Memory — free online card matching game">
-<meta property="og:description" content="Flip the cards, match the pairs in as few moves as you can. Free, no download.">
-<meta property="og:url" content="https://playroostr.com/memory.html">
+<meta property="og:title" content="Roostr Nonogram — free daily picross puzzle">
+<meta property="og:description" content="Fill the grid from the number clues — pure logic, one puzzle a day.">
+<meta property="og:url" content="https://playroostr.com/nonogram.html">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://playroostr.com/og-memory.png">
+<meta property="og:image" content="https://playroostr.com/og-nonogram.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Roostr Memory — free online card matching game">
-<meta name="twitter:description" content="Flip the cards, match the pairs in as few moves as you can. Free, no download.">
-<meta name="twitter:image" content="https://playroostr.com/og-memory.png">
-<link rel="canonical" href="https://playroostr.com/memory.html">
+<meta name="twitter:title" content="Roostr Nonogram — free daily picross puzzle">
+<meta name="twitter:description" content="Fill the grid from the number clues — pure logic, one puzzle a day.">
+<meta name="twitter:image" content="https://playroostr.com/og-nonogram.png">
+<link rel="canonical" href="https://playroostr.com/nonogram.html">
 <meta name="theme-color" content="#f3ead8">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='42' r='30' fill='%23b5402a'/%3E%3Ccircle cx='50' cy='42' r='19' fill='%23f3ead8'/%3E%3Ccircle cx='50' cy='42' r='12' fill='%23c89a3f'/%3E%3Cpath d='M38 64l-8 26 20-12 20 12-8-26z' fill='%23206258'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,15 +38,15 @@
 {
   "@context": "https://schema.org",
   "@type": ["Game", "WebApplication"],
-  "name": "Roostr Memory",
-  "alternateName": "Roostr card matching game",
-  "url": "https://playroostr.com/memory.html",
-  "description": "A free online memory card game (concentration): flip the cards and match all the pairs in as few moves as you can. No download, no account.",
+  "name": 'Roostr Nonogram',
+  "alternateName": 'Roostr daily picross',
+  "url": "https://playroostr.com/nonogram.html",
+  "description": 'A free daily nonogram (picross) puzzle: use the number clues to fill a 10x10 grid. Every puzzle has a unique solution reachable by pure logic. New at midnight; no download, no account.',
   "applicationCategory": "GameApplication",
-  "genre": "Memory, Puzzle, Card",
+  "genre": 'Puzzle, Logic, Nonogram',
   "operatingSystem": "Any (web browser)",
   "browserRequirements": "Requires JavaScript",
-  "inLanguage": "en",
+  "inLanguage": 'en',
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "isPartOf": { "@type": "WebSite", "name": "Roostr", "url": "https://playroostr.com/" }
@@ -57,12 +57,16 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "How do you play the memory card game?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Flip two cards per turn. If the two pictures match, the pair stays face-up; if not, they flip back. Remember where each picture is and match all eight pairs. Your score is the number of moves and the time it took." } },
-    { "@type": "Question", "name": "Is Roostr Memory free?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes — it is completely free to play in your browser, with no download and no account. Your best score is saved privately in your browser." } },
-    { "@type": "Question", "name": "Can I play the memory game more than once a day?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Unlike the daily puzzles on Roostr, Memory is an arcade game you can replay as many times as you like — the board is reshuffled every game." } }
+    {
+      "@type": "Question",
+      "name": 'How do you solve a nonogram?',
+      "acceptedAnswer": { "@type": "Answer", "text": 'The numbers beside each row and above each column give the lengths of the consecutive filled runs, in order, separated by at least one empty square. Cross-referencing rows and columns lets you deduce every square — our puzzles never require guessing.' }
+    },
+    {
+      "@type": "Question",
+      "name": 'Is the nonogram free?',
+      "acceptedAnswer": { "@type": "Answer", "text": 'Yes — free to play in the browser with no sign-up. Your best times and streak are saved privately on your device.' }
+    }
   ]
 }
 </script>
@@ -92,7 +96,7 @@
       <button class="icon-btn icon-btn--gold" id="btn-plus" aria-label="Roostr Plus" hidden>★</button>
     </nav>
   </div>
-  <p class="dateline"><span id="puzzle-no">The arcade</span> · Flip the cards, match the pairs</p>
+  <p class="dateline"><span id="puzzle-no">No. —</span> · <span id="puzzle-date">—</span> · New grid at midnight</p>
 </header>
 
 <nav class="game-tabs" aria-label="Choose a game">
@@ -103,49 +107,52 @@
   <a class="game-tab" href="currency.html">Money</a>
   <a class="game-tab" href="sudoku.html">Sudoku</a>
   <a class="game-tab" href="crossword.html">Mini</a>
-  <a class="game-tab" href="nonogram.html">Picross</a>
+  <a class="game-tab" href="nonogram.html" aria-current="page">Picross</a>
   <a class="game-tab" href="milah.html">מילה</a>
   <a class="game-tab" href="run.html">Run</a>
   <a class="game-tab" href="dodge.html">Space</a>
   <a class="game-tab" href="race.html">Race</a>
   <a class="game-tab" href="solitaire.html">Cards</a>
-  <a class="game-tab" href="memory.html" aria-current="page">Memory</a>
+  <a class="game-tab" href="memory.html">Memory</a>
 </nav>
 <script>/* scroll the active game tab into view on small screens */addEventListener("load",function(){var a=document.querySelector(".game-tabs .game-tab[aria-current]");if(a&&a.scrollIntoView)a.scrollIntoView({inline:"center",block:"nearest"});});</script>
 
 <main class="bill">
 
   <section class="prompt" aria-live="polite">
-    <p class="prompt-kicker">— The arcade —</p>
-    <h2 class="prompt-title">Memory</h2>
-    <p class="prompt-metric">Flip the cards and match every pair</p>
+    <p class="prompt-kicker">— Today's grid —</p>
+    <h2 class="prompt-title">Nonogram</h2>
+    <p class="prompt-metric">The numbers tell you how many squares to fill, in order, in each line</p>
   </section>
 
-  <section class="pen mem-pen" aria-label="Memory game">
-    <div class="mem-levels" id="mem-levels" role="group" aria-label="Difficulty">
-      <button type="button" class="mem-level" data-level="easy">Easy</button>
-      <button type="button" class="mem-level" data-level="medium">Medium</button>
-      <button type="button" class="mem-level" data-level="hard">Hard</button>
-    </div>
+  <section class="pen mem-pen" aria-label="Today's nonogram">
     <div class="mem-hud">
-      <span class="mem-stat">Moves <b id="mem-moves">0</b></span>
-      <span class="mem-stat">Time <b id="mem-time">0:00</b></span>
-      <button class="mem-new" id="mem-new">New game</button>
+      <span class="mem-stat">time<b id="ng-time">0:00</b></span>
+      <span class="mem-stat">mistakes<b id="ng-mist">0</b></span>
     </div>
-    <div class="mem-grid" id="mem-grid" aria-label="Cards"></div>
+    <div id="ng-board" aria-label="Nonogram board"></div>
+    <div class="ng-modes" role="group" aria-label="Mode">
+      <button type="button" class="su-tool active" id="btn-fillmode">⬛ Fill</button>
+      <button type="button" class="su-tool" id="btn-xmode">✕ Mark</button>
+    </div>
   </section>
 
   <section class="verdict" id="verdict" hidden>
     <div class="verdict-card">
-      <p class="verdict-stamp" id="verdict-stamp">MATCHED!</p>
-      <p class="verdict-sub">You cleared the board in <b id="mem-final-moves">0</b> moves · <b id="mem-final-time">0:00</b></p>
-      <p class="run-best" id="mem-best">best: — moves</p>
-      <p class="run-newbest" id="mem-newbest" hidden>★ New personal best! ★</p>
+      <p class="verdict-stamp">PICTURE!</p>
+      <p class="verdict-sub">Every clue satisfied — the grid is complete.</p>
+      <div class="statgrid statgrid--3" style="margin-bottom:14px">
+        <div class="stat"><b id="ng-final-time">0:00</b><span>time</span></div>
+        <div class="stat"><b id="ng-final-mist">0</b><span>mistakes</span></div>
+        <div class="stat"><b id="ng-best">—</b><span>best time</span></div>
+      </div>
+      <p class="run-newbest" id="ng-newbest" hidden>★ New best time! ★</p>
       <div class="verdict-actions">
-        <button class="btn btn--judge" id="btn-again">Play again</button>
         <button class="btn btn--share" id="btn-share">Share result</button>
+        <button class="btn btn--ghost" id="btn-stats2">My stats</button>
       </div>
       <div class="share-row" id="share-row"></div>
+      <p class="countdown">Next grid in <b id="countdown">—</b></p>
     </div>
   </section>
 
@@ -156,32 +163,32 @@
     </button>
   </section>
 
-  <!-- AD SLOT — filled by initAds() in js/memory.js once ADSENSE_CLIENT is set. -->
+  <!-- AD SLOT — filled by initAds() once ADSENSE_CLIENT is set. -->
   <div class="ad-slot" id="ad-1" aria-hidden="true">
     <span>advertisement</span>
   </div>
 
   <section class="lede" aria-labelledby="lede-title">
-    <h2 id="lede-title">Free online memory card game</h2>
-    <p><b>Roostr Memory</b> is the classic card-matching game (also called concentration or pairs) you can play free in your browser — no download, no account. Flip two cards at a time, remember where each picture is, and match all eight pairs in as few moves as you can. Your best score is saved on your device.</p>
+    <h2 id="lede-title">Free daily nonogram (picross) puzzle</h2>
+    <p>Roostr Nonogram is a free daily picross: use the number clues to work out which squares to fill in a 10×10 grid. Every puzzle is generated with exactly one solution that pure logic can reach — no guessing — and everyone in the world gets the same grid each midnight. No download, no account.</p>
     <div class="faq">
       <details open>
-        <summary>How do you play the memory card game?</summary>
-        <p>Flip two cards per turn. If the pictures match, the pair stays face-up; if not, they flip back over. Remember the positions and clear all eight pairs. Your score is your number of moves and your time.</p>
+        <summary>How do you solve a nonogram?</summary>
+        <p>The numbers beside each row and above each column give the lengths of the consecutive filled runs, in order, separated by at least one empty square. Cross-referencing rows and columns lets you deduce every square — our puzzles never require guessing.</p>
       </details>
       <details>
-        <summary>Is it free? Do I need an app?</summary>
-        <p>It's completely free and runs in the browser — nothing to install, no sign-up. Your best moves and best time are saved privately on your device.</p>
+        <summary>Is the nonogram free?</summary>
+        <p>Yes — free to play in the browser with no sign-up. Your best times and streak are saved privately on your device.</p>
       </details>
       <details>
         <summary>More free games</summary>
-        <p>Roostr also has <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="currency.html">Guess the Currency</a>, <a href="sudoku.html">Sudoku</a>, <a href="crossword.html">Mini Crossword</a>, <a href="nonogram.html">Nonogram</a>, <a href="milah.html">מילה</a>, <a href="run.html">Coop Run</a>, <a href="dodge.html">Astro Coop</a>, <a href="race.html">Coop Racer</a> and <a href="solitaire.html">Solitaire</a>.</p>
+        <p>Roostr also has <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="currency.html">Guess the Currency</a>, <a href="sudoku.html">Sudoku</a>, <a href="crossword.html">Mini Crossword</a>, <a href="milah.html">מילה</a>, <a href="run.html">Coop Run</a>, <a href="dodge.html">Astro Coop</a>, <a href="race.html">Coop Racer</a>, <a href="solitaire.html">Solitaire</a> and <a href="memory.html">Memory</a>.</p>
       </details>
     </div>
   </section>
 
   <footer class="colophon">
-    <p>A card-matching game from the Roostr coop · free, no download</p>
+    <p>Logic, one square at a time · new picture daily</p>
     <p>
       <button class="linklike" id="btn-about">About</button> ·
       <button class="linklike" id="btn-coffee">☕ Buy me a coffee</button>
@@ -198,22 +205,22 @@
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="help-title">How to play</h3>
     <ol class="howto">
-      <li>Pick a <b>difficulty</b> — Easy (8 pairs), Medium (12) or Hard (18).</li>
-      <li>Tap a card to flip it, then tap a second card.</li>
-      <li>If the two pictures <b>match</b>, the pair stays face-up. If not, they flip back — so remember where they were.</li>
-      <li>Clear all the pairs in the <b>fewest moves</b> and the <b>best time</b>, then share your record.</li>
+      <li>The <b>numbers</b> on each row and column tell you the lengths of the filled runs, <b>in order</b>, with at least one gap between runs.</li>
+      <li>In <b>⬛ Fill</b> mode, tap squares you're sure are filled. A wrong fill costs a <b>mistake</b> and marks the square with ✕.</li>
+      <li>Use <b>✕ Mark</b> mode to note squares that must stay empty — it keeps your logic straight.</li>
+      <li>Every puzzle has <b>exactly one solution</b>, reachable by pure logic — no guessing needed. Same grid for everyone, new at midnight.</li>
     </ol>
-    <p class="howto-foot">Sharpen your memory. Play as often as you like.</p>
+    <p class="howto-foot">Keyboard shortcut: X toggles between fill and mark.</p>
   </div>
 
   <div class="modal" id="modal-stats" hidden role="dialog" aria-modal="true" aria-labelledby="stats-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
-    <h3 class="modal-title" id="stats-title">Memory record</h3>
-    <p class="mem-stat-level"><b id="st-level">Easy</b> difficulty · your bests</p>
-    <div class="statgrid statgrid--3">
-      <div class="stat"><b id="st-moves">—</b><span>best moves</span></div>
-      <div class="stat"><b id="st-time">—</b><span>best time</span></div>
-      <div class="stat"><b id="st-plays">0</b><span>games</span></div>
+    <h3 class="modal-title" id="stats-title">Solve record</h3>
+    <div class="statgrid">
+      <div class="stat"><b id="st-streak">0</b><span>streak</span></div>
+      <div class="stat"><b id="st-max">0</b><span>best streak</span></div>
+      <div class="stat"><b id="st-plays">0</b><span>solved</span></div>
+      <div class="stat"><b id="st-best">—</b><span>best time</span></div>
     </div>
   </div>
 
@@ -243,7 +250,7 @@
       </svg>
     </p>
     <h3 class="modal-title" id="coffee-title">Buy me a coffee</h3>
-    <p class="coffee-blurb">Roostr is free and made by one person. If a game made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
+    <p class="coffee-blurb">Roostr is free and made by one person. If this game made you grin, you can drop me a coffee — every cup keeps the coop running.</p>
     <div class="coffee-buy">
       <div class="coffee-stepper" role="group" aria-label="How many coffees">
         <button type="button" class="step-btn" id="cup-minus" aria-label="One fewer cup">−</button>
@@ -261,8 +268,7 @@
   <div class="modal" id="modal-about" hidden role="dialog" aria-modal="true" aria-labelledby="about-title">
     <button class="modal-close" data-close aria-label="Close">×</button>
     <h3 class="modal-title" id="about-title">About</h3>
-    <p class="about-text">Roostr Memory is a free browser card-matching game — the classic concentration game, with flag cards. Match all the pairs in as few moves as you can; your best score lives in your browser.</p>
-    <p class="about-text">Looking for more? Try <a href="index.html">Ranking</a>, <a href="faceoff.html">Face-Off</a>, <a href="pick.html">Top Pick</a>, <a href="flags.html">Guess the Flag</a>, <a href="run.html">Coop Run</a>, or <a href="dodge.html">Astro Coop</a>.</p>
+    <p class="about-text">Roostr Nonogram is a free daily 10×10 picross puzzle. Each day's grid is generated with a single unique solution that can be reached by logic alone, and everyone gets the same puzzle.</p>
     <p class="about-text">Questions or feedback? Email <a href="mailto:ilan@playroostr.com">ilan@playroostr.com</a>.</p>
   </div>
 
@@ -270,8 +276,8 @@
 
 <div class="toast" id="toast" role="status"></div>
 
+<script src="js/nonogen.js"></script>
 <script src="js/share.js"></script>
-<script src="js/flags.js"></script>
-<script src="js/memory.js"></script>
+<script src="js/nonogram.js"></script>
 </body>
 </html>
